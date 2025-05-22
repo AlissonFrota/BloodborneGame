@@ -10,7 +10,5 @@ public class DataHandler {
 
     ArrayList<Origin> Origins = new ArrayList<Origin>();
 
-    
-
 
 }
