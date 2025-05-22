@@ -9,7 +9,7 @@ public class origin {
     private int Arcane;
 
     public origin(String NomeOrigem,int vitality, int endurence, int strength, int skill, int bloodtinge, int arcane) {
-        NomeOrigem = "origem";
+        NomeOrigem = NomeOrigem;
         Vitality = vitality;
         Endurence = endurence;
         Strength = strength;
