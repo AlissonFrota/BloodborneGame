@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,38 @@ public class DataHandler {
         }
     }
 
+    static void ReadOriginCSV() {
+        String filePath = "Dado\\OriginCSV.csv";
+
+        List<String[]> rows = new ArrayList<>();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
+            String line;
+
+            while ((line = br.readLine()) != null){
+                String[] values = line.split(",");
+                rows.add(values);
+            }
+
+            String[][] matrix = new String[rows.size()][];
+            matrix = rows.toArray(matrix);
+
+            String[][] Transposta = new String[matrix[0].length][matrix.length];
+            for (int i = 0; i < matrix.length; i++) {
+                for(int j = 0; j < matrix[0].length; j++) {
+                    Transposta[j][i] = matrix[i][j];
+                }
+            }
+
+            for (int i = 1; i < Transposta.length; i++) {
+                Origins.add(new Origin(Transposta[i]));
+            }
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public static void PrintArmors() {
         System.out.printf(
             "%-15s %5s %5s %5s %5s %5s %5s %5s %6s %6s %6s %6s %8s\n",
@@ -67,6 +100,28 @@ public class DataHandler {
                 armadura.getFRRES(),
                 armadura.getBeast(),
                 armadura.getTypeOfArmor()
+            );
+        }
+    }
+
+    public static void PrintOrigins() {
+        System.out.printf(
+                "%-15s %5s %5s %5s %5s %5s %5s \n",
+                "Class Name","Vitality //","Endurance //","Strengh //","Skill //","BloodTing //","Arcane"
+        );
+        System.out.println("-------------------------------------------------------------------------------------------------");
+
+        for (Origin origins : Origins) {
+            System.out.printf(
+                    "%-15s %5d %5d %5d %5d %5d %5d \n",
+
+                    origins.getNomeOrigem(),
+                    origins.getVitality(),
+                    origins.getEndurence(),
+                    origins.getStrength(),
+                    origins.getSkill(),
+                    origins.getBloodtinge(),
+                    origins.getArcane()
             );
         }
     }
