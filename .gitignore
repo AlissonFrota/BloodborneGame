@@ -1,0 +1,64 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Mobile App Packages #
+*.apk
+*.dex
+
+# NetBeans specific files
+nbproject/
+build/
+dist/
+
+# IntelliJ IDEA / Android Studio specific files
+.idea/
+*.iml
+*.ipr
+
+# Eclipse specific files
+.classpath
+.project
+.settings/
+bin/
+
+# Maven specific files
+target/
+
+# Gradle specific files
+.gradle/
+build/
+
+# Junit reports
+TEST-*.xml
+
+# Temporary files
+tmp/
+temp/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# JavaFX Scene Builder files
+*.fxml
+
+# Java build output directory (if not using Maven or Gradle)
+out/
+
+#OS generated files
+.AppleDouble
+.LSOverride
+
+#Other
+*.bak
+*~
+*.swp
+*.swo
