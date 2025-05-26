@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class DataHandler {
     static ArrayList<Origin> Origins = new ArrayList<Origin>();
 
     static void ReadArmorCSV() {
-        String filePath = "Dado\\ArmorCSV.csv";
+        String filePath = "Dado/ArmorCSV.csv";
 
         List<String[]> rows = new ArrayList<>();
 
@@ -41,7 +40,7 @@ public class DataHandler {
     }
 
     static void ReadOriginCSV() {
-        String filePath = "Dado\\OriginCSV.csv";
+        String filePath = "Dado/OriginCSV.csv";
 
         List<String[]> rows = new ArrayList<>();
 
@@ -82,7 +81,7 @@ public class DataHandler {
         for (Armadura armadura : Armaduras) {
             String nome = armadura.getName();
             if (nome.length() > 15) {
-                nome = nome.substring(0, 12) + "..."; // Corta e adiciona "..."
+                nome = nome.substring(0, 12) + "..."; 
             }
 
             System.out.printf(

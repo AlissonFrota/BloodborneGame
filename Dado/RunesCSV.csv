@@ -1,0 +1,67 @@
+Clockwise Metamorphosis (1),1.05,HP
+Clockwise Metamorphosis (2),1.1,HP
+Clockwise Metamorphosis (3),1.15,HP
+Anticlockwise Metamorphosis (1),1.1,STAMINA
+Anticlockwise Metamorphosis (2),1.15,STAMINA
+Anticlockwise Metamorphosis (3),1.2,STAMINA
+Communion (1),1,VIAL
+Communion (2),2,VIAL
+Communion (3),3,VIAL
+Communion (4),4,VIAL
+Communion (5),5,VIAL
+Formless Oedon (1),1,MAXBULLETS
+Formless Oedon (2),2,MAXBULLETS
+Formless Oedon (3),3,MAXBULLETS
+Formless Oedon (4),4,MAXBULLETS
+Formless Oedon (5),5,MAXBULLETS
+Clawmark (1),1.1,VISATK
+Clawmark (2),1.2,VISATK
+Clawmark (3),1.3,VISATK
+Blood Rapture (1),200,VATKRES
+Blood Rapture (2),250,VATKRES
+Blood Rapture (3),300,VATKRES
+Oedon Writhe (1),1,VATKBULLETS
+Oedon Writhe (2),2,VATKBULLETS
+Oedon Writhe (3),3,VATKBULLETS
+Heir (1),1.2,VATKBLOODECHOES
+Heir (2),1.4,VATKBLOODECHOES
+Heir (3),1.6,VATKBLOODECHOES
+Lake (1),30,PHYSREDUCTION
+Lake (2),50,PHYSREDUCTION
+Lake (3),70,PHYSREDUCTION
+Arcane Lake (1),50,ARCANEREDUCTION
+Arcane Lake (2),70,ARCANEREDUCTION
+Arcane Lake (3),100,ARCANEREDUCTION
+Fading Lake (1),50,FIREREDUCTION
+Fading Lake (2),70,FIREREDUCTION
+Fading Lake (3),100,FIREREDUCTION
+Dissipating Lake (1),50,BOLTREDUCTION
+Dissipating Lake (2),70,BOLTREDUCTION
+Dissipating Lake (3),100,BOLTREDUCTION
+Great Lake (1),30,ALLREDUCTION
+Great Lake (2),40,ALLREDUCTION
+Great Lake (3),50,ALLREDUCTION
+Deep Sea (1),100,FRENZYRES
+Deep Sea (2),200,FRENZYRES
+Deep Sea (3),300,FRENZYRES
+Clear Deep Sea (1),100,SLOWPOISONRES
+Clear Deep Sea (2),200,SLOWPOISONRES
+Clear Deep Sea (3),300,SLOWPOISONRES
+Stunning Deep Sea (1),100,RAPIDPOISONRES
+Stunning Deep Sea (2),200,RAPIDPOISONRES
+Stunning Deep Sea (3),300,RAPIDPOISONRES
+Great Deep Sea (1),50,ALLRES
+Great Deep Sea (2),100,ALLRES
+Great Deep Sea (3),150,ALLRES
+Moon (1),1.1,MOREECHOES
+Moon (2),1.2,MOREECHOES
+Moon (3),1.3,MOREECHOES
+Eye (1),50,ITEMDISCOVERY
+Eye (2),70,ITEMDISCOVERY
+Eye (3),100,ITEMDISCOVERY
+Guidance (1),1.1,RALLYPOTENCIAL
+Guidance (2),1.2,RALLYPOTENCIAL
+Guidance (3),1.3,RALLYPOTENCIAL
+Beast (1),20,BOOSTTRANSFORM
+Beast (2),50,BOOSTTRANSFORM
+Beast (3),100,BOOSTTRANSFORM
