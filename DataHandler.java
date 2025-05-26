@@ -14,6 +14,8 @@ public class DataHandler {
 
     static ArrayList<Origin> Origins = new ArrayList<Origin>();
 
+    static ArrayList<Runa> Runas = new ArrayList<Runa>();
+
     static void ReadArmorCSV() {
         String filePath = "Dado/ArmorCSV.csv";
 
@@ -68,6 +70,53 @@ public class DataHandler {
 
         } catch(IOException e){
             e.printStackTrace();
+        }
+    }
+
+    static void ReadRuneCSV(){
+        String filePath = "Dado/RunesCSV.csv";
+
+        List<String[]> rows = new ArrayList<>();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
+            String line;
+
+            while ((line = br.readLine()) != null){
+                String[] values = line.split(",");
+                rows.add(values);
+            }
+
+            String[][] matrix = new String[rows.size()][];
+            matrix = rows.toArray(matrix);
+
+            for (int i = 0; i < matrix.length; i++) {
+                Runas.add(new Runa(matrix[i]));
+            }
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void PrintRunas(){
+        System.out.printf(
+            "%-15s %5s %5s\n",
+            "Nome", "Valor", "Tipo"
+        );
+        System.out.println("-------------------------------------------------------------------------------------------------");
+
+        for (Runa runa : Runas) {
+            String nome = runa.getName();
+            if (nome.length() > 15) {
+                nome = nome.substring(0, 12) + "..."; 
+            }
+
+            System.out.printf(
+                "%-15s %5.2f %-5s\n",
+                nome,
+                runa.getValor(),
+                runa.getTipo()
+            );
         }
     }
 
