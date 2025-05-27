@@ -33,8 +33,16 @@ public class Personagem {
 
     private Origin Origin;
 
-    Personagem(){
-
+    Personagem(
+        int Level, 
+        int Vitality, 
+        int Endurance, 
+        int Strength, 
+        int Skill, 
+        int Bloodtinge, 
+        int Arcane
+        ){
+            
     }
 
 }

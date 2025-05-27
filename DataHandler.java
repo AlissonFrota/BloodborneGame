@@ -16,6 +16,13 @@ public class DataHandler {
 
     static ArrayList<Runa> Runas = new ArrayList<Runa>();
 
+    public DataHandler(){
+        ReadArmorCSV();
+        ReadOriginCSV();
+        ReadOriginCSV();
+        ReadRuneCSV();
+    }
+
     static void ReadArmorCSV() {
         String filePath = "Dado/ArmorCSV.csv";
 
