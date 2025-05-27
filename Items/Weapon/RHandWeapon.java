@@ -1,4 +1,10 @@
-public class Arma extends Item{
+package Items.Weapon;
+
+import Items.EquiSlot;
+import Items.Equipable;
+import Items.Item;
+
+public class RHandWeapon extends Weapon implements Equipable {
 
     private int StReq;
     private int SkReq;
@@ -23,9 +29,15 @@ public class Arma extends Item{
     private int Rally;
     private int Dura;
 
-    protected Arma(String name) {
+    protected RHandWeapon(String name) {
         super(name);
         //TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public EquiSlot getSlot() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSlot'");
     }
     
 }

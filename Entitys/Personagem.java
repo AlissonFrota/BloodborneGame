@@ -1,3 +1,8 @@
+
+package Entitys;
+import Items.Armor.Armadura;
+import Items.Rune.Runa;
+
 public class Personagem {
 
     private int Level;

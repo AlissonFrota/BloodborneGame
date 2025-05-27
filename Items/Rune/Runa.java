@@ -1,9 +1,13 @@
+package Items.Rune;
+
+import Items.Item;
+
 public class Runa extends Item {
 
     double Valor;
     String Tipo;
 
-    protected Runa(String[] LinhaRuna) {
+    public Runa(String[] LinhaRuna) {
         super(LinhaRuna[0]);
         this.Valor = Double.parseDouble(LinhaRuna[1]);
         this.Tipo = LinhaRuna[2];

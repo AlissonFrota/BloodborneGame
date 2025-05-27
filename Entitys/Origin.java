@@ -1,3 +1,4 @@
+package Entitys;
 public class Origin {
 
     private String NomeOrigem;
