@@ -19,31 +19,11 @@ public class Origin {
         this.Arcane = Integer.parseInt(LinhaOrigin[6]);
     }
 
-    public String getNomeOrigem() {
-        return NomeOrigem;
-    }
-
-    public int getVitality() {
-        return Vitality;
-    }
-
-    public int getEndurence() {
-        return Endurence;
-    }
-
-    public int getStrength() {
-        return Strength;
-    }
-
-    public int getSkill() {
-        return Skill;
-    }
-
-    public int getBloodtinge() {
-        return Bloodtinge;
-    }
-
-    public int getArcane() {
-        return Arcane;
-    }
+    public String getNomeOrigem() { return NomeOrigem; }
+    public int getVitality() { return Vitality; }
+    public int getEndurence() { return Endurence; }
+    public int getStrength() { return Strength; }
+    public int getSkill() { return Skill; }
+    public int getBloodtinge() { return Bloodtinge; }
+    public int getArcane() { return Arcane; }
 }

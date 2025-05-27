@@ -1,6 +1,9 @@
 
 package Entitys;
-import Items.Armor.Armadura;
+import Items.Armor.ChestArmor;
+import Items.Armor.HandArmor;
+import Items.Armor.HeadArmor;
+import Items.Armor.LegArmor;
 import Items.Rune.Rune;
 
 public class Personagem {
@@ -31,23 +34,17 @@ public class Personagem {
     private Rune Runa2;
     private Rune Runa3;
 
-    private Armadura Head;
-    private Armadura Chest;
-    private Armadura Arms;
-    private Armadura Legs;
+    private HeadArmor Head;
+    private ChestArmor Chest;
+    private HandArmor Hands;
+    private LegArmor Legs;
 
     private Origin Origin;
 
     Personagem(
-        int Level, 
-        int Vitality, 
-        int Endurance, 
-        int Strength, 
-        int Skill, 
-        int Bloodtinge, 
-        int Arcane
+        Origin Origin
         ){
-            
+        this.Origin = Origin; 
     }
 
 }
