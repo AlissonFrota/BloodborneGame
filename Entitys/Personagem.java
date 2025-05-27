@@ -1,7 +1,7 @@
 
 package Entitys;
 import Items.Armor.Armadura;
-import Items.Rune.Runa;
+import Items.Rune.Rune;
 
 public class Personagem {
 
@@ -27,9 +27,9 @@ public class Personagem {
     private int MaxVials;
     private int MaxBullets;
 
-    private Runa Runa1;
-    private Runa Runa2;
-    private Runa Runa3;
+    private Rune Runa1;
+    private Rune Runa2;
+    private Rune Runa3;
 
     private Armadura Head;
     private Armadura Chest;

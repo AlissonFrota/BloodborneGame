@@ -1,68 +1,69 @@
-Clockwise Metamorphosis (1),1.05,HP
-Clockwise Metamorphosis (2),1.1,HP
-Clockwise Metamorphosis (3),1.15,HP
-Anticlockwise Metamorphosis (1),1.1,STAMINA
-Anticlockwise Metamorphosis (2),1.15,STAMINA
-Anticlockwise Metamorphosis (3),1.2,STAMINA
-Communion (1),1,VIAL
-Communion (2),2,VIAL
-Communion (3),3,VIAL
-Communion (4),4,VIAL
-Communion (5),5,VIAL
-Formless Oedon (1),1,MAXBULLETS
-Formless Oedon (2),2,MAXBULLETS
-Formless Oedon (3),3,MAXBULLETS
-Formless Oedon (4),4,MAXBULLETS
-Formless Oedon (5),5,MAXBULLETS
-Clawmark (1),1.1,VISATK
-Clawmark (2),1.2,VISATK
-Clawmark (3),1.3,VISATK
-Blood Rapture (1),200,VATKRES
-Blood Rapture (2),250,VATKRES
-Blood Rapture (3),300,VATKRES
-Oedon Writhe (1),1,VATKBULLETS
-Oedon Writhe (2),2,VATKBULLETS
-Oedon Writhe (3),3,VATKBULLETS
-Heir (1),1.2,VATKBLOODECHOES
-Heir (2),1.4,VATKBLOODECHOES
-Heir (3),1.6,VATKBLOODECHOES
-Lake (1),30,PHYSREDUCTION
-Lake (2),50,PHYSREDUCTION
-Lake (3),70,PHYSREDUCTION
-Arcane Lake (1),50,ARCANEREDUCTION
-Arcane Lake (2),70,ARCANEREDUCTION
-Arcane Lake (3),100,ARCANEREDUCTION
-Fading Lake (1),50,FIREREDUCTION
-Fading Lake (2),70,FIREREDUCTION
-Fading Lake (3),100,FIREREDUCTION
-Dissipating Lake (1),50,BOLTREDUCTION
-Dissipating Lake (2),70,BOLTREDUCTION
-Dissipating Lake (3),100,BOLTREDUCTION
-Great Lake (1),30,ALLREDUCTION
-Great Lake (2),40,ALLREDUCTION
-Great Lake (3),50,ALLREDUCTION
-Deep Sea (1),100,FRENZYRES
-Deep Sea (2),200,FRENZYRES
-Deep Sea (3),300,FRENZYRES
-Clear Deep Sea (1),100,SLOWPOISONRES
-Clear Deep Sea (2),200,SLOWPOISONRES
-Clear Deep Sea (3),300,SLOWPOISONRES
-Stunning Deep Sea (1),100,RAPIDPOISONRES
-Stunning Deep Sea (2),200,RAPIDPOISONRES
-Stunning Deep Sea (3),300,RAPIDPOISONRES
-Great Deep Sea (1),50,ALLRES
-Great Deep Sea (2),100,ALLRES
-Great Deep Sea (3),150,ALLRES
-Moon (1),1.1,MOREECHOES
-Moon (2),1.2,MOREECHOES
-Moon (3),1.3,MOREECHOES
-Eye (1),50,ITEMDISCOVERY
-Eye (2),70,ITEMDISCOVERY
-Eye (3),100,ITEMDISCOVERY
-Guidance (1),1.1,RALLYPOTENCIAL
-Guidance (2),1.2,RALLYPOTENCIAL
-Guidance (3),1.3,RALLYPOTENCIAL
-Beast (1),20,BOOSTTRANSFORM
-Beast (2),50,BOOSTTRANSFORM
-Beast (3),100,BOOSTTRANSFORM
-NoRune,0,NoRune
+Name,Value,Type,ImageSrc
+Clockwise Metamorphosis (1),1.05,HP,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggVRPllfEMzLANQJNbQxggmBFi5E9Vt0DI0DGGZeKMHKrw-L6vg8INgQsRlMKm45A13alsogwbIuyojUJqzWEils6TBP-xiYjQbgmmDS1wBsLNn4e8urzXc9UssAEEg1TnGt3vZCzadZ4/s52/clockwise+metamorphosis+3+icon.png
+Clockwise Metamorphosis (2),1.1,HP,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggVRPllfEMzLANQJNbQxggmBFi5E9Vt0DI0DGGZeKMHKrw-L6vg8INgQsRlMKm45A13alsogwbIuyojUJqzWEils6TBP-xiYjQbgmmDS1wBsLNn4e8urzXc9UssAEEg1TnGt3vZCzadZ4/s52/clockwise+metamorphosis+3+icon.png
+Clockwise Metamorphosis (3),1.15,HP,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggVRPllfEMzLANQJNbQxggmBFi5E9Vt0DI0DGGZeKMHKrw-L6vg8INgQsRlMKm45A13alsogwbIuyojUJqzWEils6TBP-xiYjQbgmmDS1wBsLNn4e8urzXc9UssAEEg1TnGt3vZCzadZ4/s52/clockwise+metamorphosis+3+icon.png
+Anticlockwise Metamorphosis (1),1.1,STAMINA,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGtZRLbKdOrW9UoBIgap6lWFRLxC10wyOTtdvKKibsI5Ms2D4TQz3zfzc8w6y_DbVbvydqWUEMg6zNwPC5Wte-t7E1zLm1rwpfFaNkjcbzNORnZiJdwf1ebYhll-j76rcy72aEfi4YMPY/s52/anticlockwise+metamorphosis+3+icon.png
+Anticlockwise Metamorphosis (2),1.15,STAMINA,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGtZRLbKdOrW9UoBIgap6lWFRLxC10wyOTtdvKKibsI5Ms2D4TQz3zfzc8w6y_DbVbvydqWUEMg6zNwPC5Wte-t7E1zLm1rwpfFaNkjcbzNORnZiJdwf1ebYhll-j76rcy72aEfi4YMPY/s52/anticlockwise+metamorphosis+3+icon.png
+Anticlockwise Metamorphosis (3),1.2,STAMINA,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjGtZRLbKdOrW9UoBIgap6lWFRLxC10wyOTtdvKKibsI5Ms2D4TQz3zfzc8w6y_DbVbvydqWUEMg6zNwPC5Wte-t7E1zLm1rwpfFaNkjcbzNORnZiJdwf1ebYhll-j76rcy72aEfi4YMPY/s52/anticlockwise+metamorphosis+3+icon.png
+Communion (1),1,VIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5cnRXftombrUXniRvOqBNgFFhYahyphenhyphenLs3nmlOXo-CVhRbjyD1NaGmFwT4Gzlyu3XG0J6OGy0gizhF3t0KrsOcMsZrPc5pUcm4TNTQP5XwRFjqw-6a33GGoSQwHT3rvbzfxOLLYqqwoUVU/s52/communion+5+icon.png
+Communion (2),2,VIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5cnRXftombrUXniRvOqBNgFFhYahyphenhyphenLs3nmlOXo-CVhRbjyD1NaGmFwT4Gzlyu3XG0J6OGy0gizhF3t0KrsOcMsZrPc5pUcm4TNTQP5XwRFjqw-6a33GGoSQwHT3rvbzfxOLLYqqwoUVU/s52/communion+5+icon.png
+Communion (3),3,VIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5cnRXftombrUXniRvOqBNgFFhYahyphenhyphenLs3nmlOXo-CVhRbjyD1NaGmFwT4Gzlyu3XG0J6OGy0gizhF3t0KrsOcMsZrPc5pUcm4TNTQP5XwRFjqw-6a33GGoSQwHT3rvbzfxOLLYqqwoUVU/s52/communion+5+icon.png
+Communion (4),4,VIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5cnRXftombrUXniRvOqBNgFFhYahyphenhyphenLs3nmlOXo-CVhRbjyD1NaGmFwT4Gzlyu3XG0J6OGy0gizhF3t0KrsOcMsZrPc5pUcm4TNTQP5XwRFjqw-6a33GGoSQwHT3rvbzfxOLLYqqwoUVU/s52/communion+5+icon.png
+Communion (5),5,VIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5cnRXftombrUXniRvOqBNgFFhYahyphenhyphenLs3nmlOXo-CVhRbjyD1NaGmFwT4Gzlyu3XG0J6OGy0gizhF3t0KrsOcMsZrPc5pUcm4TNTQP5XwRFjqw-6a33GGoSQwHT3rvbzfxOLLYqqwoUVU/s52/communion+5+icon.png
+Formless Oedon (1),1,MAXBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpJs4DnH4G6CaJEAtW1zsEVX5oZpDau936OPI5ACh10sW9GQDodDXOQetsk0mNdTbNP9FOjk-W_N305oakHq5S_Z-Ch4cTTHnI_G88DCvT7JWgXiYtaCM2l0dnvxfZC72xWdmMeTQU0mE/s52/formless+oedon+5+icon.png
+Formless Oedon (2),2,MAXBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpJs4DnH4G6CaJEAtW1zsEVX5oZpDau936OPI5ACh10sW9GQDodDXOQetsk0mNdTbNP9FOjk-W_N305oakHq5S_Z-Ch4cTTHnI_G88DCvT7JWgXiYtaCM2l0dnvxfZC72xWdmMeTQU0mE/s52/formless+oedon+5+icon.png
+Formless Oedon (3),3,MAXBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpJs4DnH4G6CaJEAtW1zsEVX5oZpDau936OPI5ACh10sW9GQDodDXOQetsk0mNdTbNP9FOjk-W_N305oakHq5S_Z-Ch4cTTHnI_G88DCvT7JWgXiYtaCM2l0dnvxfZC72xWdmMeTQU0mE/s52/formless+oedon+5+icon.png
+Formless Oedon (4),4,MAXBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpJs4DnH4G6CaJEAtW1zsEVX5oZpDau936OPI5ACh10sW9GQDodDXOQetsk0mNdTbNP9FOjk-W_N305oakHq5S_Z-Ch4cTTHnI_G88DCvT7JWgXiYtaCM2l0dnvxfZC72xWdmMeTQU0mE/s52/formless+oedon+5+icon.png
+Formless Oedon (5),5,MAXBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhpJs4DnH4G6CaJEAtW1zsEVX5oZpDau936OPI5ACh10sW9GQDodDXOQetsk0mNdTbNP9FOjk-W_N305oakHq5S_Z-Ch4cTTHnI_G88DCvT7JWgXiYtaCM2l0dnvxfZC72xWdmMeTQU0mE/s52/formless+oedon+5+icon.png
+Clawmark (1),1.1,VISATK,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyrRUQpMWVL4sb8C14tTEHHn4Rr2aehWklhIrSMfeXBnTzga9GtPLqOx4z1WX5OiFFkYNX5v6znazAi6abOgwFjZOgS_nKhBu-j4SpBfbEZpeouG36gg9RrqEWrbuBcVYuRDrZATQyMAU/s52/clawmark+3+icon.png
+Clawmark (2),1.2,VISATK,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyrRUQpMWVL4sb8C14tTEHHn4Rr2aehWklhIrSMfeXBnTzga9GtPLqOx4z1WX5OiFFkYNX5v6znazAi6abOgwFjZOgS_nKhBu-j4SpBfbEZpeouG36gg9RrqEWrbuBcVYuRDrZATQyMAU/s52/clawmark+3+icon.png
+Clawmark (3),1.3,VISATK,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyrRUQpMWVL4sb8C14tTEHHn4Rr2aehWklhIrSMfeXBnTzga9GtPLqOx4z1WX5OiFFkYNX5v6znazAi6abOgwFjZOgS_nKhBu-j4SpBfbEZpeouG36gg9RrqEWrbuBcVYuRDrZATQyMAU/s52/clawmark+3+icon.png
+Blood Rapture (1),200,VATKRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGhQRPlDGAfjcTqaAhN6a5D3fjOzMkG0OQ33Z9Tmu6lsO3vB6MEKJJFPJOMAdAecX6QMcYUTUUkQZI7NRRYc3efSp2NfJm8EHvL38gkmo44RsduyMghyphenhyphenuzA61AaZyAwx-yfEbBdo80apw/s52/blood+rapture+3+icon.png
+Blood Rapture (2),250,VATKRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGhQRPlDGAfjcTqaAhN6a5D3fjOzMkG0OQ33Z9Tmu6lsO3vB6MEKJJFPJOMAdAecX6QMcYUTUUkQZI7NRRYc3efSp2NfJm8EHvL38gkmo44RsduyMghyphenhyphenuzA61AaZyAwx-yfEbBdo80apw/s52/blood+rapture+3+icon.png
+Blood Rapture (3),300,VATKRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGhQRPlDGAfjcTqaAhN6a5D3fjOzMkG0OQ33Z9Tmu6lsO3vB6MEKJJFPJOMAdAecX6QMcYUTUUkQZI7NRRYc3efSp2NfJm8EHvL38gkmo44RsduyMghyphenhyphenuzA61AaZyAwx-yfEbBdo80apw/s52/blood+rapture+3+icon.png
+Oedon Writhe (1),1,VATKBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1eAbsHZA67oFjpHeeMiUN5yTy59DRhCwEIJEY3U7v5TgAFHnL0xTE1A8Ov-OaXIoj5KkJlmWll8HI-MIO-pkHXh9UIRghzWCf5A4CjGZxrgO8PdJaz0JovWYvrJH-cCGlgE2-YQskXg0/s52/oedon+writhe+3+icon.png
+Oedon Writhe (2),2,VATKBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1eAbsHZA67oFjpHeeMiUN5yTy59DRhCwEIJEY3U7v5TgAFHnL0xTE1A8Ov-OaXIoj5KkJlmWll8HI-MIO-pkHXh9UIRghzWCf5A4CjGZxrgO8PdJaz0JovWYvrJH-cCGlgE2-YQskXg0/s52/oedon+writhe+3+icon.png
+Oedon Writhe (3),3,VATKBULLETS,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg1eAbsHZA67oFjpHeeMiUN5yTy59DRhCwEIJEY3U7v5TgAFHnL0xTE1A8Ov-OaXIoj5KkJlmWll8HI-MIO-pkHXh9UIRghzWCf5A4CjGZxrgO8PdJaz0JovWYvrJH-cCGlgE2-YQskXg0/s52/oedon+writhe+3+icon.png
+Heir (1),1.2,VATKBLOODECHOES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsdkU-HOsKWZ5pmEpLwjwN_1slJ4Wj6_sLeNSfXjtXmrCnWI7bg6c0OfgcTdsSLPOObmYidgVxI224JVBLglIMC4kV38orS2VeFj4MYplwueppULV0KmsAqRHLLmQQ_TzGxn70pBiBk-Q/s52/heir+3+icon.png
+Heir (2),1.4,VATKBLOODECHOES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsdkU-HOsKWZ5pmEpLwjwN_1slJ4Wj6_sLeNSfXjtXmrCnWI7bg6c0OfgcTdsSLPOObmYidgVxI224JVBLglIMC4kV38orS2VeFj4MYplwueppULV0KmsAqRHLLmQQ_TzGxn70pBiBk-Q/s52/heir+3+icon.png
+Heir (3),1.6,VATKBLOODECHOES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsdkU-HOsKWZ5pmEpLwjwN_1slJ4Wj6_sLeNSfXjtXmrCnWI7bg6c0OfgcTdsSLPOObmYidgVxI224JVBLglIMC4kV38orS2VeFj4MYplwueppULV0KmsAqRHLLmQQ_TzGxn70pBiBk-Q/s52/heir+3+icon.png
+Lake (1),30,PHYSREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Lake (2),50,PHYSREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Lake (3),70,PHYSREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Arcane Lake (1),50,ARCANEREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Arcane Lake (2),70,ARCANEREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Arcane Lake (3),100,ARCANEREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Fading Lake (1),50,FIREREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Fading Lake (2),70,FIREREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Fading Lake (3),100,FIREREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Dissipating Lake (1),50,BOLTREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Dissipating Lake (2),70,BOLTREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Dissipating Lake (3),100,BOLTREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Great Lake (1),30,ALLREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Great Lake (2),40,ALLREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Great Lake (3),50,ALLREDUCTION,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYBEUPGBOjrhlSSxcD4VLbyPWt9MUjQIjcVvbZoysCYl2dWeePTqHIDZg4tJu4oRGh8h14PRaDVveZRgyL1eKFN1zBajLyhf5jCoGEPrlYVsBfF2747ohWSm28NEg1r_Wr1g08jXIbFYk/s52/lake+3+icon.png
+Deep Sea (1),100,FRENZYRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Deep Sea (2),200,FRENZYRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Deep Sea (3),300,FRENZYRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Clear Deep Sea (1),100,SLOWPOISONRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Clear Deep Sea (2),200,SLOWPOISONRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Clear Deep Sea (3),300,SLOWPOISONRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Stunning Deep Sea (1),100,RAPIDPOISONRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Stunning Deep Sea (2),200,RAPIDPOISONRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Stunning Deep Sea (3),300,RAPIDPOISONRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Great Deep Sea (1),50,ALLRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Great Deep Sea (2),100,ALLRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Great Deep Sea (3),150,ALLRES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgqwOd4Fcu6F3Sy2Ce5nMiIi1jezK0_smCJUBDMTzfg3SoDhPTDg9h53J8LC6OSbQOAqfX1tesvf3tAPm4m4uc81wLD688N671C_ZxAXD5e5GPqrWrSlhJ6KXJRdLBaA0UUdfdf220HDo4/s52/sea+3+icon.png
+Moon (1),1.1,MOREECHOES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilLuJx51UK_maWWF7THYEVk2Avq94lmPP5sXO3XC9a6Z2MF4sHqVdGe0m6Rp_G1kyeNsOpTFARs0LWDFTpjedrw0ZWbW6a6Nz38PL_6ivC3fMK3ITuuqG0nyJOtfNTqo7tRK46SwVQcqQ/s52/moon+3+icon.png
+Moon (2),1.2,MOREECHOES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilLuJx51UK_maWWF7THYEVk2Avq94lmPP5sXO3XC9a6Z2MF4sHqVdGe0m6Rp_G1kyeNsOpTFARs0LWDFTpjedrw0ZWbW6a6Nz38PL_6ivC3fMK3ITuuqG0nyJOtfNTqo7tRK46SwVQcqQ/s52/moon+3+icon.png
+Moon (3),1.3,MOREECHOES,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEilLuJx51UK_maWWF7THYEVk2Avq94lmPP5sXO3XC9a6Z2MF4sHqVdGe0m6Rp_G1kyeNsOpTFARs0LWDFTpjedrw0ZWbW6a6Nz38PL_6ivC3fMK3ITuuqG0nyJOtfNTqo7tRK46SwVQcqQ/s52/moon+3+icon.png
+Eye (1),50,ITEMDISCOVERY,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgprooLR0qHqAtn2SAkH8CIaPQn_Sv69p9Iq2m0tU7-xpWrFxc4-oadm8LN2CQojaVnKlWfdmt5CvYC3LBhDwJWhs01wbKi8xMigCLQPce9XfkcNorVFTKMjgsrN8bCRc6TwI1_4N0GI74/s52/eye+3+icon.png
+Eye (2),70,ITEMDISCOVERY,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgprooLR0qHqAtn2SAkH8CIaPQn_Sv69p9Iq2m0tU7-xpWrFxc4-oadm8LN2CQojaVnKlWfdmt5CvYC3LBhDwJWhs01wbKi8xMigCLQPce9XfkcNorVFTKMjgsrN8bCRc6TwI1_4N0GI74/s52/eye+3+icon.png
+Eye (3),100,ITEMDISCOVERY,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgprooLR0qHqAtn2SAkH8CIaPQn_Sv69p9Iq2m0tU7-xpWrFxc4-oadm8LN2CQojaVnKlWfdmt5CvYC3LBhDwJWhs01wbKi8xMigCLQPce9XfkcNorVFTKMjgsrN8bCRc6TwI1_4N0GI74/s52/eye+3+icon.png
+Guidance (1),1.1,RALLYPOTENCIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRNrUQJxEsJVG8qNCZV-74z0s2vFOFedBaOB4T-LWWgHusIJsyAUjtzYuDzs0JSEcXIs4_pu4el5G192NRbi3CR7A6f77HwAxG1ezq6y6dUa_RLoDWcQrUOcKjysouEOXNMvh10FzuMGg/s52/guidance+3+icon.png
+Guidance (2),1.2,RALLYPOTENCIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRNrUQJxEsJVG8qNCZV-74z0s2vFOFedBaOB4T-LWWgHusIJsyAUjtzYuDzs0JSEcXIs4_pu4el5G192NRbi3CR7A6f77HwAxG1ezq6y6dUa_RLoDWcQrUOcKjysouEOXNMvh10FzuMGg/s52/guidance+3+icon.png
+Guidance (3),1.3,RALLYPOTENCIAL,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRNrUQJxEsJVG8qNCZV-74z0s2vFOFedBaOB4T-LWWgHusIJsyAUjtzYuDzs0JSEcXIs4_pu4el5G192NRbi3CR7A6f77HwAxG1ezq6y6dUa_RLoDWcQrUOcKjysouEOXNMvh10FzuMGg/s52/guidance+3+icon.png
+Beast (1),20,BOOSTTRANSFORM,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8QYc3O3CLlzW616YVOSDsf90Ih8oFwSWB5uXhed3aYlVRQ6TayILKeU81mbZ8OZ2NCEKxdxHWIOlQGcqlJfx6mlHMENSpse3H9o0bSDCoRTiE0GLClg_jRhRjeWIWCe9hElBQGXBSPkc/s52/beast+3+icon.png
+Beast (2),50,BOOSTTRANSFORM,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8QYc3O3CLlzW616YVOSDsf90Ih8oFwSWB5uXhed3aYlVRQ6TayILKeU81mbZ8OZ2NCEKxdxHWIOlQGcqlJfx6mlHMENSpse3H9o0bSDCoRTiE0GLClg_jRhRjeWIWCe9hElBQGXBSPkc/s52/beast+3+icon.png
+Beast (3),100,BOOSTTRANSFORM,https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi8QYc3O3CLlzW616YVOSDsf90Ih8oFwSWB5uXhed3aYlVRQ6TayILKeU81mbZ8OZ2NCEKxdxHWIOlQGcqlJfx6mlHMENSpse3H9o0bSDCoRTiE0GLClg_jRhRjeWIWCe9hElBQGXBSPkc/s52/beast+3+icon.png
+NoRune,0,NoRune,NoRune

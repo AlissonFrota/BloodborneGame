@@ -6,15 +6,13 @@ import Items.Equipable;
 public class LHandWeapon extends Weapon implements Equipable {
 
 
-    protected LHandWeapon(String name) {
-        super(name);
-        //TODO Auto-generated constructor stub
+    public LHandWeapon(String[] LineWeapon) {
+        super(LineWeapon);
     }
 
     @Override
     public EquiSlot getSlot() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSlot'");
+        return EquiSlot.LHAND;
     }
     
 }

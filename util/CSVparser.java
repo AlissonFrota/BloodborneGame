@@ -8,6 +8,9 @@ import Items.Armor.HandArmor;
 import Items.Armor.ChestArmor;
 import Items.Armor.HeadArmor;
 import Items.Armor.LegArmor;
+import Items.Rune.Rune;
+import Items.Weapon.LHandWeapon;
+import Items.Weapon.RHandWeapon;
 
 public class CSVparser {
 
@@ -70,5 +73,43 @@ public class CSVparser {
 
         return Origins;
     }
+
+    public static List<Rune> LoadRunes(String CSVpath){
+        List<String[]> dados = CSVLoader.carregar(CSVpath);
+
+        List<Rune> Runes = new ArrayList<>();
+
+        for (String[] linha : dados){
+            Runes.add(new Rune(linha));
+        }
+
+        return Runes;
+    }
+
+    public static List<RHandWeapon> LoadRHandWeapon(String CSVpath){
+        List<String[]> dados = CSVLoader.carregar(CSVpath);
+
+        List<RHandWeapon> RHandWeapons = new ArrayList<>();
+
+        for (String[] linha : dados){
+            RHandWeapons.add(new RHandWeapon(linha));
+        }
+
+        return RHandWeapons;
+    }
+
+    public static List<LHandWeapon> LoadLHandWeapon(String CSVpath){
+        List<String[]> dados = CSVLoader.carregar(CSVpath);
+
+        List<LHandWeapon> LHandWeapons = new ArrayList<>();
+
+        for (String[] linha : dados){
+            LHandWeapons.add(new LHandWeapon(linha));
+        }
+
+        return LHandWeapons;
+    }
+
+    
 
 }

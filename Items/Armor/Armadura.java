@@ -1,9 +1,8 @@
 package Items.Armor;
 
-import Items.Equipable;
 import Items.Item;
 
-public abstract class Armadura extends Item implements Equipable{
+public abstract class Armadura extends Item{ 
 
 
     private int PhysicalDefence;
