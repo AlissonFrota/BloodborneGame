@@ -34,19 +34,19 @@ public class Repository {
     private double[][] LevelStatsTable;
 
     public void LoadAll(){
-        Runes = CSVparser.LoadRunes("Data\\RunesCSV.csv");
+        Runes = CSVparser.LoadRunes("Data/RunesCSV.csv");
 
-        Origins = CSVparser.LoadOrigins("Data\\OriginCSV.csv");
+        Origins = CSVparser.LoadOrigins("Data/OriginCSV.csv");
 
-        ChestArmors = CSVparser.LoadChestArmor("Data\\ChestArmorCSV.csv");
-        HandArmors = CSVparser.LoadArmArmor("Data\\HandArmorCSV.csv");
-        LegArmors = CSVparser.LoadLegArmor("Data\\LegsArmorCSV.csv");
-        HeadArmors = CSVparser.LoadHeadArmor("Data\\HeadArmorCSV.csv");
+        ChestArmors = CSVparser.LoadChestArmor("Data/ChestArmorCSV.csv");
+        HandArmors = CSVparser.LoadArmArmor("Data/HandArmorCSV.csv");
+        LegArmors = CSVparser.LoadLegArmor("Data/LegsArmorCSV.csv");
+        HeadArmors = CSVparser.LoadHeadArmor("Data/HeadArmorCSV.csv");
 
-        RHandWeapons = CSVparser.LoadRHandWeapon("Data\\RHandWeaponsCSV.csv");
-        LHandWeapons = CSVparser.LoadLHandWeapon("Data\\LHandWeaponsCSV.csv");
+        RHandWeapons = CSVparser.LoadRHandWeapon("Data/RHandWeaponsCSV.csv");
+        LHandWeapons = CSVparser.LoadLHandWeapon("Data/LHandWeaponsCSV.csv");
 
-        LevelStatsTable = CSVparser.LoadStatsTable("Data\\StatsCSV.csv");
+        LevelStatsTable = CSVparser.LoadStatsTable("Data/StatsCSV.csv");
     }
 
     public List<Rune> getRunes() { return Runes; }
