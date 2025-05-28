@@ -1,7 +1,6 @@
 package repository;
 
 import java.util.List;
-import java.util.logging.Level;
 
 import Entitys.Origin;
 import Items.Armor.HandArmor;
@@ -60,6 +59,62 @@ public class Repository {
 
     public List<RHandWeapon> getRHandWeapons() { return RHandWeapons; }
     public List<LHandWeapon> getLHandWeapons() { return LHandWeapons; }
+
+    public Rune getRune(String Name){
+
+        for(Rune rune : Runes){
+            if(rune.getName().equals(Name)){
+                return rune;
+            }
+        }
+        System.out.println("Runa não Achada");
+        return null;
+    }
+    public Origin getOrigin(String Name){
+        for(Origin origin : Origins){
+            if(origin.getName().equals(Name)){
+                return origin;
+            }
+        }
+        System.out.println("Origem não Achada");
+        return null;
+    }
+    public HeadArmor getHeadArmor(String Name){
+        for(HeadArmor head : HeadArmors){
+            if(head.getName().equals(Name)){
+                return head;
+            }
+        }
+        System.out.println("HeadArmor não Achada");
+        return null;
+    }
+    public ChestArmor getChestArmor(String Name){
+        for(ChestArmor chest : ChestArmors){
+            if(chest.getName().equals(Name)){
+                return chest;
+            }
+        }
+        System.out.println("ChestArmor não Achada");
+        return null;
+    }
+    public LegArmor getLegArmor(String Name){
+        for(LegArmor leg : LegArmors){
+            if(leg.getName().equals(Name)){
+                return leg;
+            }
+        }
+        System.out.println("LegArmor não Achada");
+        return null;
+    }
+    public HandArmor getHandArmor(String Name){
+        for(HandArmor hand : HandArmors){
+            if(hand.getName().equals(Name)){
+                return hand;
+            }
+        }
+        System.out.println("HandArmor não Achada");
+        return null;
+    }
 
     public double[][] getLevelStatsTable() { return LevelStatsTable; }
 }

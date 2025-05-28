@@ -10,4 +10,19 @@ public class LevelStatsTable {
     public double getHealth(int level) {
         return stats[level][2];
     }
+    
+    public double getStamina(int level){
+        return stats[level][3];
+    }
+
+    public double getDiscovery(int level){
+        return stats[level][7];
+    }
+
+    public double getDefence(int level){
+        return stats[level][4];
+    }
+    public double getSlowPoisonResist(int level){
+        return stats[level][5];
+    }
 }
