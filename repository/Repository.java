@@ -1,6 +1,7 @@
 package repository;
 
 import java.util.List;
+import java.util.logging.Level;
 
 import Entitys.Origin;
 import Items.Armor.HandArmor;
@@ -29,6 +30,9 @@ public class Repository {
     private List<RHandWeapon> RHandWeapons;
     private List<LHandWeapon> LHandWeapons;
 
+    //Status
+    private double[][] LevelStatsTable;
+
     public void LoadAll(){
         Runes = CSVparser.LoadRunes("Data\\RunesCSV.csv");
 
@@ -41,6 +45,8 @@ public class Repository {
 
         RHandWeapons = CSVparser.LoadRHandWeapon("Data\\RHandWeaponsCSV.csv");
         LHandWeapons = CSVparser.LoadLHandWeapon("Data\\LHandWeaponsCSV.csv");
+
+        LevelStatsTable = CSVparser.LoadStatsTable("Data\\StatsCSV.csv");
     }
 
     public List<Rune> getRunes() { return Runes; }
@@ -54,4 +60,6 @@ public class Repository {
 
     public List<RHandWeapon> getRHandWeapons() { return RHandWeapons; }
     public List<LHandWeapon> getLHandWeapons() { return LHandWeapons; }
+
+    public double[][] getLevelStatsTable() { return LevelStatsTable; }
 }

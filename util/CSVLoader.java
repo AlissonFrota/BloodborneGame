@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVLoader {
-    public static List<String[]> carregar(String caminho) {
+    public static List<String[]> Load(String caminho) {
         List<String[]> linhas = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(caminho))) {
             String linha;

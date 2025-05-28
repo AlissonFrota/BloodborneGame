@@ -1,7 +1,7 @@
 package Entitys;
 public class Origin {
 
-    private String NomeOrigem;
+    private String Name;
     private int Vitality;
     private int Endurence;
     private int Strength;
@@ -10,7 +10,7 @@ public class Origin {
     private int Arcane;
 
     public Origin(String[] LinhaOrigin) {
-        this.NomeOrigem = LinhaOrigin[0];
+        this.Name = LinhaOrigin[0];
         this.Vitality = Integer.parseInt(LinhaOrigin[1]); //Adicionar try catch
         this.Endurence = Integer.parseInt(LinhaOrigin[2]);
         this.Strength = Integer.parseInt(LinhaOrigin[3]);
@@ -19,7 +19,7 @@ public class Origin {
         this.Arcane = Integer.parseInt(LinhaOrigin[6]);
     }
 
-    public String getNomeOrigem() { return NomeOrigem; }
+    public String getName() { return Name; }
     public int getVitality() { return Vitality; }
     public int getEndurence() { return Endurence; }
     public int getStrength() { return Strength; }

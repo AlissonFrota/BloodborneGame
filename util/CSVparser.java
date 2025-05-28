@@ -15,7 +15,7 @@ import Items.Weapon.RHandWeapon;
 public class CSVparser {
 
     public static List<ChestArmor> LoadChestArmor(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<ChestArmor> ChestArmors = new ArrayList<>();
 
@@ -27,7 +27,7 @@ public class CSVparser {
     }
 
     public static List<HeadArmor> LoadHeadArmor(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<HeadArmor> HeadArmors = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class CSVparser {
     }
 
     public static List<LegArmor> LoadLegArmor(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<LegArmor> LegArmors = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class CSVparser {
     }
 
     public static List<HandArmor> LoadArmArmor(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<HandArmor> HandArmors = new ArrayList<>();
 
@@ -63,7 +63,7 @@ public class CSVparser {
     }
 
     public static List<Origin> LoadOrigins(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<Origin> Origins = new ArrayList<>();
 
@@ -75,7 +75,7 @@ public class CSVparser {
     }
 
     public static List<Rune> LoadRunes(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<Rune> Runes = new ArrayList<>();
 
@@ -87,7 +87,7 @@ public class CSVparser {
     }
 
     public static List<RHandWeapon> LoadRHandWeapon(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<RHandWeapon> RHandWeapons = new ArrayList<>();
 
@@ -99,7 +99,7 @@ public class CSVparser {
     }
 
     public static List<LHandWeapon> LoadLHandWeapon(String CSVpath){
-        List<String[]> dados = CSVLoader.carregar(CSVpath);
+        List<String[]> dados = CSVLoader.Load(CSVpath);
 
         List<LHandWeapon> LHandWeapons = new ArrayList<>();
 
@@ -109,6 +109,26 @@ public class CSVparser {
 
         return LHandWeapons;
     }
+
+    public static double[][] LoadStatsTable(String CSVpath) {
+        List<String[]> dados = CSVLoader.Load(CSVpath);
+
+        int numRows = 98;                   
+        int numCols = dados.get(0).length;          
+
+        double[][] statsMatrix = new double[numRows][numCols];
+
+        for (int i = 0; i < numRows; i++) {
+            String[] linha = dados.get(i);
+
+            for (int j = 0; j < numCols; j++) {
+                statsMatrix[i][j] = Double.parseDouble(linha[j]);
+            }
+        }
+
+        return statsMatrix;
+    }
+
 
     
 

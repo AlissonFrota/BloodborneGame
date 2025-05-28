@@ -8,6 +8,8 @@ import Items.Rune.Rune;
 
 public class Personagem {
 
+    LevelStatsTable statsTable;
+
     private int Level;
     
     private int Vitality;
@@ -41,10 +43,30 @@ public class Personagem {
 
     private Origin Origin;
 
-    Personagem(
-        Origin Origin
+    public Personagem(
+        Origin Origin,
+        LevelStatsTable statsTable
         ){
+
+        this.statsTable = statsTable;
+        
         this.Origin = Origin; 
+
+        this.Level = 10;
+        this.Vitality = Origin.getVitality();
+        this.Endurence = Origin.getEndurence();
+        this.Strength = Origin.getStrength();
+        this.Skill = Origin.getSkill();
+        this.Bloodtinge = Origin.getBloodtinge();
+        this.Arcane = Origin.getArcane();
+
+        ComputeDerivedStats();
     }
+
+    private void ComputeDerivedStats(){
+        this.Health = (int)(this.statsTable.getHealth(this.Vitality));
+    }
+
+    public int getHealth() { return Health; }
 
 }
