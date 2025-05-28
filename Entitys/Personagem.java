@@ -19,10 +19,9 @@ public class Personagem {
     private int Bloodtinge;
     private int Arcane;
 
+    private int Insight;
     private int Health;
-    private int HealthPhantom;
     private int Stamina;
-    private int StaminaSecond;
     private int Discovery;
     private int Defense;
     private int SlowPoisonResist;
@@ -31,6 +30,14 @@ public class Personagem {
     private int BestHood;
     private int MaxVials;
     private int MaxBullets;
+
+    private int PhysicalDmgReduction;
+    private int BluntDmgReduction;
+    private int ThrustDmgReduction;
+    private int BloodDmgReduction;
+    private int ArcaneDmgReduction;
+    private int FireDmgReduction;
+    private int BoltDmgReduction;
 
     private Rune Runa1;
     private Rune Runa2;
@@ -58,6 +65,7 @@ public class Personagem {
         this.Origin = Origin; 
 
         this.Level = 10;
+        this.Insight = 0;
         this.Vitality = Origin.getVitality();
         this.Endurence = Origin.getEndurence();
         this.Strength = Origin.getStrength();
@@ -87,6 +95,22 @@ public class Personagem {
     }
     public void SetRuna3(Rune rune){
         this.Runa3 = rune;
+        ComputeDerivedStats();
+    }
+    public void SetHeadArmor(HeadArmor Head){
+        this.Head = Head;
+        ComputeDerivedStats();
+    }
+    public void SetChestArmor(ChestArmor Chest){
+        this.Chest = Chest;
+        ComputeDerivedStats();
+    }
+    public void SetHandArmor(HandArmor Hands){
+        this.Hands = Hands;
+        ComputeDerivedStats();
+    }
+    public void SetLegArmor(LegArmor Legs){
+        this.Legs = Legs;
         ComputeDerivedStats();
     }
 
@@ -165,10 +189,143 @@ public class Personagem {
 
         //SlowPoisonResist
 
+        this.SlowPoisonResist = (int)this.statsTable.getSlowPoisonResist(this.Endurence);
+        this.SlowPoisonResist += this.Head.getSlowPoisonRES() + this.Chest.getSlowPoisonRES() + this.Legs.getSlowPoisonRES() + this.Hands.getSlowPoisonRES();
+
+        if(this.Runa1.getName().contains("Clear Deep")){
+            this.SlowPoisonResist += (int)Runa1.getValor();
+        }
+        if(this.Runa2.getName().contains("Clear Deep")){
+            this.SlowPoisonResist += (int)Runa2.getValor();
+        }
+        if(this.Runa3.getName().contains("Clear Deep")){
+            this.SlowPoisonResist += (int)Runa3.getValor();
+        }
         
+        //RapidPoisonResist
+        
+        this.RapidPoisonResist = (int)this.statsTable.getRapidPoisonResist(this.Endurence);
+        this.RapidPoisonResist += this.Head.getRapidPoisonRES() + this.Chest.getRapidPoisonRES() + this.Legs.getRapidPoisonRES() + this.Hands.getRapidPoisonRES();
+
+        if(this.Runa1.getName().contains("Stunning Deep Sea")){
+            this.RapidPoisonResist += (int)Runa1.getValor();
+        }
+        if(this.Runa2.getName().contains("Stunning Deep Sea")){
+            this.RapidPoisonResist += (int)Runa2.getValor();
+        }
+        if(this.Runa3.getName().contains("Stunning Deep Sea")){
+            this.RapidPoisonResist += (int)Runa3.getValor();
+        }
+
+        //FrenzyResist
+
+        this.FrenzyResist = (int)this.statsTable.getFrenzyResist(this.Insight);
+        this.FrenzyResist += this.Head.getFrenzyRES() + this.Chest.getFrenzyRES() + this.Legs.getFrenzyRES() + this.Hands.getFrenzyRES();
+
+        if(this.Runa1.getName().contains("Sea.")){
+            this.FrenzyResist += (int)Runa1.getValor();
+        }
+        if(this.Runa2.getName().contains("Sea.")){
+            this.FrenzyResist += (int)Runa2.getValor();
+        }
+        if(this.Runa3.getName().contains("Sea.")){
+            this.FrenzyResist += (int)Runa3.getValor();
+        }
+
+        // Great Deep Sea
+
+        if(this.Runa1.getName().contains("Great Deep Sea")){
+            int valor = (int)Runa1.getValor();
+            this.SlowPoisonResist += valor;
+            this.RapidPoisonResist += valor;
+            this.FrenzyResist += valor;
+        }
+        if(this.Runa2.getName().contains("Great Deep Sea")){
+            int valor = (int)Runa2.getValor();
+            this.SlowPoisonResist += valor;
+            this.RapidPoisonResist += valor;
+            this.FrenzyResist += valor;
+        }
+        if(this.Runa3.getName().contains("Great Deep Sea")){
+            int valor = (int)Runa3.getValor();
+            this.SlowPoisonResist += valor;
+            this.RapidPoisonResist += valor;
+            this.FrenzyResist += valor;
+        }
+
+        //BeatHood
+
+        this.BestHood = (int)this.statsTable.getBeastHood(this.Insight);
+        this.BestHood += this.Head.getBeastHood() + this.Chest.getBeastHood() + this.Legs.getBeastHood() + this.Hands.getBeastHood();
+
+        if(this.Runa1.getName().contains("Beast")){
+            this.BestHood += (int)Runa1.getValor();
+        }
+        if(this.Runa2.getName().contains("Beast")){
+            this.BestHood += (int)Runa2.getValor();
+        }
+        if(this.Runa3.getName().contains("Beast")){
+            this.BestHood += (int)Runa3.getValor();
+        }
+
+        //Physical Damage Reduction
+
+        this.PhysicalDmgReduction = this.Head.getPhysicalDefence() + this.Chest.getPhysicalDefence() + this.Legs.getPhysicalDefence() + this.Hands.getPhysicalDefence();
+
+        //Blunt Damage Reduction
+
+        this.BluntDmgReduction = this.Head.getVsBluntDefence() + this.Chest.getVsBluntDefence() + this.Legs.getVsBluntDefence() + this.Hands.getVsBluntDefence();
+        
+        //Thurst Damege Reduction
+
+        this.ThrustDmgReduction = this.Head.getVsThrustDefence() + this.Chest.getVsThrustDefence() + this.Legs.getVsThrustDefence() + this.Hands.getVsThrustDefence();
+
+        //Bload damage Reduction
+
+        this.BloodDmgReduction = this.Head.getBloodDefence() + this.Chest.getBloodDefence() + this.Legs.getBloodDefence() + this.Hands.getBloodDefence();
+
+
+        //Physical Blunt Thurst Damage Reduction
+
+        if(this.Runa1.getName().contains("Lake.")){
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa1.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa1.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa1.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa1.getValor());
+        }
+        if(this.Runa2.getName().contains("Lake.")){
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa2.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa2.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa2.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa2.getValor());
+        }
+        if(this.Runa3.getName().contains("Lake.")){
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa3.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa3.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa3.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa3.getValor());
+        }
+
+        //Arcane Dmg Reduction
+
+
+
+
+        //Great Lake 
     }
 
     public int getHealth() { return Health; }
+    public int getDiscovery() { return Discovery; }
+    public int getDefense() { return Defense; }
     public int getStamina() { return Stamina; }
-
+    public int getSlowPoisonResist() { return SlowPoisonResist; }
+    public int getRapidPoisonResist() { return RapidPoisonResist; }
+    public int getFrenzyResist() { return FrenzyResist; }
+    public int getMaxBullets() { return MaxBullets; }
+    public int getMaxVials() { return MaxVials; }
+    public int getBestHood() { return BestHood; }
+    public int getSkill() { return Skill; }
+    public int getStrength() { return Strength; }
+    public int getBloodtinge() { return Bloodtinge; }
+    public Origin getOrigin() { return Origin; }
 }

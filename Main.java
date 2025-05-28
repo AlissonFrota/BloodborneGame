@@ -1,5 +1,3 @@
-import java.util.List;
-
 import Entitys.LevelStatsTable;
 import Entitys.Personagem;
 import Items.Armor.ChestArmor;
@@ -32,8 +30,11 @@ public class Main {
 
         Hunter.setRuna1(Repository.getRune("Anticlockwise Metamorphosis (1)"));
 
+        Hunter.SetChestArmor(Repository.getChestArmor("Butcher Garb"));
+
         System.out.println(Hunter.getHealth());
         System.out.println(Hunter.getStamina());
+        System.out.println(Hunter.getSlowPoisonResist());
 
     }
     
