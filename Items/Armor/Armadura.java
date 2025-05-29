@@ -4,12 +4,13 @@ import Items.Item;
 
 public abstract class Armadura extends Item{ 
 
-
     private int PhysicalDefence;
     private int VsBluntDefence;
     private int VsThrustDefence;
     private int BloodDefence;
     private int ArcaneDefence;
+    private int FireDefence;
+    private int BoltDefence;
     private int SlowPoisonRES;
     private int RapidPoisonRES;
     private int FrenzyRES;
@@ -23,11 +24,14 @@ public abstract class Armadura extends Item{
         this.VsThrustDefence = Integer.parseInt(linhaArmadura[3]);
         this.BloodDefence = Integer.parseInt(linhaArmadura[4]);
         this.ArcaneDefence = Integer.parseInt(linhaArmadura[5]);
-        this.SlowPoisonRES = Integer.parseInt(linhaArmadura[6]);
-        this.RapidPoisonRES = Integer.parseInt(linhaArmadura[7]);
-        this.FrenzyRES = Integer.parseInt(linhaArmadura[8]);
-        this.BeastHood = Integer.parseInt(linhaArmadura[9]); //Skippar penultima tipo de item
-        this.ImageSrc = linhaArmadura[11];
+        this.FireDefence = Integer.parseInt(linhaArmadura[6]);
+        this.BoltDefence = Integer.parseInt(linhaArmadura[7]);
+
+        this.SlowPoisonRES = Integer.parseInt(linhaArmadura[8]);
+        this.RapidPoisonRES = Integer.parseInt(linhaArmadura[9]);
+        this.FrenzyRES = Integer.parseInt(linhaArmadura[10]);
+        this.BeastHood = Integer.parseInt(linhaArmadura[11]); //Skippar penultima tipo de item
+        this.ImageSrc = linhaArmadura[13];
     }
     
     public int getPhysicalDefence() { return PhysicalDefence; }
@@ -40,4 +44,6 @@ public abstract class Armadura extends Item{
     public int getFrenzyRES() { return FrenzyRES; }
     public int getBeastHood() { return BeastHood; }
     public String getImageSrc() { return ImageSrc; }
+    public int getBoltDefence() { return BoltDefence; }
+    public int getFireDefence() { return FireDefence; }
 }
