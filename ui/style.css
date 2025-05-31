@@ -4,7 +4,16 @@
     -fx-padding: 40;
 }
 
-.start-button {
+.button {
+    -fx-font-family: "GothicPixels";
+        -fx-font-size: 50px;
+        -fx-text-fill: white;
+        -fx-background-color: transparent;
+        -fx-border-width: 0;
+        -fx-padding: 0;
+}
+
+.loading-button {
     -fx-font-family: "GothicPixels";
     -fx-font-size: 50px;
     -fx-text-fill: white;
@@ -13,7 +22,7 @@
     -fx-padding: 0;
 }
 
-.start-button:hover {
+.button:hover {
     -fx-text-fill: #ff0000;
     -fx-cursor: hand;
 }
