@@ -28,6 +28,8 @@ public class OriginPane {
         banner.setPreserveRatio(true);
         banner.setFitWidth(2500);
 
+        root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
 
 

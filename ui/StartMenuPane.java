@@ -27,6 +27,8 @@ public class StartMenuPane {
         banner.setPreserveRatio(true);
         banner.setFitWidth(2000);
 
+        root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
 
         startButton = new Button("New Game");
