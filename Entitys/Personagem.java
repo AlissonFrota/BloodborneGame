@@ -19,6 +19,8 @@ public class Personagem {
     private int Bloodtinge;
     private int Arcane;
 
+    private int BloodEchoes;
+
     private int Insight;
     private int Health;
     private int Stamina;
@@ -63,6 +65,8 @@ public class Personagem {
         this.statsTable = statsTable;
         
         this.Origin = Origin; 
+
+        this.BloodEchoes = 300;
 
         this.Level = 10;
         this.Insight = 0;
@@ -403,5 +407,6 @@ public class Personagem {
     public int getInsight() { return Insight; }
     public int getThrustDmgReduction() { return ThrustDmgReduction; }
     public int getVitality() { return Vitality; }
+    public int getBloodEchoes() { return BloodEchoes; }
     public Origin getOrigin() { return Origin; }
 }

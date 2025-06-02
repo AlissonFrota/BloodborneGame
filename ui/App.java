@@ -2,6 +2,7 @@ package ui;
 
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -9,6 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import repository.Repository;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -16,12 +18,17 @@ import java.util.Objects;
 public class App extends Application {
     private Scene mainScene;
     private StackPane rootPane;
+    private Repository repo;
 
 
     @Override
     public void start(Stage primaryStage) throws IOException {
         this.rootPane = new StackPane();
         this.mainScene = new Scene(rootPane, 1920, 1080);
+
+        //Inicializar todos os dados
+        repo = new Repository();
+        repo.LoadAll();
 
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Bloodborne");
@@ -32,30 +39,28 @@ public class App extends Application {
     }
 
     private void showStartMenu() throws IOException {
-        StartMenuPane menuPane = new StartMenuPane(()-> {
-            try{
-
-                this.showOriginScreen();
-            } catch(Exception _){
-
-            }
-        });
+        StartMenuPane menuPane = new StartMenuPane(
+                () -> {
+                    this.showOriginScreen();
+                },
+                () -> {
+                    this.showOriginScreen();
+                },
+                () -> {
+                    Platform.exit();
+                }
+        );
 
         rootPane.getChildren().setAll(menuPane.getRoot());
     }
 
-    //private void showLoadingScreen(Runnable run) throws IOException, InterruptedException {
-    //    LoadingPane LoadPane = new LoadingPane();
-    //    Scene scene = new Scene(LoadPane.getRoot(), 1920, 1080);
-    //    scene.getStylesheets().add(css);
-    //    primaryStage.setScene(scene);
-    //    primaryStage.setFullScreen(true);
-    //    Thread.sleep(3000);
-    //    run.run();
-    //}
+    private void showLoadingScreen() {
+        LoadingPane LoadPane = new LoadingPane();
+        transitionTo(LoadPane.getRoot());
+    }
 
     private void showOriginScreen() {
-        OriginPane OriginPane = new OriginPane();
+        OriginPane OriginPane = new OriginPane(repo);
         transitionTo(OriginPane.getRoot());
     }
 

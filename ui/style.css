@@ -17,6 +17,11 @@
     -fx-text-fill: #ff0000;
     -fx-cursor: hand;
 }
+.title-label{
+    -fx-font-family: "GothicPixels";
+    -fx-font-size: 50px;
+    -fx-text-fill: white;
+}
 
 .loading-button {
     -fx-font-family: "GothicPixels";
@@ -25,6 +30,62 @@
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-padding: 0;
+}
+
+.origin-combo-box {
+    -fx-font-family: 'GothicPixels';
+    -fx-font-size: 18px;
+    -fx-background-color: transparent;
+    -fx-text-fill: #e0e0e0;
+    -fx-alignment: center;
+    -fx-padding: 0 0 3px 0;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #5a5a5a;
+    -fx-mark-color: #e0e0e0;
+    -fx-cursor: hand;
+}
+
+.origin-combo-box .arrow-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0 5px 0 0;
+    -fx-alignment: center;
+}
+
+.origin-combo-box .arrow {
+    -fx-shape: "M 0 0 L 5 5 L 10 0 Z";
+    -fx-background-color: #e0e0e0;
+    -fx-scale-shape: false;
+    -fx-padding: 0 0 0 5px;
+}
+
+.origin-combo-box .text-input {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e0e0e0;
+    -fx-alignment: center;
+    -fx-font-size: 18px;
+}
+
+.origin-combo-box .list-view {
+    -fx-background-color: #1a1a1a;
+    -fx-border-color: #5a5a5a;
+    -fx-border-width: 1px;
+    -fx-pref-width: 300px;
+}
+
+.origin-combo-box .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #e0e0e0;
+    -fx-padding: 8px 5px;
+    -fx-alignment: center;
+    -fx-font-size: 16px;
+}
+
+.origin-combo-box .list-cell:filled:hover {
+    -fx-background-color: #2a2a2a;
+}
+
+.origin-combo-box:focused {
+    -fx-border-color: #7a7a7a;
 }
 
 

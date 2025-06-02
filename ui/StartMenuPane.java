@@ -18,7 +18,7 @@ public class StartMenuPane {
     private Button exitButton;
 
 
-    public StartMenuPane(Runnable NewGame) throws IOException {
+    public StartMenuPane(Runnable NewGame, Runnable Continue, Runnable Exit) throws IOException {
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
         root.getStyleClass().add("menu-pane");
@@ -39,12 +39,12 @@ public class StartMenuPane {
         continueButton = new Button("Continue");
         continueButton.getStyleClass().add("button");
         continueButton.setFont(customFont);
-        continueButton.setOnAction(e -> NewGame.run());
+        continueButton.setOnAction(e -> Continue.run());
 
         exitButton = new Button("Exit");
         exitButton.getStyleClass().add("button");
         exitButton.setFont(customFont);
-        exitButton.setOnAction(e -> NewGame.run());
+        exitButton.setOnAction(e -> Exit.run());
 
         StackPane overlayPane = new StackPane(banner, startButton, continueButton, exitButton);
         StackPane.setAlignment(startButton, Pos.BOTTOM_CENTER);

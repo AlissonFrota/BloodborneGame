@@ -18,7 +18,7 @@ public class LoadingPane {
     private VBox root;
     private Button loadingButton;
 
-    public LoadingPane() throws IOException, InterruptedException {
+    public LoadingPane() {
 
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
@@ -27,6 +27,8 @@ public class LoadingPane {
         ImageView banner = new ImageView(new Image(getClass().getResourceAsStream("/images/banner.png")));
         banner.setPreserveRatio(true);
         banner.setFitWidth(2500);
+
+        root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
 
