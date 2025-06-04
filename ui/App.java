@@ -13,7 +13,6 @@ import javafx.util.Duration;
 import repository.Repository;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class App extends Application {
     private Scene mainScene;
@@ -39,7 +38,7 @@ public class App extends Application {
     }
 
     private void showStartMenu() throws IOException {
-        StartMenuPane menuPane = new StartMenuPane(
+        BattlePane menuPane = new BattlePane(
                 () -> {
                     this.showOriginScreen();
                 },
