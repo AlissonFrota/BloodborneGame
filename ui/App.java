@@ -43,7 +43,7 @@ public class App extends Application {
                     this.showOriginScreen();
                 },
                 () -> {
-                    this.showOriginScreen();
+                    this.showBattlePane();
                 },
                 () -> {
                     Platform.exit();
@@ -51,6 +51,22 @@ public class App extends Application {
         );
 
         rootPane.getChildren().setAll(menuPane.getRoot());
+    }
+
+    private void showBattlePane() {
+        BattlePane battlePane = new BattlePane(
+                () -> {
+
+                },
+                () -> {
+
+                },
+                () -> {
+
+                }
+        );
+
+        transitionTo(battlePane.getRoot());
     }
 
     private void showLoadingScreen() {

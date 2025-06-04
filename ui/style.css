@@ -32,6 +32,11 @@
     -fx-padding: 0;
 }
 
+.text-level {
+    -fx-font-family: "GothicPixels";
+    -fx-font-size: 50px;
+    -fx-text-fill: white;
+}
 
 .origin-combo-box {
     -fx-font-family: 'GothicPixels';

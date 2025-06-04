@@ -103,6 +103,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.StringConverter;
 import repository.Repository;
 
@@ -159,8 +160,14 @@ public class OriginPane {
         HBox.setMargin(titleLabel, new Insets(0, 100, 0, 0));
         hBox.getChildren().addAll(titleLabel, originComboBox);
 
+        Text levelText = new Text("Level");
+        levelText.setFont(customFont);
+        levelText.getStyleClass().add("text-level");
 
-        VBox contentOverlay = new VBox(hBox);
+        VBox levelContents = new VBox(levelText);
+        levelContents.setAlignment(Pos.BOTTOM_CENTER);
+
+        VBox contentOverlay = new VBox(hBox, levelContents);
         contentOverlay.setAlignment(Pos.TOP_CENTER);
         contentOverlay.setPadding(new Insets(50)); // Padding opcional para espaçamento interno
 

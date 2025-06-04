@@ -18,25 +18,25 @@ public class BattlePane {
     private Button blockButton;
     private Button shootButton;
 
-    public BattlePane(Runnable onAttack, Runnable onBlock, Runnable onShoot) throws IOException {
+    public BattlePane(Runnable onAttack, Runnable onBlock, Runnable onShoot) {
         root = new StackPane();
         root.setAlignment(Pos.CENTER);
         root.getStyleClass().add("battle-pane");
 
         // Camada 1: Fundo da batalha
-        ImageView background = new ImageView(new Image(getClass().getResourceAsStream("/images/battle_bg.png")));
+        ImageView background = new ImageView(new Image(getClass().getResourceAsStream("/images/atacadao-3-925x400.png")));
         background.setPreserveRatio(false);
         background.setFitWidth(800);
         background.setFitHeight(600);
 
         // Camada 2: Personagem inimigo
-        ImageView enemy = new ImageView(new Image(getClass().getResourceAsStream("/images/enemy.png")));
+        ImageView enemy = new ImageView(new Image(getClass().getResourceAsStream("/images/amygdalaTitle.png")));
         enemy.setPreserveRatio(true);
         enemy.setFitHeight(300);
         enemy.setTranslateX(150); // Posicionamento à direita
 
         // Camada 3: Personagem do jogador
-        ImageView player = new ImageView(new Image(getClass().getResourceAsStream("/images/hunterjppg.png")));
+        ImageView player = new ImageView(new Image(getClass().getResourceAsStream("/images/hunterjpg.png")));
         player.setPreserveRatio(true);
         player.setFitHeight(300);
         player.setTranslateX(-150); // Posicionamento à esquerda
