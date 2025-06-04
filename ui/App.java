@@ -38,7 +38,7 @@ public class App extends Application {
     }
 
     private void showStartMenu() throws IOException {
-        BattlePane menuPane = new BattlePane(
+        StartMenuPane menuPane = new StartMenuPane(
                 () -> {
                     this.showOriginScreen();
                 },
