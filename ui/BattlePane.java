@@ -1,3 +1,4 @@
+/*
 package ui;
 
 import javafx.geometry.Insets;
@@ -23,7 +24,7 @@ public class BattlePane {
         root.setAlignment(Pos.CENTER);
         root.getStyleClass().add("menu-pane");
 
-        ImageView banner = new ImageView(new Image(getClass().getResourceAsStream("/images/amygdalaTitle.png")));
+        ImageView banner = new ImageView(new Image(getClass().getResourceAsStream("/images/dialoguebox.png")));
         banner.setPreserveRatio(true);
         banner.setFitWidth(2000);
 
@@ -31,28 +32,28 @@ public class BattlePane {
 
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
 
-        startButton = new Button("New Game");
-        startButton.getStyleClass().add("button");
-        startButton.setFont(customFont);
-        startButton.setOnAction(e -> NewGame.run());
+        shootButton = new Button("New Game");
+        shootButton.getStyleClass().add("button");
+        shootButton.setFont(customFont);
+        shootButton.setOnAction(e -> NewGame.run());
 
-        continueButton = new Button("Continue");
-        continueButton.getStyleClass().add("button");
-        continueButton.setFont(customFont);
-        continueButton.setOnAction(e -> Continue.run());
+        atackButton = new Button("Continue");
+        atackButton.getStyleClass().add("button");
+        atackButton.setFont(customFont);
+        atackButton.setOnAction(e -> Continue.run());
 
-        exitButton = new Button("Exit");
-        exitButton.getStyleClass().add("button");
-        exitButton.setFont(customFont);
-        exitButton.setOnAction(e -> Exit.run());
+        blockButton = new Button("Exit");
+        blockButton.getStyleClass().add("button");
+        blockButton.setFont(customFont);
+        blockButton.setOnAction(e -> Exit.run());
 
-        StackPane overlayPane = new StackPane(banner, startButton, continueButton, exitButton);
-        StackPane.setAlignment(startButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(startButton, new Insets(0, 0, 200, 0));
-        StackPane.setAlignment(continueButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(continueButton, new Insets(0, 0, 300, 0));
-        StackPane.setAlignment(exitButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(exitButton, new Insets(0, 0, 100, 0));
+        StackPane overlayPane = new StackPane(banner, shootButton, atackButton, blockButton);
+        StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
+        StackPane.setMargin(shootButton, new Insets(0, 0, 200, 0));
+        StackPane.setAlignment(atackButton, Pos.BOTTOM_CENTER);
+        StackPane.setMargin(atackButton, new Insets(0, 0, 300, 0));
+        StackPane.setAlignment(blockButton, Pos.BOTTOM_CENTER);
+        StackPane.setMargin(blockButton, new Insets(0, 0, 100, 0));
         root.getChildren().add(overlayPane);
     }
 
