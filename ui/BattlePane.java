@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import repository.Repository;
 
 import java.io.IOException;
 
@@ -98,6 +99,9 @@ public class BattlePane {
         StackPane.setAlignment(blockButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(blockButton, new Insets(0, 0, 100, 0));
         root.getChildren().add(overlayPane);
+    }
+
+    public BattlePane(Repository repo) {
     }
 
     private Button createTransparentButton(String text, Font font) {

@@ -91,4 +91,12 @@
     -fx-border-color: #7a7a7a;
 }
 
+.battle-button {
+    -fx-font-family: "GothicPixels";
+    -fx-font-size: 50px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
 

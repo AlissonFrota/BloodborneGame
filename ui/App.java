@@ -46,6 +46,13 @@ public class App extends Application {
                     this.showOriginScreen();
                 },
                 () -> {
+                    try {
+                        this.showBattleScreen();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                },
+                () -> {
                     Platform.exit();
                 }
         );
@@ -61,6 +68,11 @@ public class App extends Application {
     private void showOriginScreen() {
         OriginPane OriginPane = new OriginPane(repo);
         transitionTo(OriginPane.getRoot());
+    }
+
+    private void showBattleScreen() throws IOException {
+        BattlePane BattlePane = new BattlePane(repo);
+        transitionTo(BattlePane.getRoot());
     }
 
 
