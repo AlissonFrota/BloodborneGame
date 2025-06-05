@@ -103,18 +103,25 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.util.StringConverter;
 import repository.Repository;
 
 public class OriginPane {
     private StackPane root;
     private ComboBox<Origin> originComboBox;
+    private Origin ChosenOrigin;
+    private Text VitalityValue;
+    private Text EnduranceValue;
+    private Text StrengthValue;
+    private Text SkillValue;
+    private Text BloodTingeValue;
+    private Text ArcaneValue;
 
     public OriginPane(Repository repo) {
 
         root = new StackPane();
         root.getStyleClass().add("menu-pane");
-
 
         ImageView banner = new ImageView(new Image(getClass().getResourceAsStream("/images/originpane.png")));
         banner.setPreserveRatio(true);
@@ -149,23 +156,124 @@ public class OriginPane {
 
         originComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
             if (newVal != null) {
+                ChosenOrigin = newVal;
 
+                VitalityValue.setText(String.valueOf(ChosenOrigin.getVitality()));
+                EnduranceValue.setText(String.valueOf(ChosenOrigin.getEndurence()));
+                StrengthValue.setText(String.valueOf(ChosenOrigin.getStrength()));
+                SkillValue.setText(String.valueOf(ChosenOrigin.getSkill()));
+                BloodTingeValue.setText(String.valueOf(ChosenOrigin.getBloodtinge()));
+                ArcaneValue.setText(String.valueOf(ChosenOrigin.getArcane()));
             }
         });
-
 
         HBox hBox = new HBox(10);
         hBox.setAlignment(Pos.CENTER);
         HBox.setMargin(titleLabel, new Insets(0, 100, 0, 0));
         hBox.getChildren().addAll(titleLabel, originComboBox);
 
+        //Nivel
+
+        Text levelText = new Text("Level");
+        levelText.getStyleClass().add("text-level");
+
+        Text levelValue = new Text("10");
+        levelValue.getStyleClass().add("text-level");
+
+        HBox levelHBox = new HBox(levelText, levelValue);
+        levelHBox.setAlignment(Pos.CENTER);
+        levelHBox.setSpacing(30);
+
+        //Blood Echoes
+
+        Text BloodEchoesText = new Text("Blood Echoes");
+        BloodEchoesText.getStyleClass().add("text-level");
+
+        Text BloodEchoesValue = new Text("300");
+        BloodEchoesValue.getStyleClass().add("text-level");
+
+        HBox BloodEchoesHBox = new HBox(BloodEchoesText, BloodEchoesValue);
+        BloodEchoesHBox.setAlignment(Pos.CENTER);
+        BloodEchoesHBox.setSpacing(30);
+
+        //Vitality
+
+        Text VitalityText = new Text("Vitality");
+        VitalityText.getStyleClass().add("text-level");
+
+        VitalityValue = new Text("#");
+        VitalityValue.getStyleClass().add("text-level");
+
+        HBox VitalityHBox = new HBox(VitalityText, VitalityValue);
+        VitalityHBox.setAlignment(Pos.CENTER);
+        VitalityHBox.setSpacing(30);
+
+        // Endurance
+        Text EnduranceText = new Text("Endurance");
+        EnduranceText.getStyleClass().add("text-level");
+
+        EnduranceValue = new Text("#");
+        EnduranceValue.getStyleClass().add("text-level");
+
+        HBox EnduranceHBox = new HBox(EnduranceText, EnduranceValue);
+        EnduranceHBox.setAlignment(Pos.CENTER);
+        EnduranceHBox.setSpacing(30);
+
+        // Strength
+        Text StrengthText = new Text("Strength");
+        StrengthText.getStyleClass().add("text-level");
+
+        StrengthValue = new Text("#");
+        StrengthValue.getStyleClass().add("text-level");
+
+        HBox StrengthHBox = new HBox(StrengthText, StrengthValue);
+        StrengthHBox.setAlignment(Pos.CENTER);
+        StrengthHBox.setSpacing(30);
+
+        // Skill
+        Text SkillText = new Text("Skill");
+        SkillText.getStyleClass().add("text-level");
+
+        SkillValue = new Text("#");
+        SkillValue.getStyleClass().add("text-level");
+
+        HBox SkillHBox = new HBox(SkillText, SkillValue);
+        SkillHBox.setAlignment(Pos.CENTER);
+        SkillHBox.setSpacing(30);
+
+        // Bloodtinge
+        Text BloodTingeText = new Text("Bloodtinge");
+        BloodTingeText.getStyleClass().add("text-level");
+
+        BloodTingeValue = new Text("#");
+        BloodTingeValue.getStyleClass().add("text-level");
+
+        HBox BloodTingeHBox = new HBox(BloodTingeText, BloodTingeValue);
+        BloodTingeHBox.setAlignment(Pos.CENTER);
+        BloodTingeHBox.setSpacing(30);
+
+        // Arcane
+        Text ArcaneText = new Text("Arcane");
+        ArcaneText.getStyleClass().add("text-level");
+
+        ArcaneValue = new Text("#");
+        ArcaneValue.getStyleClass().add("text-level");
+
+        HBox ArcaneHBox = new HBox(ArcaneText, ArcaneValue);
+        ArcaneHBox.setAlignment(Pos.CENTER);
+        ArcaneHBox.setSpacing(30);
+
+        VBox levelContents = new VBox(levelHBox, BloodEchoesHBox, VitalityHBox, EnduranceHBox, StrengthHBox, SkillHBox, BloodTingeHBox, ArcaneHBox);
+        levelContents.setAlignment(Pos.CENTER_RIGHT);
+
+        levelContents.setMouseTransparent(true);
 
         VBox contentOverlay = new VBox(hBox);
         contentOverlay.setAlignment(Pos.TOP_CENTER);
         contentOverlay.setPadding(new Insets(50)); // Padding opcional para espaçamento interno
 
 
-        root.getChildren().addAll(banner, contentOverlay);
+        root.getChildren().addAll(banner, contentOverlay, levelContents);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }

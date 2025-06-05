@@ -17,6 +17,7 @@
     -fx-text-fill: #ff0000;
     -fx-cursor: hand;
 }
+
 .title-label{
     -fx-font-family: "GothicPixels";
     -fx-font-size: 50px;
@@ -32,6 +33,11 @@
     -fx-padding: 0;
 }
 
+.text-level {
+    -fx-font-family: "GothicPixels";
+    -fx-font-size: 50px;
+    -fx-fill: white;
+}
 
 .origin-combo-box {
     -fx-font-family: 'GothicPixels';
