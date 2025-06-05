@@ -42,11 +42,11 @@ public class BattlePane {
 
 */
         // 4. Camada de UI (caixa de diálogo com áreas para botões)
-        ImageView dialogueBox = new ImageView(new Image(getClass().getResourceAsStream("/images/dialogueboxHUD.png")));
-        dialogueBox.setPreserveRatio(true);
-        dialogueBox.setFitWidth(1820);
-        dialogueBox.setFitHeight(1190);
-        dialogueBox.setOpacity(0.75);
+        ImageView dialogueBox = new ImageView(new Image(getClass().getResourceAsStream("/images/dialoguebox2.png")));
+        dialogueBox.setPreserveRatio(false);
+        dialogueBox.setFitWidth(2020);
+        dialogueBox.setFitHeight(1090);
+        dialogueBox.setOpacity(0.85);
 
 
         VBox buttonContainer = new VBox(15);
@@ -105,11 +105,11 @@ public class BattlePane {
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(shootButton, new Insets(500, 1520, 150, 0));
         StackPane.setAlignment(attackButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(attackButton, new Insets(500, 1520, 350, 0));
+        StackPane.setMargin(attackButton, new Insets(500, 1520, 290, 0));
         StackPane.setAlignment(blockButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(blockButton, new Insets(500, 1000, 150, 0));
         StackPane.setAlignment(dogdeButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(dogdeButton, new Insets(500, 1000, 350, 0));
+        StackPane.setMargin(dogdeButton, new Insets(500, 1000, 290, 0));
         root.getChildren().add(overlayPane);
     }
 
