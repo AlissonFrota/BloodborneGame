@@ -24,9 +24,9 @@ public class BattlePane {
         root.getStyleClass().add("battle-pane");
 
         // Camada 1: Fundo da batalha
-        ImageView background = new ImageView(new Image(getClass().getResourceAsStream("/images/arena.png")));
+        ImageView background = new ImageView(new Image(getClass().getResourceAsStream("/images/arena-visibilidade.png")));
         background.setPreserveRatio(true);
-        background.setFitWidth(2010);
+        background.setFitWidth(2030);
 /*
         // Camada 2: Personagem inimigo
         ImageView enemy = new ImageView(new Image(getClass().getResourceAsStream("/images/amygdalaTitle.png")));
@@ -34,18 +34,18 @@ public class BattlePane {
         enemy.setFitHeight(300);
         enemy.setTranslateX(150); // Posicionamento à direita
 
-        // Camada 3: Personagem do jogador
-        ImageView player = new ImageView(new Image(getClass().getResourceAsStream("/images/hunterjpg.png")));
-        player.setPreserveRatio(true);
-        player.setFitHeight(300);
-        player.setTranslateX(-150); // Posicionamento à esquerda
+        //camada 3: HUD Vida do Hunter
+        ImageView enemy = new ImageView(new Image(getClass().getResourceAsStream("/images/amygdalaTitle.png")));
+        enemy.setPreserveRatio(true);
+        enemy.setFitHeight(300);
+        enemy.setTranslateX(150); // Posicionamento à direita
+
 */
         // 4. Camada de UI (caixa de diálogo com áreas para botões)
-        ImageView dialogueBox = new ImageView(new Image(getClass().getResourceAsStream("/images/dialoguebox.png")));
+        ImageView dialogueBox = new ImageView(new Image(getClass().getResourceAsStream("/images/dialogueboxHUD.png")));
         dialogueBox.setPreserveRatio(true);
-        dialogueBox.setFitWidth(1500);
-        dialogueBox.setFitHeight(2000);
-        dialogueBox.setLayoutY(1500);
+        dialogueBox.setFitWidth(1820);
+        dialogueBox.setFitHeight(1190);
         dialogueBox.setOpacity(0.75);
 
 
@@ -103,13 +103,13 @@ public class BattlePane {
 
         StackPane overlayPane = new StackPane(shootButton, attackButton, blockButton, dogdeButton);
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(shootButton, new Insets(500, 1000, 100, 0));
+        StackPane.setMargin(shootButton, new Insets(500, 1520, 150, 0));
         StackPane.setAlignment(attackButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(attackButton, new Insets(500, 1000, 250, 0));
+        StackPane.setMargin(attackButton, new Insets(500, 1520, 350, 0));
         StackPane.setAlignment(blockButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(blockButton, new Insets(500, 500, 100, 0));
+        StackPane.setMargin(blockButton, new Insets(500, 1000, 150, 0));
         StackPane.setAlignment(dogdeButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(dogdeButton, new Insets(500, 500, 250, 0));
+        StackPane.setMargin(dogdeButton, new Insets(500, 1000, 350, 0));
         root.getChildren().add(overlayPane);
     }
 
