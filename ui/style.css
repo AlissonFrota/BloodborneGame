@@ -105,4 +105,21 @@
     -fx-border-width: 0;
     -fx-padding: 0;
 }
+/* Inventario */
+
+
+.tab:selected {
+    -fx-background-color: #3d3d3d;
+}
+
+.image-view {
+    -fx-effect: dropshadow(gaussian, black, 2, 0.3, 0, 0);
+}
+
+.vbox:hover {
+    -fx-background-color: #444;
+    -fx-cursor: hand;
+    -fx-border-color: gold;
+    -fx-border-width: 1px;
+}
 

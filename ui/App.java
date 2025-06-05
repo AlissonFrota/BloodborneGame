@@ -46,11 +46,7 @@ public class App extends Application {
                     this.showBattlePane();
                 },
                 () -> {
-                    try {
-                        this.showBattleScreen();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    this.showInvetoryScreen();
                 },
                 () -> {
                     Platform.exit();
@@ -77,6 +73,11 @@ public class App extends Application {
         );
 
         transitionTo(battlePane.getRoot());
+    }
+
+    private void showInvetoryScreen() {
+        InventoryPane inventoryPane = new InventoryPane(repo);
+        transitionTo(inventoryPane.getRoot());
     }
 
     private void showLoadingScreen() {

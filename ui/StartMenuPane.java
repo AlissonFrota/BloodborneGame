@@ -43,7 +43,7 @@ public class StartMenuPane {
         continueButton.setFont(customFont);
         continueButton.setOnAction(e -> Continue.run());
 
-        battleButton = new Button("Battle");
+        battleButton = new Button("Inventario");
         battleButton.getStyleClass().add("button");
         battleButton.setFont(customFont);
         battleButton.setOnAction(e -> Battle.run());
