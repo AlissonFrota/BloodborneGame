@@ -6,11 +6,20 @@
 
 .button {
     -fx-font-family: "Gothical";
-    -fx-font-size: 50px;
-    -fx-text-fill: white;
-    -fx-background-color: transparent;
-    -fx-border-width: 0;
-    -fx-padding: 0;
+        -fx-font-size: 50px;
+        -fx-text-fill: white;
+        -fx-background-color: transparent;
+        -fx-border-width: 0;
+        -fx-padding: 0;
+}
+
+.button-title {
+    -fx-font-family: "Gothical";
+        -fx-font-size: 100px;
+        -fx-text-fill: white;
+        -fx-background-color: transparent;
+        -fx-border-width: 0;
+        -fx-padding: 10;
 }
 
 .numbers-especial {

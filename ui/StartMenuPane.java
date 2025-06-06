@@ -34,33 +34,33 @@ public class StartMenuPane {
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
 
         startButton = new Button("New Game");
-        startButton.getStyleClass().add("button");
+        startButton.getStyleClass().add("button-title");
         startButton.setFont(customFont);
         startButton.setOnAction(e -> NewGame.run());
 
         continueButton = new Button("Continue");
-        continueButton.getStyleClass().add("button");
+        continueButton.getStyleClass().add("button-title");
         continueButton.setFont(customFont);
         continueButton.setOnAction(e -> Continue.run());
 
         battleButton = new Button("Inventario");
-        battleButton.getStyleClass().add("button");
+        battleButton.getStyleClass().add("button-title");
         battleButton.setFont(customFont);
         battleButton.setOnAction(e -> Battle.run());
 
         exitButton = new Button("Exit");
-        exitButton.getStyleClass().add("button");
+        exitButton.getStyleClass().add("button-title");
         exitButton.setFont(customFont);
         exitButton.setOnAction(e -> Exit.run());
 
 
         StackPane overlayPane = new StackPane(banner, startButton, continueButton, battleButton, exitButton);
         StackPane.setAlignment(battleButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(battleButton, new Insets(0, 0, 400, 0));
+        StackPane.setMargin(battleButton, new Insets(0, 0, 200, 0));
         StackPane.setAlignment(startButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(startButton, new Insets(0, 0, 200, 0));
+        StackPane.setMargin(startButton, new Insets(0, 0, 300, 0));
         StackPane.setAlignment(continueButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(continueButton, new Insets(0, 0, 300, 0));
+        StackPane.setMargin(continueButton, new Insets(0, 0, 400, 0));
         StackPane.setAlignment(exitButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(exitButton, new Insets(0, 0, 100, 0));
         root.getChildren().add(overlayPane);

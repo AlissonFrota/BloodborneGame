@@ -272,7 +272,6 @@ public class OriginPane {
         contentOverlay.setAlignment(Pos.TOP_CENTER);
         contentOverlay.setPadding(new Insets(50)); // Padding opcional para espaçamento interno
 
-
         root.getChildren().addAll(banner, contentOverlay, levelContents);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
