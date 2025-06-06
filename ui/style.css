@@ -5,7 +5,7 @@
 }
 
 .button {
-    -fx-font-family: "GothicPixels";
+    -fx-font-family: "Gothical";
     -fx-font-size: 50px;
     -fx-text-fill: white;
     -fx-background-color: transparent;
@@ -13,19 +13,26 @@
     -fx-padding: 0;
 }
 
+.numbers-especial {
+        -fx-font-family: "GothicPixels";
+        -fx-font-size: 35px;
+        -fx-fill: white;
+}
+
+
 .button:hover {
     -fx-text-fill: #ff0000;
     -fx-cursor: hand;
 }
 
 .title-label{
-    -fx-font-family: "GothicPixels";
-    -fx-font-size: 50px;
+    -fx-font-family: "Gothical";
+    -fx-font-size: 100px;
     -fx-text-fill: white;
 }
 
 .loading-button {
-    -fx-font-family: "GothicPixels";
+    -fx-font-family: "Gothical";
     -fx-font-size: 50px;
     -fx-text-fill: white;
     -fx-background-color: transparent;
@@ -34,18 +41,18 @@
 }
 
 .text-level {
-    -fx-font-family: "GothicPixels";
-    -fx-font-size: 50px;
+    -fx-font-family: "Gothical";
+    -fx-font-size: 60px;
     -fx-fill: white;
 }
 
 .origin-combo-box {
-    -fx-font-family: 'GothicPixels';
-    -fx-font-size: 18px;
+    -fx-font-family: 'Gothical';
+    -fx-font-size: 80px;
     -fx-background-color: transparent;
     -fx-text-fill: #e0e0e0;
     -fx-alignment: center;
-    -fx-padding: 0 0 3px 0;
+    -fx-padding: 0 2px 3px 0;
     -fx-border-width: 0 0 1px 0;
     -fx-border-color: #5a5a5a;
     -fx-mark-color: #e0e0e0;
@@ -73,11 +80,13 @@
 }
 
 .origin-combo-box .list-view {
+    -fx-alignment: center;
     -fx-background-color: #1a1a1a;
     -fx-border-color: #5a5a5a;
     -fx-opacity: 0.8;
     -fx-border-width: 1px;
-    -fx-pref-width: 300px;
+    -fx-pref-width: 335px;
+
 }
 
 .origin-combo-box .list-cell {
@@ -85,12 +94,11 @@
     -fx-text-fill: #e0e0e0;
     -fx-padding: 8px 5px;
     -fx-alignment: center;
-    -fx-font-size: 16px;
+    -fx-font-size: 50px;
 }
 
 .origin-combo-box .list-cell:filled:hover {
     -fx-background-color: #2a2a2a;
-
 }
 
 .origin-combo-box:focused {
@@ -98,8 +106,8 @@
 }
 
 .battle-button {
-    -fx-font-family: "GothicPixels";
-    -fx-font-size: 100px;
+    -fx-font-family: "Gothical";
+    -fx-font-size: 80px;
     -fx-text-fill: white;
     -fx-background-color: transparent;
     -fx-border-width: 0;
@@ -123,3 +131,9 @@
     -fx-border-width: 1px;
 }
 
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+    -fx-opacity: 0;
+    -fx-padding: 0;
+}

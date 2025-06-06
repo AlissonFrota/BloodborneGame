@@ -46,7 +46,7 @@ public class BattlePane {
         dialogueBox.setPreserveRatio(false);
         dialogueBox.setFitWidth(2040);
         dialogueBox.setFitHeight(1050);
-        dialogueBox.setOpacity(0.85);
+        dialogueBox.setOpacity(0.65);
 
 
         //5. Camada de UI TextBox
@@ -67,28 +67,28 @@ public class BattlePane {
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
         attackButton = new Button("Attack");
-        attackButton.getStyleClass().add("button");
+        attackButton.getStyleClass().add("battle-button");
         attackButton.setFont(customFont);
         attackButton.setOnAction(e -> onAttack.run());
         StackPane.setAlignment(attackButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(attackButton, new Insets(0, 200, 100, 0));
 
         blockButton = new Button("Block");
-        blockButton.getStyleClass().add("button");
+        blockButton.getStyleClass().add("battle-button");
         blockButton.setFont(customFont);
         blockButton.setOnAction(e -> onBlock.run());
         StackPane.setAlignment(blockButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(blockButton, new Insets(0, 0, 100, 0));
 
         shootButton = new Button("Shoot");
-        shootButton.getStyleClass().add("button");
+        shootButton.getStyleClass().add("battle-button");
         shootButton.setFont(customFont);
         shootButton.setOnAction(e -> onShoot.run());
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(shootButton, new Insets(0, 0, 100, 200));
 
         dogdeButton = new Button("Dogde");
-        dogdeButton.getStyleClass().add("button");
+        dogdeButton.getStyleClass().add("battle-button");
         dogdeButton.setFont(customFont);
         dogdeButton.setOnAction(e -> onDogde.run());
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);

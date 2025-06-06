@@ -137,7 +137,7 @@ public class OriginPane {
 
         originComboBox = new ComboBox<>();
         originComboBox.setPromptText("Choose an origin");
-        originComboBox.setPrefWidth(300);
+        originComboBox.setPrefWidth(350);
         originComboBox.getStyleClass().add("origin-combo-box");
 
         originComboBox.setConverter(new StringConverter<Origin>() {
@@ -178,7 +178,7 @@ public class OriginPane {
         levelText.getStyleClass().add("text-level");
 
         Text levelValue = new Text("10");
-        levelValue.getStyleClass().add("text-level");
+        levelValue.getStyleClass().add("numbers-especial");
 
         HBox levelHBox = new HBox(levelText, levelValue);
         levelHBox.setAlignment(Pos.CENTER);
@@ -190,7 +190,7 @@ public class OriginPane {
         BloodEchoesText.getStyleClass().add("text-level");
 
         Text BloodEchoesValue = new Text("300");
-        BloodEchoesValue.getStyleClass().add("text-level");
+        BloodEchoesValue.getStyleClass().add("numbers-especial");
 
         HBox BloodEchoesHBox = new HBox(BloodEchoesText, BloodEchoesValue);
         BloodEchoesHBox.setAlignment(Pos.CENTER);
@@ -202,7 +202,7 @@ public class OriginPane {
         VitalityText.getStyleClass().add("text-level");
 
         VitalityValue = new Text("#");
-        VitalityValue.getStyleClass().add("text-level");
+        VitalityValue.getStyleClass().add("numbers-especial");
 
         HBox VitalityHBox = new HBox(VitalityText, VitalityValue);
         VitalityHBox.setAlignment(Pos.CENTER);
@@ -213,7 +213,7 @@ public class OriginPane {
         EnduranceText.getStyleClass().add("text-level");
 
         EnduranceValue = new Text("#");
-        EnduranceValue.getStyleClass().add("text-level");
+        EnduranceValue.getStyleClass().add("numbers-especial");
 
         HBox EnduranceHBox = new HBox(EnduranceText, EnduranceValue);
         EnduranceHBox.setAlignment(Pos.CENTER);
@@ -224,7 +224,7 @@ public class OriginPane {
         StrengthText.getStyleClass().add("text-level");
 
         StrengthValue = new Text("#");
-        StrengthValue.getStyleClass().add("text-level");
+        StrengthValue.getStyleClass().add("numbers-especial");
 
         HBox StrengthHBox = new HBox(StrengthText, StrengthValue);
         StrengthHBox.setAlignment(Pos.CENTER);
@@ -235,7 +235,7 @@ public class OriginPane {
         SkillText.getStyleClass().add("text-level");
 
         SkillValue = new Text("#");
-        SkillValue.getStyleClass().add("text-level");
+        SkillValue.getStyleClass().add("numbers-especial");
 
         HBox SkillHBox = new HBox(SkillText, SkillValue);
         SkillHBox.setAlignment(Pos.CENTER);
@@ -246,7 +246,7 @@ public class OriginPane {
         BloodTingeText.getStyleClass().add("text-level");
 
         BloodTingeValue = new Text("#");
-        BloodTingeValue.getStyleClass().add("text-level");
+        BloodTingeValue.getStyleClass().add("numbers-especial");
 
         HBox BloodTingeHBox = new HBox(BloodTingeText, BloodTingeValue);
         BloodTingeHBox.setAlignment(Pos.CENTER);
@@ -257,7 +257,7 @@ public class OriginPane {
         ArcaneText.getStyleClass().add("text-level");
 
         ArcaneValue = new Text("#");
-        ArcaneValue.getStyleClass().add("text-level");
+        ArcaneValue.getStyleClass().add("numbers-especial");
 
         HBox ArcaneHBox = new HBox(ArcaneText, ArcaneValue);
         ArcaneHBox.setAlignment(Pos.CENTER);
