@@ -50,9 +50,9 @@
 }
 
 .text-level {
-    -fx-font-family: "Gothical";
+    -fx-font-family: "Arial";
     -fx-font-size: 60px;
-    -fx-text-fill: #ffffff;
+    -fx-fill: #ffffff;
 }
 
 .origin-combo-box {

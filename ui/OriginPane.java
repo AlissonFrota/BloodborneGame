@@ -1,94 +1,3 @@
-/*
-package ui;
-
-import Entitys.Origin;
-import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.util.StringConverter;
-import repository.Repository;
-
-public class OriginPane {
-    private VBox root;
-    private ComboBox<Origin> originComboBox;
-    private StackPane;
-
-    public OriginPane(Repository repo) {
-
-        root = new VBox(20);
-        root.setAlignment(Pos.CENTER);
-        root.getStyleClass().add("menu-pane");
-
-        ImageView banner = new ImageView(new Image(getClass().getResourceAsStream("/images/originpane.png")));
-        banner.setPreserveRatio(true);
-        banner.setFitWidth(2100);
-
-
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
-
-        Label titleLabel = new Label("Origin");
-        titleLabel.setFont(customFont);
-        titleLabel.getStyleClass().add("title-label");
-
-        originComboBox = new ComboBox<>();
-        originComboBox.setPromptText("Choose an origin");
-        originComboBox.setPrefWidth(300);
-        originComboBox.getStyleClass().add("origin-combo-box");
-
-        originComboBox.setConverter(new StringConverter<Origin>() {
-            @Override
-            public String toString(Origin origin) {
-                return origin != null ? origin.getName() : "";
-            }
-
-            @Override
-            public Origin fromString(String string) {
-                return null;
-            }
-        });
-
-
-        VBox contentOverlay = new VBox(hbox);
-        StackPane.setAlignment(contentOverlay, Pos.TOP_CENTER);
-        contentOverlay.setPadding(new Insets(60));
-
-        originComboBox.setItems(FXCollections.observableArrayList(repo.getOrigins()));
-
-        originComboBox.valueProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
-                //Selecionar origin newVal
-            }
-        });
-
-
-        HBox hBox = new HBox(10);
-        hBox.setAlignment(Pos.CENTER);
-        HBox.setMargin(titleLabel, new Insets(0, 100, 0, 0));
-        hBox.getChildren().addAll(titleLabel, originComboBox);
-
-        root.getChildren().addAll(
-                banner,hBox
-        );
-
-        root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-    }
-
-    public VBox getRoot() {
-        return root;
-    }
-}
-
- */
-
 package ui;
 
 import Entitys.Origin;
@@ -112,12 +21,13 @@ public class OriginPane {
     private StackPane root;
     private ComboBox<Origin> originComboBox;
     private Origin ChosenOrigin;
-    private String VitalityValue;
-    private String EnduranceValue;
-    private String StrengthValue;
-    private String SkillValue;
-    private String BloodTingeValue;
-    private String ArcaneValue;
+
+    private Text vitalityText;
+    private Text enduranceText;
+    private Text strengthText;
+    private Text skillText;
+    private Text bloodTingeText;
+    private Text arcaneText;
 
     public OriginPane(Repository repo, Runnable Continue) {
 
@@ -130,11 +40,9 @@ public class OriginPane {
 
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Gothical.ttf"), 40);
 
-
         Label titleLabel = new Label("Origin");
         titleLabel.setFont(customFont);
         titleLabel.getStyleClass().add("title-label");
-
 
         originComboBox = new ComboBox<>();
         originComboBox.setPromptText("Choose an origin");
@@ -159,12 +67,12 @@ public class OriginPane {
             if (newVal != null) {
                 ChosenOrigin = newVal;
 
-                VitalityValue =(String.valueOf(ChosenOrigin.getVitality()));
-                EnduranceValue =(String.valueOf(ChosenOrigin.getEndurence()));
-                StrengthValue =(String.valueOf(ChosenOrigin.getStrength()));
-                SkillValue =(String.valueOf(ChosenOrigin.getSkill()));
-                BloodTingeValue = (String.valueOf(ChosenOrigin.getBloodtinge()));
-                ArcaneValue =(String.valueOf(ChosenOrigin.getArcane()));
+                vitalityText.setText("Vitality: " + ChosenOrigin.getVitality());
+                enduranceText.setText("Endurance: " + ChosenOrigin.getEndurence());
+                strengthText.setText("Strength: " + ChosenOrigin.getStrength());
+                skillText.setText("Skill: " + ChosenOrigin.getSkill());
+                bloodTingeText.setText("BloodTinge: " + ChosenOrigin.getBloodtinge());
+                arcaneText.setText("Arcane: " + ChosenOrigin.getArcane());
             }
         });
 
@@ -175,19 +83,29 @@ public class OriginPane {
 
         VBox leftStats = new VBox(5);
         leftStats.setPadding(new Insets(0, 0, 300, 0));
+        Text levelText = new Text("Level: 10");
+        levelText.getStyleClass().add("text-level");
+        Text insightText = new Text("Insight: 0");
+        insightText.getStyleClass().add("text-level");
+        vitalityText = new Text("Vitality: -");
+        vitalityText.getStyleClass().add("text-level");
+        enduranceText = new Text("Endurance: -");
+        enduranceText.getStyleClass().add("text-level");
+        strengthText = new Text("Strength: -");
+        strengthText.getStyleClass().add("text-level");
+        skillText = new Text("Skill: -");
+        skillText.getStyleClass().add("text-level");
+        bloodTingeText = new Text("BloodTinge: -");
+        bloodTingeText.getStyleClass().add("text-level");
+        arcaneText = new Text("Arcane: -");
+        arcaneText.getStyleClass().add("text-level");
+
         leftStats.getChildren().addAll(
-                new Text("Level: " + "10"),
-                new Text("Insight: " + "0"),
-                new Text("Vitality: " + VitalityValue),
-                new Text("Endurance: " + EnduranceValue),
-                new Text("Strength: " + StrengthValue),
-                new Text("Skill: " + SkillValue),
-                new Text("BloodTinge: " + BloodTingeValue),
-                new Text("Arcane: " + ArcaneValue)
+                levelText, insightText, vitalityText, enduranceText, strengthText,
+                skillText, bloodTingeText, arcaneText
         );
 
         leftStats.setMouseTransparent(true);
-        leftStats.getStyleClass().add("text-level");
         leftStats.setAlignment(Pos.CENTER);
 
         Button continueButton = new Button("Continue");
@@ -197,9 +115,9 @@ public class OriginPane {
 
         VBox contentOverlay = new VBox(hBox, continueButton);
         contentOverlay.setAlignment(Pos.TOP_CENTER);
-        contentOverlay.setPadding(new Insets(50)); // Padding opcional para espaçamento interno
+        contentOverlay.setPadding(new Insets(50));
 
-        root.getChildren().addAll(leftStats);
+        root.getChildren().addAll(banner, contentOverlay, leftStats);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
@@ -210,5 +128,3 @@ public class OriginPane {
         return root;
     }
 }
-
-
