@@ -116,5 +116,25 @@ public class Repository {
         return null;
     }
 
+    public RHandWeapon getRHandWeapon(String Name){
+        for(RHandWeapon RHand : RHandWeapons){
+            if(RHand.getName().equals(Name)){
+                return RHand;
+            }
+        }
+        System.out.println("RHandWeapon não Achada");
+        return null;
+    }
+
+    public LHandWeapon getLHandWeapon(String Name){
+        for(LHandWeapon LHand : LHandWeapons){
+            if(LHand.getName().equals(Name)){
+                return LHand;
+            }
+        }
+        System.out.println("RHandWeapon não Achada");
+        return null;
+    }
+
     public double[][] getLevelStatsTable() { return LevelStatsTable; }
 }

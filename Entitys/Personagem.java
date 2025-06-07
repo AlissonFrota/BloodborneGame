@@ -5,6 +5,8 @@ import Items.Armor.HandArmor;
 import Items.Armor.HeadArmor;
 import Items.Armor.LegArmor;
 import Items.Rune.Rune;
+import Items.Weapon.LHandWeapon;
+import Items.Weapon.RHandWeapon;
 import repository.Repository;
 
 public class Personagem {
@@ -53,6 +55,8 @@ public class Personagem {
 
     private Origin Origin;
 
+    private RHandWeapon RHand;
+    private LHandWeapon LHand;
 
     public Personagem(
         Origin Origin,
@@ -74,15 +78,13 @@ public class Personagem {
         this.Bloodtinge = Origin.getBloodtinge();
         this.Arcane = Origin.getArcane();
 
-        HeadArmor NoHeadArmor = repo.getHeadArmor("Naked");
-        ChestArmor NoChestArmor = repo.getChestArmor("Naked");
-        HandArmor NoHandArmor = repo.getHandArmor("Naked");
-        LegArmor NoLegsArmor = repo.getLegArmor("Naked");
+        this.Head = repo.getHeadArmor("Old Hunter Cap");
+        this.Chest = repo.getChestArmor("Ashen Hunter Garb");
+        this.Hands = repo.getHandArmor("Ashen Hunter Gloves");
+        this.Legs = repo.getLegArmor("Ashen Hunter Trousers");
 
-        this.Head = NoHeadArmor;
-        this.Chest = NoChestArmor;
-        this.Hands = NoHandArmor;
-        this.Legs = NoLegsArmor;
+        this.RHand = repo.getRHandWeapon("Saw Cleaver");
+        this.LHand = repo.getLHandWeapon("Hunter Pistol");
 
         Rune NoRune = repo.getRune("NoRune");
 
@@ -93,6 +95,56 @@ public class Personagem {
         ComputeDerivedStats();
     }
 
+    public void UpInsight(){
+        this.Insight++;
+        this.Level++;
+    }
+    public void UpVitality(){
+        this.Vitality++;
+        this.Level++;
+    }
+    public void UpStrength(){
+        this.Strength++;
+        this.Level++;
+    }
+    public void UpSkill(){
+        this.Skill++;
+        this.Level++;
+    }
+    public void UpEndurence(){
+        this.Endurence++;
+        this.Level++;
+    }
+    public void UpBloodtinge(){
+        this.Bloodtinge++;
+        this.Level++;
+    }
+    public void UpArcane(){
+        this.Arcane++;
+        this.Level++;
+    }
+
+    public void setRHand(RHandWeapon RHand) {
+        this.RHand = RHand;
+        ComputeDerivedStats();
+    }
+    public void setLHand(LHandWeapon LHand) {
+        this.LHand = LHand;
+        ComputeDerivedStats();
+    }
+    public void setRuna(Rune Runa, int RuneIndex){
+        switch(RuneIndex){
+            case 1:
+                setRuna1(Runa);
+                break;
+            case 2:
+                setRuna2(Runa);
+                break;
+            case 0:
+                setRuna3(Runa);
+                break;
+        }
+    }
     public void setRuna1(Rune rune){
         this.Runa1 = rune;
         ComputeDerivedStats();
@@ -101,23 +153,23 @@ public class Personagem {
         this.Runa2 = rune;
         ComputeDerivedStats();
     }
-    public void SetRuna3(Rune rune){
+    public void setRuna3(Rune rune){
         this.Runa3 = rune;
         ComputeDerivedStats();
     }
-    public void SetHeadArmor(HeadArmor Head){
+    public void setHeadArmor(HeadArmor Head){
         this.Head = Head;
         ComputeDerivedStats();
     }
-    public void SetChestArmor(ChestArmor Chest){
+    public void setChestArmor(ChestArmor Chest){
         this.Chest = Chest;
         ComputeDerivedStats();
     }
-    public void SetHandArmor(HandArmor Hands){
+    public void setHandArmor(HandArmor Hands){
         this.Hands = Hands;
         ComputeDerivedStats();
     }
-    public void SetLegArmor(LegArmor Legs){
+    public void setLegArmor(LegArmor Legs){
         this.Legs = Legs;
         ComputeDerivedStats();
     }
@@ -296,22 +348,22 @@ public class Personagem {
         //Physical Blunt Thurst Damage Reduction
 
         if(this.Runa1.getName().contains("Lake.")){
-            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa1.getValor());
-            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa1.getValor());
-            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa1.getValor());
-            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa1.getValor());
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction + Runa1.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction + Runa1.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction + Runa1.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction + Runa1.getValor());
         }
         if(this.Runa2.getName().contains("Lake.")){
-            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa2.getValor());
-            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa2.getValor());
-            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa2.getValor());
-            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa2.getValor());
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction + Runa2.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction + Runa2.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction + Runa2.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction + Runa2.getValor());
         }
         if(this.Runa3.getName().contains("Lake.")){
-            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa3.getValor());
-            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa3.getValor());
-            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa3.getValor());
-            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa3.getValor());
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction + Runa3.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction + Runa3.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction + Runa3.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction + Runa3.getValor());
         }
 
         //Arcane Dmg Reduction
@@ -319,13 +371,13 @@ public class Personagem {
         this.ArcaneDmgReduction = this.Head.getArcaneDefence() + this.Chest.getArcaneDefence() + this.Legs.getArcaneDefence() + this.Hands.getArcaneDefence();
 
         if(this.Runa1.getName().contains("Arcane Lake")){
-            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction * Runa1.getValor());
+            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction + Runa1.getValor());
         }
         if(this.Runa2.getName().contains("Arcane Lake")){
-            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction * Runa2.getValor());
+            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction + Runa2.getValor());
         }
         if(this.Runa3.getName().contains("Arcane Lake")){
-            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction * Runa3.getValor());
+            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction + Runa3.getValor());
         }
 
         //Fire Dmg Reduction
@@ -333,13 +385,13 @@ public class Personagem {
         this.FireDmgReduction = this.Head.getFireDefence() + this.Chest.getFireDefence() + this.Legs.getFireDefence() + this.Hands.getFireDefence();
 
         if(this.Runa1.getName().contains("Fading Lake")){
-            this.FireDmgReduction = (int)(this.FireDmgReduction * Runa1.getValor());
+            this.FireDmgReduction = (int)(this.FireDmgReduction + Runa1.getValor());
         }
         if(this.Runa2.getName().contains("Fading Lake")){
-            this.FireDmgReduction = (int)(this.FireDmgReduction * Runa2.getValor());
+            this.FireDmgReduction = (int)(this.FireDmgReduction + Runa2.getValor());
         }
         if(this.Runa3.getName().contains("Fading Lake")){
-            this.FireDmgReduction = (int)(this.FireDmgReduction * Runa3.getValor());
+            this.FireDmgReduction = (int)(this.FireDmgReduction + Runa3.getValor());
         }
 
         //Bolt Dmg Reduction
@@ -347,46 +399,47 @@ public class Personagem {
         this.BoltDmgReduction = this.Head.getBoltDefence() + this.Chest.getBoltDefence() + this.Legs.getBoltDefence() + this.Hands.getBoltDefence();
 
         if(this.Runa1.getName().contains("Dissipating Lake")){
-            this.BoltDmgReduction = (int)(this.BoltDmgReduction * Runa1.getValor());
+            this.BoltDmgReduction = (int)(this.BoltDmgReduction + Runa1.getValor());
         }
         if(this.Runa2.getName().contains("Dissipating Lake")){
-            this.BoltDmgReduction = (int)(this.BoltDmgReduction * Runa2.getValor());
+            this.BoltDmgReduction = (int)(this.BoltDmgReduction + Runa2.getValor());
         }
         if(this.Runa3.getName().contains("Dissipating Lake")){
-            this.BoltDmgReduction = (int)(this.BoltDmgReduction * Runa3.getValor());
+            this.BoltDmgReduction = (int)(this.BoltDmgReduction + Runa3.getValor());
         }
 
         //Great Lake 
 
         if(this.Runa1.getName().contains("Great Lake")){
-            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa1.getValor());
-            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa1.getValor());
-            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa1.getValor());
-            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa1.getValor());
-            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction * Runa1.getValor());
-            this.FireDmgReduction = (int)(this.FireDmgReduction * Runa1.getValor());
-            this.BoltDmgReduction = (int)(this.BoltDmgReduction * Runa1.getValor());
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction + Runa1.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction + Runa1.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction + Runa1.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction + Runa1.getValor());
+            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction + Runa1.getValor());
+            this.FireDmgReduction = (int)(this.FireDmgReduction + Runa1.getValor());
+            this.BoltDmgReduction = (int)(this.BoltDmgReduction + Runa1.getValor());
         }
         if(this.Runa2.getName().contains("Great Lake")){
-            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa2.getValor());
-            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa2.getValor());
-            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa2.getValor());
-            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa2.getValor());
-            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction * Runa2.getValor());
-            this.FireDmgReduction = (int)(this.FireDmgReduction * Runa2.getValor());
-            this.BoltDmgReduction = (int)(this.BoltDmgReduction * Runa2.getValor());
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction + Runa2.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction + Runa2.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction + Runa2.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction + Runa2.getValor());
+            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction + Runa2.getValor());
+            this.FireDmgReduction = (int)(this.FireDmgReduction + Runa2.getValor());
+            this.BoltDmgReduction = (int)(this.BoltDmgReduction + Runa2.getValor());
         }
         if(this.Runa3.getName().contains("Great Lake")){
-            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction * Runa3.getValor());
-            this.BluntDmgReduction = (int)(this.BluntDmgReduction * Runa3.getValor());
-            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction * Runa3.getValor());
-            this.BloodDmgReduction = (int)(this.BloodDmgReduction * Runa3.getValor());
-            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction * Runa3.getValor());
-            this.FireDmgReduction = (int)(this.FireDmgReduction * Runa3.getValor());
-            this.BoltDmgReduction = (int)(this.BoltDmgReduction * Runa3.getValor());
+            this.PhysicalDmgReduction = (int)(this.PhysicalDmgReduction + Runa3.getValor());
+            this.BluntDmgReduction = (int)(this.BluntDmgReduction + Runa3.getValor());
+            this.ThrustDmgReduction = (int)(this.ThrustDmgReduction + Runa3.getValor());
+            this.BloodDmgReduction = (int)(this.BloodDmgReduction + Runa3.getValor());
+            this.ArcaneDmgReduction = (int)(this.ArcaneDmgReduction + Runa3.getValor());
+            this.FireDmgReduction = (int)(this.FireDmgReduction + Runa3.getValor());
+            this.BoltDmgReduction = (int)(this.BoltDmgReduction + Runa3.getValor());
         }
     }
 
+    public int getLevel() { return Level; }
     public int getHealth() { return Health; }
     public int getDiscovery() { return Discovery; }
     public int getDefense() { return Defense; }
@@ -413,4 +466,13 @@ public class Personagem {
     public int getVitality() { return Vitality; }
     public int getBloodEchoes() { return BloodEchoes; }
     public Origin getOrigin() { return Origin; }
+    public RHandWeapon getRHand() { return RHand; }
+    public LHandWeapon getLHand() { return LHand; }
+    public HeadArmor getHead() { return Head; }
+    public ChestArmor getChest() { return Chest; }
+    public HandArmor getHands() { return Hands; }
+    public LegArmor getLegs() { return Legs; }
+    public Rune getRuna1() { return Runa1; }
+    public Rune getRuna2() { return Runa2; }
+    public Rune getRuna3() { return Runa3; }
 }

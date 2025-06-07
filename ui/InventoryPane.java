@@ -2,7 +2,15 @@ package ui;
 
 import Entitys.Origin;
 import Entitys.Personagem;
+import Items.Armor.ChestArmor;
+import Items.Armor.HandArmor;
+import Items.Armor.HeadArmor;
+import Items.Armor.LegArmor;
+import Items.Rune.Rune;
+import Items.Weapon.LHandWeapon;
+import Items.Weapon.RHandWeapon;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
@@ -37,10 +45,17 @@ public class InventoryPane extends TabPane {
     private ImageView detailImage;
     private Text detailName;
     private Text detailStats;
+    private VBox EquipBox;
+
+    private VBox RightStats;
+
+    private Personagem hunter;
+
+    private int RuneIndex;
 
     public InventoryPane(Repository repo, Origin origin) {
 
-        Personagem Hunter = new Personagem(origin, repo);
+        hunter = new Personagem(origin, repo);
 
         root = new BorderPane();
 
@@ -71,14 +86,91 @@ public class InventoryPane extends TabPane {
         detailName = new Text("Select an item to view details");
         detailStats = new Text("");
 
+        EquipBox = new VBox(20);
+        EquipBox.setAlignment(Pos.CENTER);
+
+        RightStats = new VBox(5);
+        RightStats.setPadding(new Insets(10));
+
+        RefreshEquipmentBox();
+
+        VBox leftStats = new VBox(5);
+        leftStats.setPadding(new Insets(10));
+        leftStats.getChildren().addAll(
+                new Text("Level: " + hunter.getLevel()),
+                new Text("Insight: " + hunter.getInsight()),
+                new Text("Vitality: " + hunter.getVitality()),
+                new Text("Endurance: " + hunter.getEndurence()),
+                new Text("Strength: " + hunter.getStrength()),
+                new Text("Skill: " + hunter.getSkill()),
+                new Text("BloodTinge: " + hunter.getBloodtinge()),
+                new Text("Arcane: " + hunter.getArcane())
+        );
+
+        HBox statsBox = new HBox(20, leftStats, RightStats);
+        HBox rightPane = new HBox(5, EquipBox, statsBox);
+
         detailPane = new VBox(10, detailImage, detailName, detailStats);
         detailPane.setPadding(new Insets(20));
         detailPane.setPrefWidth(450);
 
-        HBox splitPane = new HBox(tabBox, detailPane);
+        HBox splitPane = new HBox(tabBox, detailPane, rightPane);
         root.setCenter(splitPane);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+    }
+
+    private void RefreshEquipmentBox(){
+        EquipBox.getChildren().clear();
+
+        String RHhandPath = IMAGE_CACHE_DIR + "/" + hunter.getRHand().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(RHhandPath, 100, 100, true, true)));
+
+        String LHandPath = IMAGE_CACHE_DIR + "/" + hunter.getLHand().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(LHandPath, 100, 100, true, true)));
+
+        String HeadPath = IMAGE_CACHE_DIR + "/" + hunter.getHead().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(HeadPath, 100, 100, true, true)));
+
+        String ChestPath = IMAGE_CACHE_DIR + "/" + hunter.getChest().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(ChestPath, 100, 100, true, true)));
+
+        String HandPath = IMAGE_CACHE_DIR + "/" + hunter.getHands().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(HandPath, 100, 100, true, true)));
+
+        String LegPath = IMAGE_CACHE_DIR + "/" + hunter.getLegs().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(LegPath, 100, 100, true, true)));
+
+        String Rune1Path = IMAGE_CACHE_DIR + "/" + hunter.getRuna1().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(Rune1Path, 100, 100, true, true)));
+
+        String Rune2Path = IMAGE_CACHE_DIR + "/" + hunter.getRuna2().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(Rune2Path, 100, 100, true, true)));
+
+        String Rune3Path = IMAGE_CACHE_DIR + "/" + hunter.getRuna3().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
+        EquipBox.getChildren().add(new ImageView(new Image(Rune3Path, 100, 100, true, true)));
+
+        RightStats.getChildren().clear();
+
+        RightStats.getChildren().addAll(
+                new Text("HP: " + hunter.getHealth()),
+                new Text("Stamina: " + hunter.getStamina()),
+                new Text("Discovery: " + hunter.getDiscovery()),
+                //new Text("R H Dmg: " + (rwp != null ? rwp.getAttack() : 0)),
+                //new Text("L H Dmg: " + (lwp != null ? lwp.getDefense() : 0)),
+                new Text("Def: " + hunter.getDefense()),
+                new Text("Slow Poison Resist: " + hunter.getSlowPoisonResist()),
+                new Text("Rapid Poison Resist: " + hunter.getRapidPoisonResist()),
+                new Text("Frenzy Resist: " + hunter.getFrenzyResist()),
+                new Text("BeastHood: " + hunter.getBestHood()),
+                new Text("Physical Dmg Reduction: " + hunter.getPhysicalDmgReduction()),
+                new Text("VS. Blunt: " + hunter.getBluntDmgReduction()),
+                new Text("VS. Thrust: " + hunter.getThrustDmgReduction()),
+                new Text("Blood Dmg Reduction: " + hunter.getBloodDmgReduction()),
+                new Text("Arcane Dmg Reduction: " + hunter.getArcaneDmgReduction()),
+                new Text("Fire Dmg Reduction: " + hunter.getFireDmgReduction()),
+                new Text("Bolt Dmg Reduction: " + hunter.getBoltDmgReduction())
+        );
     }
 
     public Parent getRoot() {
@@ -114,7 +206,10 @@ public class InventoryPane extends TabPane {
             vbox.setPrefWidth(TILE_SIZE);
             vbox.setMaxWidth(TILE_SIZE);
             vbox.setMinWidth(TILE_SIZE);
-            vbox.setOnMouseClicked((MouseEvent event) -> showDetail(item, imageFile.toURI().toString()));
+            vbox.setOnMouseClicked(e -> {
+                showDetail(item, imageFile.toURI().toString());
+                handleSelection(item);
+            });
 
             return vbox;
         } catch (Exception e) {
@@ -148,6 +243,29 @@ public class InventoryPane extends TabPane {
         }
     }
 
+    private void handleSelection(Object item) {
+        if(item instanceof RHandWeapon){
+            hunter.setRHand((RHandWeapon) item);
+        } else if (item instanceof LHandWeapon){
+            hunter.setLHand((LHandWeapon) item);
+        } else if (item instanceof HeadArmor){
+            hunter.setHeadArmor((HeadArmor) item);
+        } else if (item instanceof ChestArmor){
+            hunter.setChestArmor((ChestArmor) item);
+        } else if (item instanceof LegArmor){
+            hunter.setLegArmor((LegArmor) item);
+        } else if (item instanceof HandArmor){
+            hunter.setHandArmor((HandArmor) item);
+        } else if (item instanceof Rune) {
+            RuneIndex = (RuneIndex + 1) % 3;
+            hunter.setRuna((Rune) item, RuneIndex);
+        }
+
+
+
+        RefreshEquipmentBox();
+    }
+
     private <T> ScrollPane createTilePane(List<T> items) {
         TilePane tile = new TilePane(TILE_HGAP, TILE_VGAP);
         tile.setPadding(new Insets(TILE_PADDING));
@@ -157,7 +275,8 @@ public class InventoryPane extends TabPane {
         tile.setMaxWidth((TILE_SIZE + 20 + TILE_HGAP) * TILE_COLUMNS);
 
         for (T item : items) {
-            tile.getChildren().add(createItemBox(item));
+            VBox box = createItemBox(item);
+            tile.getChildren().add(box);
         }
 
         ScrollPane scroll = new ScrollPane(tile);
