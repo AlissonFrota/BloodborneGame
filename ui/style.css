@@ -19,7 +19,7 @@
         -fx-text-fill: white;
         -fx-background-color: transparent;
         -fx-border-width: 0;
-        -fx-padding: 10;
+        -fx-padding: 0;
 }
 
 .numbers-especial {
@@ -52,7 +52,7 @@
 .text-level {
     -fx-font-family: "Gothical";
     -fx-font-size: 60px;
-    -fx-fill: white;
+    -fx-text-fill: #ffffff;
 }
 
 .origin-combo-box {
@@ -122,8 +122,8 @@
     -fx-border-width: 0;
     -fx-padding: 0;
 }
-/* Inventario */
 
+/* Inventario */
 
 .tab:selected {
     -fx-background-color: #3d3d3d;

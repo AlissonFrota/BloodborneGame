@@ -17,10 +17,10 @@ public class StartMenuPane {
     private Button startButton;
     private Button continueButton;
     private Button exitButton;
-    private Button battleButton;
 
 
-    public StartMenuPane(Runnable NewGame, Runnable Continue,Runnable Battle, Runnable Exit) throws IOException {
+
+    public StartMenuPane(Runnable NewGame, Runnable Continue, Runnable Exit) throws IOException {
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
         root.getStyleClass().add("menu-pane");
@@ -43,24 +43,17 @@ public class StartMenuPane {
         continueButton.setFont(customFont);
         continueButton.setOnAction(e -> Continue.run());
 
-        battleButton = new Button("Inventario");
-        battleButton.getStyleClass().add("button-title");
-        battleButton.setFont(customFont);
-        battleButton.setOnAction(e -> Battle.run());
-
         exitButton = new Button("Exit");
         exitButton.getStyleClass().add("button-title");
         exitButton.setFont(customFont);
         exitButton.setOnAction(e -> Exit.run());
 
 
-        StackPane overlayPane = new StackPane(banner, startButton, continueButton, battleButton, exitButton);
-        StackPane.setAlignment(battleButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(battleButton, new Insets(0, 0, 200, 0));
+        StackPane overlayPane = new StackPane(banner, startButton, continueButton, exitButton);
         StackPane.setAlignment(startButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(startButton, new Insets(0, 0, 300, 0));
+        StackPane.setMargin(startButton, new Insets(0, 0, 200, 0));
         StackPane.setAlignment(continueButton, Pos.BOTTOM_CENTER);
-        StackPane.setMargin(continueButton, new Insets(0, 0, 400, 0));
+        StackPane.setMargin(continueButton, new Insets(0, 0, 300, 0));
         StackPane.setAlignment(exitButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(exitButton, new Insets(0, 0, 100, 0));
         root.getChildren().add(overlayPane);

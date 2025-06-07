@@ -47,9 +47,6 @@ public class App extends Application {
                     this.showBattlePane();
                 },
                 () -> {
-
-                },
-                () -> {
                     Platform.exit();
                 }
         );
