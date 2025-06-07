@@ -30,7 +30,7 @@ public class LoadingPane {
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Gothical.ttf"), 10);
 
         Button loadingButton = new Button("Loading...");
         loadingButton.getStyleClass().add("loading-button");

@@ -133,13 +133,6 @@
     -fx-effect: dropshadow(gaussian, black, 2, 0.3, 0, 0);
 }
 
-.vbox:hover {
-    -fx-background-color: #444;
-    -fx-cursor: hand;
-    -fx-border-color: gold;
-    -fx-border-width: 1px;
-}
-
 .scroll-bar:horizontal, .scroll-bar:vertical {
     -fx-pref-width: 0;
     -fx-pref-height: 0;

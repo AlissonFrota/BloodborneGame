@@ -5,6 +5,7 @@ import Items.Armor.HandArmor;
 import Items.Armor.HeadArmor;
 import Items.Armor.LegArmor;
 import Items.Rune.Rune;
+import repository.Repository;
 
 public class Personagem {
 
@@ -52,17 +53,13 @@ public class Personagem {
 
     private Origin Origin;
 
+
     public Personagem(
         Origin Origin,
-        Rune NoRune,
-        ChestArmor NoChestArmor,
-        HandArmor NoHandArmor,
-        HeadArmor NoHeadArmor,
-        LegArmor NoLegsArmor,
-        LevelStatsTable statsTable
+        Repository repo
         ){
 
-        this.statsTable = statsTable;
+        this.statsTable = new LevelStatsTable(repo.getLevelStatsTable());
         
         this.Origin = Origin; 
 
@@ -77,10 +74,17 @@ public class Personagem {
         this.Bloodtinge = Origin.getBloodtinge();
         this.Arcane = Origin.getArcane();
 
+        HeadArmor NoHeadArmor = repo.getHeadArmor("Naked");
+        ChestArmor NoChestArmor = repo.getChestArmor("Naked");
+        HandArmor NoHandArmor = repo.getHandArmor("Naked");
+        LegArmor NoLegsArmor = repo.getLegArmor("Naked");
+
         this.Head = NoHeadArmor;
         this.Chest = NoChestArmor;
         this.Hands = NoHandArmor;
         this.Legs = NoLegsArmor;
+
+        Rune NoRune = repo.getRune("NoRune");
 
         this.Runa1 = NoRune;
         this.Runa2 = NoRune; // Somente NoRune pode ser duplicado, as outras não

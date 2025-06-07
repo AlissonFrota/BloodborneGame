@@ -31,7 +31,7 @@ public class StartMenuPane {
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 10);
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Gothical.ttf"), 10);
 
         startButton = new Button("New Game");
         startButton.getStyleClass().add("button-title");

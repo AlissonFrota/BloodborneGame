@@ -95,6 +95,7 @@ import Entitys.Origin;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -118,7 +119,7 @@ public class OriginPane {
     private Text BloodTingeValue;
     private Text ArcaneValue;
 
-    public OriginPane(Repository repo) {
+    public OriginPane(Repository repo, Runnable Continue) {
 
         root = new StackPane();
         root.getStyleClass().add("menu-pane");
@@ -127,7 +128,7 @@ public class OriginPane {
         banner.setPreserveRatio(true);
         banner.setFitWidth(2050);
 
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 40);
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Gothical.ttf"), 40);
 
 
         Label titleLabel = new Label("Origin");
@@ -268,14 +269,23 @@ public class OriginPane {
 
         levelContents.setMouseTransparent(true);
 
-        VBox contentOverlay = new VBox(hBox);
+        Button continueButton = new Button("Continue");
+        continueButton.setOnAction(e -> {
+            Continue.run();
+        });
+
+        VBox contentOverlay = new VBox(hBox, continueButton);
         contentOverlay.setAlignment(Pos.TOP_CENTER);
         contentOverlay.setPadding(new Insets(50)); // Padding opcional para espaçamento interno
+
+
 
         root.getChildren().addAll(banner, contentOverlay, levelContents);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
+
+    public Origin getChosenOrigin() { return ChosenOrigin; }
 
     public StackPane getRoot() {
         return root;

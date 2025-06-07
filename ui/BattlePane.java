@@ -62,7 +62,7 @@ public class BattlePane {
         buttonContainer.setTranslateY(100); // Ajuste para alinhar com a caixa de diálogo
         buttonContainer.setPadding(new Insets(20, 0, 40, 0));
 
-        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/GothicPixels.ttf"), 16);
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Gothical.ttf"), 16);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 

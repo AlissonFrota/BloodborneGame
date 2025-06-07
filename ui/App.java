@@ -1,5 +1,6 @@
 package ui;
 
+import Entitys.Origin;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -46,7 +47,7 @@ public class App extends Application {
                     this.showBattlePane();
                 },
                 () -> {
-                    this.showInvetoryScreen();
+
                 },
                 () -> {
                     Platform.exit();
@@ -75,10 +76,10 @@ public class App extends Application {
         transitionTo(battlePane.getRoot());
     }
 
-    private void showInvetoryScreen() {
-        InventoryPane inventoryPane = new InventoryPane(repo);
-        transitionTo(inventoryPane.getRoot());
-    }
+    //private void showInvetoryScreen() {
+    //    InventoryPane inventoryPane = new InventoryPane(repo);
+    //     transitionTo(inventoryPane.getRoot());
+    //}
 
     private void showLoadingScreen() {
         LoadingPane LoadPane = new LoadingPane();
@@ -86,8 +87,20 @@ public class App extends Application {
     }
 
     private void showOriginScreen() {
-        OriginPane OriginPane = new OriginPane(repo);
-        transitionTo(OriginPane.getRoot());
+        final OriginPane[] originPaneHolder = new OriginPane[1];
+
+        originPaneHolder[0] = new OriginPane(repo, () -> {
+            Origin chosenOrigin = originPaneHolder[0].getChosenOrigin();
+
+            if (chosenOrigin != null) {
+                InventoryPane inventoryPane = new InventoryPane(repo, chosenOrigin);
+                transitionTo(inventoryPane.getRoot());
+            } else {
+                System.out.println("AAAAAAAA");
+            }
+        });
+
+        transitionTo(originPaneHolder[0].getRoot());
     }
 
     private void showBattleScreen() throws IOException {
