@@ -1,5 +1,6 @@
 package ui;
 
+import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -9,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
@@ -17,10 +19,11 @@ public class StartMenuPane {
     private Button startButton;
     private Button continueButton;
     private Button exitButton;
+    private Button hiddenButton;
 
 
 
-    public StartMenuPane(Runnable NewGame, Runnable Continue, Runnable Exit) throws IOException {
+    public StartMenuPane(Runnable NewGame, Runnable Continue, Runnable Exit, Runnable hidden) throws IOException {
         root = new VBox(20);
         root.setAlignment(Pos.CENTER);
         root.getStyleClass().add("menu-pane");
@@ -48,14 +51,32 @@ public class StartMenuPane {
         exitButton.setFont(customFont);
         exitButton.setOnAction(e -> Exit.run());
 
+        hiddenButton = new Button("");
+        hiddenButton.getStyleClass().add("easter-egg");
+        hiddenButton.setPrefSize(20, 230);
+        hiddenButton.setFont(customFont);
 
-        StackPane overlayPane = new StackPane(banner, startButton, continueButton, exitButton);
+
+
+        StackPane overlayPane = new StackPane(banner, startButton, continueButton, exitButton, hiddenButton);
         StackPane.setAlignment(startButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(startButton, new Insets(0, 0, 200, 0));
         StackPane.setAlignment(continueButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(continueButton, new Insets(0, 0, 300, 0));
         StackPane.setAlignment(exitButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(exitButton, new Insets(0, 0, 100, 0));
+        StackPane.setAlignment(hiddenButton,Pos.CENTER);
+        StackPane.setMargin(hiddenButton, new Insets(260, 0, 0, 770));
+        ScaleTransition grow = new ScaleTransition(Duration.millis(200), hiddenButton);
+        grow.setToX(1.3);
+        grow.setToY(1.7);
+
+        ScaleTransition shrink = new ScaleTransition(Duration.millis(150), hiddenButton);
+        shrink.setToX(1);
+        shrink.setToY(1);
+
+        hiddenButton.setOnMouseEntered(e -> grow.playFromStart());
+        hiddenButton.setOnMouseExited(e -> shrink.playFromStart());
         root.getChildren().add(overlayPane);
     }
 

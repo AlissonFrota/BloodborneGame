@@ -205,7 +205,23 @@
     -fx-spacing: 10px;
 }
 
-
+// easter-egg
+.easter-egg {
+    -fx-font-family: "Gothical";
+            -fx-background-color: transparent;
+                -fx-border-color: transparent;
+                -fx-text-fill: transparent;
+                -fx-padding: 0;
+                -fx-cursor: hand;
+                -fx-background-radius: 2px;
+                -fx-effect: dropshadow(three-pass-box, transparent, 0, 0, 0, 0);
+                -fx-transition: all 0.2s ease-in-out;
+}
+.easter-egg:hover {
+    -fx-background-color: black;
+    -fx-border-color: black;
+    -fx-text-fill: white;
+}
 
 
 

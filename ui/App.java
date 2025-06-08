@@ -23,6 +23,7 @@ public class App extends Application {
     private Repository repo;
 
     private Personagem hunter;
+
     private BattleController controller;
 
     @Override
@@ -52,8 +53,9 @@ public class App extends Application {
                 },
                 () -> {
                     Platform.exit();
-                }
-        );
+                },
+                () -> {
+                });
 
         rootPane.getChildren().setAll(menuPane.getRoot());
     }

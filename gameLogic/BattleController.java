@@ -130,7 +130,7 @@ public class BattleController {
                                 onLevelUp.run();
                             }
                         },
-                        1500 // 1.5 segundos de delay
+                        1 // tempo de 1 milisegundo
                 );
             }
         } else {
