@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import repository.Repository;
+import util.PersonagemIO;
 
 import java.io.IOException;
 
@@ -49,7 +50,11 @@ public class App extends Application {
                     this.showOriginScreen();
                 },
                 () -> {
-
+                    try {
+                        this.loadHunter();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                 },
                 () -> {
                     Platform.exit();
@@ -64,6 +69,12 @@ public class App extends Application {
     //    InventoryPane inventoryPane = new InventoryPane(repo);
     //     transitionTo(inventoryPane.getRoot());
     //}
+
+    private void loadHunter() throws IOException {
+        hunter = PersonagemIO.loadPersonagemIfExists("savegame",repo);
+
+         showFirstBattlePane(hunter);
+    }
 
     private void showLoadingScreen() {
         LoadingPane LoadPane = new LoadingPane();
@@ -151,6 +162,11 @@ public class App extends Application {
 
         inventoryPaneHolder[0] = new InventoryPane(repo, origin, () -> {
             hunter = inventoryPaneHolder[0].getHunter();
+            try {
+                PersonagemIO.savePersonagem(hunter, "savegame");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             this.showFirstBattlePane(hunter);
         });
 
