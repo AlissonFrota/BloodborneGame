@@ -52,10 +52,12 @@ public class InventoryPane extends TabPane {
 
     private int RuneIndex;
 
+    // Original constructor - creates new hunter
     public InventoryPane(Repository repo, Origin origin, Runnable Continue) {
         this(repo, new Personagem(origin, repo), Continue);
     }
 
+    // New constructor - uses existing hunter
     public InventoryPane(Repository repo, Personagem hunter, Runnable Continue) {
         this.hunter = hunter;
         initializeUI(repo, Continue);
@@ -127,42 +129,37 @@ public class InventoryPane extends TabPane {
     private void refreshStatsDisplay() {
         leftStats.getChildren().clear();
 
-        HBox echoesBox = createStatControl("Blood Echoes: ", String.valueOf(hunter.getBloodEchoes()), null, null);
-        leftStats.getChildren().add(echoesBox);
+        // Get base stats from origin
+        Origin origin = hunter.getOrigin();
+        int baseVitality = origin.getVitality();
+        int baseEndurance = origin.getEndurence();
+        int baseStrength = origin.getStrength();
+        int baseSkill = origin.getSkill();
+        int baseBloodtinge = origin.getBloodtinge();
+        int baseArcane = origin.getArcane();
+        int baseInsight = 0; // Insight typically starts at 0
 
-        HBox levelBox = createStatControl("Level: ", String.valueOf(hunter.getLevel()), null, null);
-        leftStats.getChildren().add(levelBox);
-
-        leftStats.getChildren().add(createStatControl("Insight: ", String.valueOf(hunter.getInsight()),
-                hunter::UpInsight,
-                hunter::DownInsight));
-
-        leftStats.getChildren().add(createStatControl("Vitality: ", String.valueOf(hunter.getVitality()),
-                hunter::UpVitality,
-                hunter::DownVitality));
-
-        leftStats.getChildren().add(createStatControl("Endurance: ", String.valueOf(hunter.getEndurence()),
-                hunter::UpEndurence,
-                hunter::DownEndurence));
-
-        leftStats.getChildren().add(createStatControl("Strength: ", String.valueOf(hunter.getStrength()),
-                hunter::UpStrength,
-                hunter::DownStrength));
-
-        leftStats.getChildren().add(createStatControl("Skill: ", String.valueOf(hunter.getSkill()),
-                hunter::UpSkill,
-                hunter::DownSkill));
-
-        leftStats.getChildren().add(createStatControl("BloodTinge: ", String.valueOf(hunter.getBloodtinge()),
-                hunter::UpBloodtinge,
-                hunter::DownBloodtinge));
-
-        leftStats.getChildren().add(createStatControl("Arcane: ", String.valueOf(hunter.getArcane()),
-                hunter::UpArcane,
-                hunter::DownArcane));
+        // Create stat controls with base values
+        leftStats.getChildren().add(createNonActionStatControl("Blood Echoes: ", String.valueOf(hunter.getBloodEchoes())));
+        leftStats.getChildren().add(createNonActionStatControl("Level: ", String.valueOf(hunter.getLevel())));
+        leftStats.getChildren().add(createActionStatControl("Insight: ", hunter.getInsight(), baseInsight,
+                hunter::UpInsight, hunter::DownInsight));
+        leftStats.getChildren().add(createActionStatControl("Vitality: ", hunter.getVitality(), baseVitality,
+                hunter::UpVitality, hunter::DownVitality));
+        leftStats.getChildren().add(createActionStatControl("Endurance: ", hunter.getEndurence(), baseEndurance,
+                hunter::UpEndurence, hunter::DownEndurence));
+        leftStats.getChildren().add(createActionStatControl("Strength: ", hunter.getStrength(), baseStrength,
+                hunter::UpStrength, hunter::DownStrength));
+        leftStats.getChildren().add(createActionStatControl("Skill: ", hunter.getSkill(), baseSkill,
+                hunter::UpSkill, hunter::DownSkill));
+        leftStats.getChildren().add(createActionStatControl("BloodTinge: ", hunter.getBloodtinge(), baseBloodtinge,
+                hunter::UpBloodtinge, hunter::DownBloodtinge));
+        leftStats.getChildren().add(createActionStatControl("Arcane: ", hunter.getArcane(), baseArcane,
+                hunter::UpArcane, hunter::DownArcane));
     }
 
-    private HBox createStatControl(String labelText, String valueText, Runnable upAction, Runnable downAction) {
+    // For stats that cannot be changed (no buttons)
+    private HBox createNonActionStatControl(String labelText, String valueText) {
         HBox row = new HBox(5);
         row.setAlignment(Pos.CENTER_LEFT);
 
@@ -171,27 +168,42 @@ public class InventoryPane extends TabPane {
         value.getStyleClass().add("numbers-especial-inventory");
 
         row.getChildren().addAll(label, value);
+        return row;
+    }
 
-        if (upAction != null && downAction != null) {
-            Button upButton = new Button("▲");
-            Button downButton = new Button("▼");
-            upButton.getStyleClass().add("small-button");
-            downButton.getStyleClass().add("small-button");
+    // For stats that can be leveled up/down
+    private HBox createActionStatControl(String labelText, int currentValue, int baseValue,
+                                         Runnable upAction, Runnable downAction) {
+        HBox row = new HBox(5);
+        row.setAlignment(Pos.CENTER_LEFT);
 
-            upButton.setOnAction(e -> {
-                upAction.run();
-                refreshStatsDisplay();
-                RefreshEquipmentBox();
-            });
+        Text label = new Text(labelText);
+        Text value = new Text(String.valueOf(currentValue));
+        value.getStyleClass().add("numbers-especial-inventory");
 
-            downButton.setOnAction(e -> {
-                downAction.run();
-                refreshStatsDisplay();
-                RefreshEquipmentBox();
-            });
+        row.getChildren().addAll(label, value);
 
-            row.getChildren().addAll(upButton, downButton);
-        }
+        Button upButton = new Button("▲");
+        Button downButton = new Button("▼");
+        upButton.getStyleClass().add("small-button");
+        downButton.getStyleClass().add("small-button");
+
+        // Disable down button if at base value
+        downButton.setDisable(currentValue <= baseValue);
+
+        upButton.setOnAction(e -> {
+            upAction.run();
+            refreshStatsDisplay();
+            RefreshEquipmentBox();
+        });
+
+        downButton.setOnAction(e -> {
+            downAction.run();
+            refreshStatsDisplay();
+            RefreshEquipmentBox();
+        });
+
+        row.getChildren().addAll(upButton, downButton);
 
         return row;
     }
