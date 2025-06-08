@@ -129,11 +129,11 @@ public class Personagem implements Damage {
 
     public int computeLHandDamage() {
         double physical = this.LHand.getPhysicalATK()
-                + (this.Strength * this.RHand.getStrengthScaling())
-                + (this.Skill * this.RHand.getSkillScaling());
+                + (this.Strength * this.LHand.getStrengthScaling())
+                + (this.Skill * this.LHand.getSkillScaling());
 
         double blood = this.LHand.getBloodATK()
-                + (this.Bloodtinge * this.RHand.getBloodTingeScaling());
+                + (this.Bloodtinge * this.LHand.getBloodTingeScaling());
 
         double arcane = this.LHand.getArcaneATK()
                 + (this.Arcane * this.LHand.getArcaneScaling());

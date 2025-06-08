@@ -35,10 +35,13 @@ public class BattleController {
     }
 
     private void startPhase() {
-        int baseHp = 700 + phase * 100;
-        int baseAtk = 50 + phase * 5;
+        int baseHp = 500 + (int)(100 * Math.pow(1.4, phase));
+        int baseAtk = 30 + (int)(10 * Math.pow(1.2, phase));
         monster = new Monster("Phase " + phase + " Boss", baseHp, baseAtk);
-        System.out.println("--- Phase " + phase + " Monster HP: " + monster.getHp() + ", ATK: " + monster.getAttack() + " ---");
+
+        System.out.println("=== PHASE " + phase + " ===");
+        System.out.println("Monster: " + monster.getName());
+        System.out.println("HP: " + monster.getHp() + " | ATK: " + monster.getAttack());
     }
 
     public void attack() {
@@ -115,11 +118,20 @@ public class BattleController {
             System.out.println("New Phase about to Start!");
             phase++;
             if (phase > MAX_PHASES) {
-                System.out.println("All phases cleared");
+                System.out.println("All phases cleared! Victory!");
                 onGameComplete.run();
             } else {
-                System.out.println("Returning to Inventory");
-                onLevelUp.run();
+                System.out.println("Preparing next phase...");
+                new java.util.Timer().schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                startPhase();
+                                onLevelUp.run();
+                            }
+                        },
+                        1500 // 1.5 segundos de delay
+                );
             }
         } else {
             monsterTurn();
