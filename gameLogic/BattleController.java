@@ -2,6 +2,10 @@ package gameLogic;
 
 import Entitys.Personagem;
 import Entitys.Monster;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
+
 import java.util.Random;
 
 
@@ -18,19 +22,21 @@ public class BattleController {
     private int ammo = 20;
     private boolean counterAttackReady = false;
 
-
     private Runnable onLevelUp;
     private Runnable onGameReset;
     private Runnable onGameComplete;
+    private Runnable onLoadingStart;
 
     public BattleController(Personagem player,
                             Runnable onLevelUp,
                             Runnable onGameReset,
-                            Runnable onGameComplete) {
+                            Runnable onGameComplete,
+                            Runnable onLoadingStart) {
         this.player = player;
         this.onLevelUp = onLevelUp;
         this.onGameReset = onGameReset;
         this.onGameComplete = onGameComplete;
+        this.onLoadingStart = onLoadingStart;
         startPhase();
     }
 
@@ -115,23 +121,18 @@ public class BattleController {
     private void postPlayerAction() {
         if (monster.isDead()) {
             System.out.println("Monster defeated!");
+            System.out.println("Rewards!!!");
+            System.out.println("10+ Blood Echoes!");
+            player.setBloodEchoes(10);
             System.out.println("New Phase about to Start!");
             phase++;
+
             if (phase > MAX_PHASES) {
                 System.out.println("All phases cleared! Victory!");
                 onGameComplete.run();
             } else {
-                System.out.println("Preparing next phase...");
-                new java.util.Timer().schedule(
-                        new java.util.TimerTask() {
-                            @Override
-                            public void run() {
-                                startPhase();
-                                onLevelUp.run();
-                            }
-                        },
-                        1 // tempo de 1 milisegundo
-                );
+                    onLoadingStart.run();
+                    startPhase();
             }
         } else {
             monsterTurn();
@@ -139,6 +140,9 @@ public class BattleController {
     }
 
 
+    public int getCurrentPhase() {
+        return phase;
+    }
 
     private void monsterTurn() {
         int damage = monster.getAttack() + rng.nextInt(5);

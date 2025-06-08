@@ -77,7 +77,7 @@ public class App extends Application {
             Origin chosenOrigin = originPaneHolder[0].getChosenOrigin();
 
             if (chosenOrigin != null) {
-                this.showInventoryPane(chosenOrigin);
+                this.showInventoryPaneOrigin(chosenOrigin);
             } else {
                 System.out.println("AAAAAAAA");
             }
@@ -86,7 +86,21 @@ public class App extends Application {
         transitionTo(originPaneHolder[0].getRoot());
     }
 
-    private void showBattlePane(Personagem hunter) {
+    private void showBattlePane(Personagem hunter){
+
+        BattlePane battlePane = new BattlePane(
+                hunter,
+                controller::attack,
+                controller::block,
+                controller::shoot,
+                controller::dodge
+        );
+
+        transitionTo(battlePane.getRoot());
+
+    }
+
+    private void showFirstBattlePane(Personagem hunter) {
         controller = new BattleController(
                 hunter,
                 () -> System.out.println("Fase Won"),
@@ -97,6 +111,9 @@ public class App extends Application {
                 () -> {
                     System.out.println("Victory");
                     Platform.exit();
+                },
+                () -> {
+                    showInventoryPaneHunter(hunter);
                 }
         );
 
@@ -111,18 +128,26 @@ public class App extends Application {
         transitionTo(battlePane.getRoot());
     }
 
-    private void showInventoryPane(Origin origin){
+    private void showInventoryPaneHunter(Personagem hunter){
         final InventoryPane[] inventoryPaneHolder = new InventoryPane[1];
 
-        inventoryPaneHolder[0] = new InventoryPane(repo, origin, () -> {
-            hunter = inventoryPaneHolder[0].getHunter();
-            this.showBattlePane(hunter);
+        inventoryPaneHolder[0] = new InventoryPane(repo, hunter, () -> {
+            this.showBattlePane(inventoryPaneHolder[0].getHunter());
         });
 
         transitionTo(inventoryPaneHolder[0].getRoot());
     }
 
+    private void showInventoryPaneOrigin(Origin origin){
+        final InventoryPane[] inventoryPaneHolder = new InventoryPane[1];
 
+        inventoryPaneHolder[0] = new InventoryPane(repo, origin, () -> {
+            hunter = inventoryPaneHolder[0].getHunter();
+            this.showFirstBattlePane(hunter);
+        });
+
+        transitionTo(inventoryPaneHolder[0].getRoot());
+    }
 
     private void transitionTo(Node newRoot) {
 
@@ -154,5 +179,4 @@ public class App extends Application {
 
         fadeToBlack.play();
     }
-
 }

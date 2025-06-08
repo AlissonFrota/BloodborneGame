@@ -276,6 +276,11 @@ public class Personagem implements Damage {
                 break;
         }
     }
+
+    public void setBloodEchoes(int valor){
+        this.BloodEchoes += valor;
+    }
+
     public void setRuna1(Rune rune){
         this.Runa1 = rune;
         ComputeDerivedStats();
@@ -608,6 +613,5 @@ public class Personagem implements Damage {
     public Rune getRuna1() { return Runa1; }
     public Rune getRuna2() { return Runa2; }
     public Rune getRuna3() { return Runa3; }
-
 
 }
