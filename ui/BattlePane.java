@@ -1,6 +1,7 @@
 
 package ui;
 
+import Entitys.Personagem;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,7 +20,7 @@ public class BattlePane {
     private Button shootButton;
     private Button dogdeButton;
 
-    public BattlePane(Runnable onAttack, Runnable onBlock, Runnable onShoot, Runnable onDogde) {
+    public BattlePane(Personagem Hunter, Runnable onAttack, Runnable onBlock, Runnable onShoot, Runnable onDogde) {
         root = new StackPane();
         root.setAlignment(Pos.CENTER);
         root.getStyleClass().add("battle-pane");
@@ -138,18 +139,6 @@ public class BattlePane {
         StackPane.setAlignment(textBox, Pos.BOTTOM_CENTER);
         StackPane.setMargin(textBox, new Insets(500, 0, 300, 0));   // dialogueBox
         root.getChildren().add(overlayPane);
-    }
-
-    public BattlePane(Repository repo) {
-    }
-
-    private Button createTransparentButton(String text, Font font) {
-        Button btn = new Button(text);
-        btn.setFont(font);
-        btn.getStyleClass().add("transparent-button");
-        btn.setPrefSize(120, 40); // Ajuste conforme as áreas no seu PNG
-        return btn;
-
     }
 
     public StackPane getRoot() {

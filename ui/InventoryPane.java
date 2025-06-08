@@ -13,6 +13,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -51,7 +52,7 @@ public class InventoryPane extends TabPane {
 
     private int RuneIndex;
 
-    public InventoryPane(Repository repo, Origin origin) {
+    public InventoryPane(Repository repo, Origin origin, Runnable Continue) {
 
         hunter = new Personagem(origin, repo);
 
@@ -129,8 +130,12 @@ public class InventoryPane extends TabPane {
         detailPane.setPadding(new Insets(20));
         detailPane.setPrefWidth(450);
 
+        Button continueButton = new Button("Continue");
+        continueButton.setOnAction(e -> {
+            Continue.run();
+        });
 
-        HBox splitPane = new HBox(tabBox, detailPane, rightPane);
+        HBox splitPane = new HBox(tabBox, detailPane, rightPane, continueButton);
         root.setCenter(splitPane);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -324,6 +329,8 @@ public class InventoryPane extends TabPane {
 
         RefreshEquipmentBox();
     }
+
+    public Personagem getHunter() { return hunter; }
 
     private <T> ScrollPane createTilePane(List<T> items) {
         TilePane tile = new TilePane(TILE_HGAP, TILE_VGAP);

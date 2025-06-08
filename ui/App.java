@@ -1,6 +1,7 @@
 package ui;
 
 import Entitys.Origin;
+import Entitys.Personagem;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -44,7 +45,7 @@ public class App extends Application {
                     this.showOriginScreen();
                 },
                 () -> {
-                    this.showBattlePane();
+
                 },
                 () -> {
                     Platform.exit();
@@ -54,24 +55,7 @@ public class App extends Application {
         rootPane.getChildren().setAll(menuPane.getRoot());
     }
 
-    private void showBattlePane() {
-        BattlePane battlePane = new BattlePane(
-                () -> {
 
-                },
-                () -> {
-
-                },
-                () -> {
-
-                },
-                () -> {
-
-                }
-        );
-
-        transitionTo(battlePane.getRoot());
-    }
 
     //private void showInvetoryScreen() {
     //    InventoryPane inventoryPane = new InventoryPane(repo);
@@ -90,8 +74,7 @@ public class App extends Application {
             Origin chosenOrigin = originPaneHolder[0].getChosenOrigin();
 
             if (chosenOrigin != null) {
-                InventoryPane inventoryPane = new InventoryPane(repo, chosenOrigin);
-                transitionTo(inventoryPane.getRoot());
+                this.showInventoryPane(chosenOrigin);
             } else {
                 System.out.println("AAAAAAAA");
             }
@@ -100,10 +83,36 @@ public class App extends Application {
         transitionTo(originPaneHolder[0].getRoot());
     }
 
-    private void showBattleScreen() throws IOException {
-        BattlePane BattlePane = new BattlePane(repo);
-        transitionTo(BattlePane.getRoot());
+    private void showBattlePane(Personagem Hunter) {
+        BattlePane battlePane = new BattlePane(Hunter,
+                () -> {
+
+                },
+                () -> {
+
+                },
+                () -> {
+
+                },
+                () -> {
+
+                }
+        );
+
+        transitionTo(battlePane.getRoot());
     }
+
+    private void showInventoryPane(Origin origin){
+        final InventoryPane[] inventoryPaneHolder = new InventoryPane[1];
+
+        inventoryPaneHolder[0] = new InventoryPane(repo, origin, () -> {
+            Personagem Hunter = inventoryPaneHolder[0].getHunter();
+            this.showBattlePane(Hunter);
+        });
+
+        transitionTo(inventoryPaneHolder[0].getRoot());
+    }
+
 
 
     private void transitionTo(Node newRoot) {
