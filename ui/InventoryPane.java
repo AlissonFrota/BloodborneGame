@@ -52,12 +52,10 @@ public class InventoryPane extends TabPane {
 
     private int RuneIndex;
 
-    // Original constructor - creates new hunter
     public InventoryPane(Repository repo, Origin origin, Runnable Continue) {
         this(repo, new Personagem(origin, repo), Continue);
     }
 
-    // New constructor - uses existing hunter
     public InventoryPane(Repository repo, Personagem hunter, Runnable Continue) {
         this.hunter = hunter;
         initializeUI(repo, Continue);
@@ -129,7 +127,6 @@ public class InventoryPane extends TabPane {
     private void refreshStatsDisplay() {
         leftStats.getChildren().clear();
 
-        // Get base stats from origin
         Origin origin = hunter.getOrigin();
         int baseVitality = origin.getVitality();
         int baseEndurance = origin.getEndurence();
@@ -137,9 +134,8 @@ public class InventoryPane extends TabPane {
         int baseSkill = origin.getSkill();
         int baseBloodtinge = origin.getBloodtinge();
         int baseArcane = origin.getArcane();
-        int baseInsight = 0; // Insight typically starts at 0
+        int baseInsight = 0;
 
-        // Create stat controls with base values
         leftStats.getChildren().add(createNonActionStatControl("Blood Echoes: ", String.valueOf(hunter.getBloodEchoes())));
         leftStats.getChildren().add(createNonActionStatControl("Level: ", String.valueOf(hunter.getLevel())));
         leftStats.getChildren().add(createActionStatControl("Insight: ", hunter.getInsight(), baseInsight,
@@ -158,7 +154,6 @@ public class InventoryPane extends TabPane {
                 hunter::UpArcane, hunter::DownArcane));
     }
 
-    // For stats that cannot be changed (no buttons)
     private HBox createNonActionStatControl(String labelText, String valueText) {
         HBox row = new HBox(5);
         row.setAlignment(Pos.CENTER_LEFT);
@@ -171,7 +166,6 @@ public class InventoryPane extends TabPane {
         return row;
     }
 
-    // For stats that can be leveled up/down
     private HBox createActionStatControl(String labelText, int currentValue, int baseValue,
                                          Runnable upAction, Runnable downAction) {
         HBox row = new HBox(5);
@@ -188,7 +182,6 @@ public class InventoryPane extends TabPane {
         upButton.getStyleClass().add("small-button");
         downButton.getStyleClass().add("small-button");
 
-        // Disable down button if at base value
         downButton.setDisable(currentValue <= baseValue);
 
         upButton.setOnAction(e -> {
