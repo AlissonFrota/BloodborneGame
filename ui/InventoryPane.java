@@ -12,7 +12,6 @@ import Items.Weapon.RHandWeapon;
 import Items.Weapon.Weapon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -20,7 +19,6 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import repository.Repository;
@@ -55,9 +53,15 @@ public class InventoryPane extends TabPane {
     private int RuneIndex;
 
     public InventoryPane(Repository repo, Origin origin, Runnable Continue) {
+        this(repo, new Personagem(origin, repo), Continue);
+    }
 
-        hunter = new Personagem(origin, repo);
+    public InventoryPane(Repository repo, Personagem hunter, Runnable Continue) {
+        this.hunter = hunter;
+        initializeUI(repo, Continue);
+    }
 
+    private void initializeUI(Repository repo, Runnable Continue) {
         root = new BorderPane();
 
         new File(IMAGE_CACHE_DIR).mkdirs();
@@ -77,7 +81,6 @@ public class InventoryPane extends TabPane {
         for (Tab tab : List.of(rHandTab, lHandTab, runesTab, headArmorTab, chestArmorTab, legArmorTab, handArmorTab)) {
             tab.setClosable(false);
         }
-
 
         this.getTabs().addAll(rHandTab, lHandTab, runesTab, headArmorTab, chestArmorTab, legArmorTab, handArmorTab);
         tabBox.getStyleClass().add("tab-box");
@@ -112,9 +115,7 @@ public class InventoryPane extends TabPane {
         detailPane.getStyleClass().add("detail-stats");
 
         Button continueButton = new Button("Continue");
-        continueButton.setOnAction(e -> {
-            Continue.run();
-        });
+        continueButton.setOnAction(e -> Continue.run());
 
         HBox splitPane = new HBox(tabBox, detailPane, rightPane, continueButton);
         root.setCenter(splitPane);
@@ -133,32 +134,32 @@ public class InventoryPane extends TabPane {
         leftStats.getChildren().add(levelBox);
 
         leftStats.getChildren().add(createStatControl("Insight: ", String.valueOf(hunter.getInsight()),
-                () -> hunter.UpInsight(),
-                () -> hunter.DownInsight()));
+                hunter::UpInsight,
+                hunter::DownInsight));
 
         leftStats.getChildren().add(createStatControl("Vitality: ", String.valueOf(hunter.getVitality()),
-                () -> hunter.UpVitality(),
-                () -> hunter.DownVitality()));
+                hunter::UpVitality,
+                hunter::DownVitality));
 
         leftStats.getChildren().add(createStatControl("Endurance: ", String.valueOf(hunter.getEndurence()),
-                () -> hunter.UpEndurence(),
-                () -> hunter.DownEndurence()));
+                hunter::UpEndurence,
+                hunter::DownEndurence));
 
         leftStats.getChildren().add(createStatControl("Strength: ", String.valueOf(hunter.getStrength()),
-                () -> hunter.UpStrength(),
-                () -> hunter.DownStrength()));
+                hunter::UpStrength,
+                hunter::DownStrength));
 
         leftStats.getChildren().add(createStatControl("Skill: ", String.valueOf(hunter.getSkill()),
-                () -> hunter.UpSkill(),
-                () -> hunter.DownSkill()));
+                hunter::UpSkill,
+                hunter::DownSkill));
 
         leftStats.getChildren().add(createStatControl("BloodTinge: ", String.valueOf(hunter.getBloodtinge()),
-                () -> hunter.UpBloodtinge(),
-                () -> hunter.DownBloodtinge()));
+                hunter::UpBloodtinge,
+                hunter::DownBloodtinge));
 
         leftStats.getChildren().add(createStatControl("Arcane: ", String.valueOf(hunter.getArcane()),
-                () -> hunter.UpArcane(),
-                () -> hunter.DownArcane()));
+                hunter::UpArcane,
+                hunter::DownArcane));
     }
 
     private HBox createStatControl(String labelText, String valueText, Runnable upAction, Runnable downAction) {
@@ -195,7 +196,7 @@ public class InventoryPane extends TabPane {
         return row;
     }
 
-    private void RefreshEquipmentBox(){
+    private void RefreshEquipmentBox() {
         EquipBox.getChildren().clear();
 
         String RHhandPath = IMAGE_CACHE_DIR + "/" + hunter.getRHand().getName().replaceAll("[^a-zA-Z0-9]", "_") + ".png";
@@ -278,7 +279,6 @@ public class InventoryPane extends TabPane {
         return root;
     }
 
-
     private VBox createItemBox(Object item) {
         try {
             Method getName = item.getClass().getMethod("getName");
@@ -345,7 +345,6 @@ public class InventoryPane extends TabPane {
         }
     }
 
-
     private HBox createStatRow(String labelText, String valueText, String valueStyleClass) {
         Text label = new Text(labelText);
         label.getStyleClass().add("inventory-label");
@@ -409,7 +408,9 @@ public class InventoryPane extends TabPane {
         }
     }
 
-    public Personagem getHunter() { return hunter; }
+    public Personagem getHunter() {
+        return hunter;
+    }
 
     private <T> ScrollPane createTilePane(List<T> items) {
         TilePane tile = new TilePane(TILE_HGAP, TILE_VGAP);
@@ -418,7 +419,6 @@ public class InventoryPane extends TabPane {
         tile.setPrefTileWidth(TILE_SIZE);
         tile.setPrefTileHeight(TILE_SIZE);
         tile.setMaxWidth((TILE_SIZE + 20 + TILE_HGAP) * TILE_COLUMNS);
-
 
         for (T item : items) {
             VBox box = createItemBox(item);
@@ -429,5 +429,4 @@ public class InventoryPane extends TabPane {
         scroll.setFitToWidth(true);
         return scroll;
     }
-
 }
