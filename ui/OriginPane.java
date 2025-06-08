@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -28,6 +29,15 @@ public class OriginPane {
     private Text skillText;
     private Text bloodTingeText;
     private Text arcaneText;
+    private Text vitalityValue;
+    private Text enduranceValue;
+    private Text strengthValue;
+    private Text skillValue;
+    private Text bloodTingeValue;
+    private Text arcaneValue;
+    private Text levelValue;
+    private Text insightValue;
+    private Text bloodEchoesValue;
 
     public OriginPane(Repository repo, Runnable Continue) {
 
@@ -67,12 +77,12 @@ public class OriginPane {
             if (newVal != null) {
                 ChosenOrigin = newVal;
 
-                vitalityText.setText("Vitality: " + ChosenOrigin.getVitality());
-                enduranceText.setText("Endurance: " + ChosenOrigin.getEndurence());
-                strengthText.setText("Strength: " + ChosenOrigin.getStrength());
-                skillText.setText("Skill: " + ChosenOrigin.getSkill());
-                bloodTingeText.setText("BloodTinge: " + ChosenOrigin.getBloodtinge());
-                arcaneText.setText("Arcane: " + ChosenOrigin.getArcane());
+                vitalityValue.setText(String.valueOf(ChosenOrigin.getVitality()));
+                enduranceValue.setText(String.valueOf(ChosenOrigin.getEndurence()));
+                strengthValue.setText(String.valueOf(ChosenOrigin.getStrength()));
+                skillValue.setText(String.valueOf(ChosenOrigin.getSkill()));
+                bloodTingeValue.setText(String.valueOf(ChosenOrigin.getBloodtinge()));
+                arcaneValue.setText(String.valueOf(ChosenOrigin.getArcane()));
             }
         });
 
@@ -81,32 +91,68 @@ public class OriginPane {
         HBox.setMargin(titleLabel, new Insets(0, 100, 0, 0));
         hBox.getChildren().addAll(titleLabel, originComboBox);
 
-        VBox leftStats = new VBox(5);
-        leftStats.setPadding(new Insets(0, 0, 300, 0));
-        Text levelText = new Text("Level: 10");
-        levelText.getStyleClass().add("text-level");
-        Text insightText = new Text("Insight: 0");
+        VBox leftStats = new VBox(7);
+
+        Text levelText = new Text("Level: ");
+        Text insightText = new Text("Insight: ");
+        Text bloodEchoesText = new Text("Blood Echoes: ");
+        vitalityText = new Text("Vitality: ");
+        enduranceText = new Text("Endurance: ");
+        strengthText = new Text("Strength: ");
+        skillText = new Text("Skill: ");
+        bloodTingeText = new Text("BloodTinge: ");
+        arcaneText = new Text("Arcane: ");
+
+        levelValue = new Text("10");
+        insightValue = new Text("0");
+        bloodEchoesValue = new Text("300");
+        vitalityValue = new Text("-");
+        enduranceValue = new Text("-");
+        strengthValue = new Text("-");
+        skillValue = new Text("-");
+        bloodTingeValue = new Text("-");
+        arcaneValue = new Text("-");
+
+        // CSS
+
+        levelText.getStyleClass().add("text-level");    // CSS dos textos
         insightText.getStyleClass().add("text-level");
-        vitalityText = new Text("Vitality: -");
+        bloodEchoesText.getStyleClass().add("text-level");
         vitalityText.getStyleClass().add("text-level");
-        enduranceText = new Text("Endurance: -");
         enduranceText.getStyleClass().add("text-level");
-        strengthText = new Text("Strength: -");
         strengthText.getStyleClass().add("text-level");
-        skillText = new Text("Skill: -");
         skillText.getStyleClass().add("text-level");
-        bloodTingeText = new Text("BloodTinge: -");
         bloodTingeText.getStyleClass().add("text-level");
-        arcaneText = new Text("Arcane: -");
         arcaneText.getStyleClass().add("text-level");
 
+
+        levelValue.getStyleClass().add("numbers-especial");
+        insightValue.getStyleClass().add("numbers-especial");
+        bloodEchoesValue.getStyleClass().add("numbers-especial");
+        vitalityValue.getStyleClass().add("numbers-especial");    // CSS dos valores
+        enduranceValue.getStyleClass().add("numbers-especial");
+        strengthValue.getStyleClass().add("numbers-especial");
+        skillValue.getStyleClass().add("numbers-especial");
+        bloodTingeValue.getStyleClass().add("numbers-especial");
+        arcaneValue.getStyleClass().add("numbers-especial");
+
+
+        HBox levelBox = createStatBox(levelText, levelValue);
+        HBox insightBox = createStatBox(insightText, insightValue);
+        HBox bloodEchoesBox = createStatBox(bloodEchoesText,bloodEchoesValue);
+        HBox vitalityBox = createStatBox(vitalityText, vitalityValue);
+        HBox enduranceBox = createStatBox(enduranceText, enduranceValue);
+        HBox strengthBox = createStatBox(strengthText, strengthValue);
+        HBox skillBox = createStatBox(skillText, skillValue);
+        HBox bloodTingeBox = createStatBox(bloodTingeText, bloodTingeValue);
+        HBox arcaneBox = createStatBox(arcaneText, arcaneValue);
+
         leftStats.getChildren().addAll(
-                levelText, insightText, vitalityText, enduranceText, strengthText,
-                skillText, bloodTingeText, arcaneText
+                levelBox, insightBox,bloodEchoesBox, vitalityBox, enduranceBox, strengthBox,
+                skillBox, bloodTingeBox, arcaneBox
         );
 
         leftStats.setMouseTransparent(true);
-        leftStats.setAlignment(Pos.CENTER);
 
         Button continueButton = new Button("Continue");
         continueButton.setOnAction(e -> {
@@ -117,9 +163,24 @@ public class OriginPane {
         contentOverlay.setAlignment(Pos.TOP_CENTER);
         contentOverlay.setPadding(new Insets(50));
 
-        root.getChildren().addAll(banner, contentOverlay, leftStats);
+
+        Pane statsContainer = new Pane(leftStats);
+        statsContainer.setPickOnBounds(false);
+
+        leftStats.setLayoutX(1410);
+        leftStats.setLayoutY(280);
+
+        root.getChildren().addAll(banner, contentOverlay, statsContainer);
 
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+    }
+
+
+    // caixa dos status de origem
+    private HBox createStatBox(Text status, Text value) {
+        HBox box = new HBox(7, status, value);
+        box.setAlignment(Pos.CENTER);
+        return box;
     }
 
     public Origin getChosenOrigin() { return ChosenOrigin; }

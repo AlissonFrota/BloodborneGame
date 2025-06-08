@@ -11,6 +11,7 @@ import Items.Weapon.LHandWeapon;
 import Items.Weapon.RHandWeapon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Tab;
@@ -18,10 +19,7 @@ import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import repository.Repository;
 
@@ -57,7 +55,19 @@ public class InventoryPane extends TabPane {
 
         hunter = new Personagem(origin, repo);
 
+        StackPane rootStack = new StackPane();
+
         root = new BorderPane();
+
+        Image backgroundImage = new Image(getClass().getResourceAsStream("/images/inventory.png"));
+        BackgroundImage background = new BackgroundImage(
+                backgroundImage,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT,
+                BackgroundPosition.CENTER,
+                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
+
+        root.setBackground(new Background(background));
 
         new File(IMAGE_CACHE_DIR).mkdirs();
 
@@ -76,6 +86,11 @@ public class InventoryPane extends TabPane {
         for (Tab tab : List.of(rHandTab, lHandTab, runesTab, headArmorTab, chestArmorTab, legArmorTab, handArmorTab)) {
             tab.setClosable(false);
         }
+
+        ImageView inventorybanner = new ImageView(new Image(getClass().getResourceAsStream("/images/inventory.png")));
+        inventorybanner.setPreserveRatio(true);
+        inventorybanner.fitWidthProperty().bind(rootStack.widthProperty());
+        inventorybanner.setOpacity(0.9);
 
         this.getTabs().addAll(rHandTab, lHandTab, runesTab, headArmorTab, chestArmorTab, legArmorTab, handArmorTab);
 
@@ -113,6 +128,7 @@ public class InventoryPane extends TabPane {
         detailPane = new VBox(10, detailImage, detailName, detailStats);
         detailPane.setPadding(new Insets(20));
         detailPane.setPrefWidth(450);
+
 
         HBox splitPane = new HBox(tabBox, detailPane, rightPane);
         root.setCenter(splitPane);
@@ -152,30 +168,57 @@ public class InventoryPane extends TabPane {
 
         RightStats.getChildren().clear();
 
+        HBox hpBox = createStatRow("HP: ", String.valueOf(hunter.getHealth()), "hp-value");
+
+        // Stamina
+        HBox staminaBox = createStatRow("Stamina: ", String.valueOf(hunter.getStamina()), "stamina-value");
+
+        // Discovery
+        HBox discoveryBox = createStatRow("Discovery: ", String.valueOf(hunter.getDiscovery()), "secondary-value");
+
+        // Defense
+        HBox defenseBox = createStatRow("Def: ", String.valueOf(hunter.getDefense()), "defense-value");
+
+        // Resistances
+        HBox slowPoisonBox = createStatRow("Slow Poison Resist: ", String.valueOf(hunter.getSlowPoisonResist()), "resistance-value");
+        HBox rapidPoisonBox = createStatRow("Rapid Poison Resist: ", String.valueOf(hunter.getRapidPoisonResist()), "resistance-value");
+        HBox frenzyBox = createStatRow("Frenzy Resist: ", String.valueOf(hunter.getFrenzyResist()), "resistance-value");
+
+        // Special
+        HBox beastHoodBox = createStatRow("BeastHood: ", String.valueOf(hunter.getBestHood()), "special-value");
+
+        // Damage Reductions
+        HBox physicalBox = createStatRow("Physical Dmg Reduction: ", String.valueOf(hunter.getPhysicalDmgReduction()), "reduction-value");
+        HBox bluntBox = createStatRow("VS. Blunt: ", String.valueOf(hunter.getBluntDmgReduction()), "reduction-value");
+        HBox thrustBox = createStatRow("VS. Thrust: ", String.valueOf(hunter.getThrustDmgReduction()), "reduction-value");
+        HBox bloodBox = createStatRow("Blood Dmg Reduction: ", String.valueOf(hunter.getBloodDmgReduction()), "reduction-value");
+        HBox arcaneBox = createStatRow("Arcane Dmg Reduction: ", String.valueOf(hunter.getArcaneDmgReduction()), "reduction-value");
+        HBox fireBox = createStatRow("Fire Dmg Reduction: ", String.valueOf(hunter.getFireDmgReduction()), "reduction-value");
+        HBox boltBox = createStatRow("Bolt Dmg Reduction: ", String.valueOf(hunter.getBoltDmgReduction()), "reduction-value");
+
         RightStats.getChildren().addAll(
-                new Text("HP: " + hunter.getHealth()),
-                new Text("Stamina: " + hunter.getStamina()),
-                new Text("Discovery: " + hunter.getDiscovery()),
-                //new Text("R H Dmg: " + (rwp != null ? rwp.getAttack() : 0)),
-                //new Text("L H Dmg: " + (lwp != null ? lwp.getDefense() : 0)),
-                new Text("Def: " + hunter.getDefense()),
-                new Text("Slow Poison Resist: " + hunter.getSlowPoisonResist()),
-                new Text("Rapid Poison Resist: " + hunter.getRapidPoisonResist()),
-                new Text("Frenzy Resist: " + hunter.getFrenzyResist()),
-                new Text("BeastHood: " + hunter.getBestHood()),
-                new Text("Physical Dmg Reduction: " + hunter.getPhysicalDmgReduction()),
-                new Text("VS. Blunt: " + hunter.getBluntDmgReduction()),
-                new Text("VS. Thrust: " + hunter.getThrustDmgReduction()),
-                new Text("Blood Dmg Reduction: " + hunter.getBloodDmgReduction()),
-                new Text("Arcane Dmg Reduction: " + hunter.getArcaneDmgReduction()),
-                new Text("Fire Dmg Reduction: " + hunter.getFireDmgReduction()),
-                new Text("Bolt Dmg Reduction: " + hunter.getBoltDmgReduction())
+                hpBox,
+                staminaBox,
+                discoveryBox,
+                defenseBox,
+                slowPoisonBox,
+                rapidPoisonBox,
+                frenzyBox,
+                beastHoodBox,
+                physicalBox,
+                bluntBox,
+                thrustBox,
+                bloodBox,
+                arcaneBox,
+                fireBox,
+                boltBox
         );
     }
 
     public Parent getRoot() {
         return root;
     }
+
 
     private VBox createItemBox(Object item) {
         try {
@@ -243,6 +286,22 @@ public class InventoryPane extends TabPane {
         }
     }
 
+
+    private HBox createStatRow(String labelText, String valueText, String valueStyleClass) {
+        Text label = new Text(labelText);
+        label.getStyleClass().add("inventory-label");
+
+        Text value = new Text(valueText);
+        value.getStyleClass().add("numbers-especial-inventory");
+        value.getStyleClass().add(valueStyleClass);
+
+        HBox row = new HBox(5, label, value);
+        row.getStyleClass().add("inventory-label");
+        row.setAlignment(Pos.CENTER_RIGHT);
+
+        return row;
+    }
+
     private void handleSelection(Object item) {
         if(item instanceof RHandWeapon){
             hunter.setRHand((RHandWeapon) item);
@@ -274,6 +333,7 @@ public class InventoryPane extends TabPane {
         tile.setPrefTileHeight(TILE_SIZE);
         tile.setMaxWidth((TILE_SIZE + 20 + TILE_HGAP) * TILE_COLUMNS);
 
+
         for (T item : items) {
             VBox box = createItemBox(item);
             tile.getChildren().add(box);
@@ -283,4 +343,5 @@ public class InventoryPane extends TabPane {
         scroll.setFitToWidth(true);
         return scroll;
     }
+
 }
