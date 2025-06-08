@@ -91,7 +91,8 @@ public class OriginPane {
         HBox.setMargin(titleLabel, new Insets(0, 100, 0, 0));
         hBox.getChildren().addAll(titleLabel, originComboBox);
 
-        VBox leftStats = new VBox(7);
+        VBox leftStats = new VBox(0);
+        VBox settedStats = new VBox(0);
 
         Text levelText = new Text("Level: ");
         Text insightText = new Text("Insight: ");
@@ -137,19 +138,23 @@ public class OriginPane {
         arcaneValue.getStyleClass().add("numbers-especial");
 
 
-        HBox levelBox = createStatBox(levelText, levelValue);
-        HBox insightBox = createStatBox(insightText, insightValue);
-        HBox bloodEchoesBox = createStatBox(bloodEchoesText,bloodEchoesValue);
-        HBox vitalityBox = createStatBox(vitalityText, vitalityValue);
-        HBox enduranceBox = createStatBox(enduranceText, enduranceValue);
-        HBox strengthBox = createStatBox(strengthText, strengthValue);
-        HBox skillBox = createStatBox(skillText, skillValue);
-        HBox bloodTingeBox = createStatBox(bloodTingeText, bloodTingeValue);
-        HBox arcaneBox = createStatBox(arcaneText, arcaneValue);
+        HBox levelBox = createStatBox1(levelText, levelValue);
+        HBox insightBox = createStatBox1(insightText, insightValue);
+        HBox bloodEchoesBox = createStatBox1(bloodEchoesText,bloodEchoesValue);
+        HBox vitalityBox = createStatBox2(vitalityText, vitalityValue);
+        HBox enduranceBox = createStatBox2(enduranceText, enduranceValue);
+        HBox strengthBox = createStatBox2(strengthText, strengthValue);
+        HBox skillBox = createStatBox2(skillText, skillValue);
+        HBox bloodTingeBox = createStatBox2(bloodTingeText, bloodTingeValue);
+        HBox arcaneBox = createStatBox2(arcaneText, arcaneValue);
 
         leftStats.getChildren().addAll(
-                levelBox, insightBox,bloodEchoesBox, vitalityBox, enduranceBox, strengthBox,
+                vitalityBox, enduranceBox, strengthBox,
                 skillBox, bloodTingeBox, arcaneBox
+        );
+
+        settedStats.getChildren().addAll(
+                levelBox,insightBox,bloodEchoesBox
         );
 
         leftStats.setMouseTransparent(true);
@@ -164,11 +169,14 @@ public class OriginPane {
         contentOverlay.setPadding(new Insets(50));
 
 
-        Pane statsContainer = new Pane(leftStats);
+        Pane statsContainer = new Pane(leftStats, settedStats);
         statsContainer.setPickOnBounds(false);
 
         leftStats.setLayoutX(1410);
-        leftStats.setLayoutY(280);
+        leftStats.setLayoutY(540);
+
+        settedStats.setLayoutX(1420);
+        settedStats.setLayoutY(263);
 
         root.getChildren().addAll(banner, contentOverlay, statsContainer);
 
@@ -176,8 +184,16 @@ public class OriginPane {
     }
 
 
+    private HBox createStatBox1(Text status, Text value) {
+        HBox box = new HBox(2, status, value);
+        box.setAlignment(Pos.CENTER_LEFT);
+        box.setPadding(new Insets(0,0,-5,0));
+        return box;
+    }
+
+
     // caixa dos status de origem
-    private HBox createStatBox(Text status, Text value) {
+    private HBox createStatBox2(Text status, Text value) {
         HBox box = new HBox(7, status, value);
         box.setAlignment(Pos.CENTER);
         return box;
