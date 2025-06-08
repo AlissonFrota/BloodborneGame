@@ -11,6 +11,9 @@ public class BattleController {
     private int phase = 1;
     private final int MAX_PHASES = 5;
     private final Random rng = new Random();
+    private boolean playerBlocked = false;
+    private boolean playerDodged = false;
+    private int ammo = 20;
 
     private Runnable onLevelUp;
     private Runnable onGameReset;
@@ -36,24 +39,36 @@ public class BattleController {
 
     public void attack() {
         int damage = player.computeRHandDamage() + rng.nextInt(5);
+        if(playerDodged) { // Dano+ caso esquive no turno anterior
+            damage *= 1.5;
+            playerDodged = false;
+        }
         monster.takeDamage(damage);
         System.out.println("Player attacks for " + damage + " Monster HP now: " + monster.getHp());
         postPlayerAction();
     }
 
     public void block() {
-        System.out.println("Player Blocks");
+        playerBlocked = true;
+        System.out.println("Player prepares to block next attack");
         postPlayerAction();
     }
 
     public void shoot() {
-        //int damage = player.getRangedAttack() + rng.nextInt(8);
-        //monster.takeDamage(damage);
-        System.out.println("Player shoots " + " Monster HP now: " + monster.getHp());
-        postPlayerAction();
+        if(ammo > 0) {
+            int damage = player.computeLHandDamage() + rng.nextInt(8);
+            monster.takeDamage(damage);
+            ammo--; // perde 1 bala
+            System.out.println("Player shoots for " + damage + " Monster HP now: " + monster.getHp());
+            System.out.println("Ammo left: " + ammo + "/20");
+            postPlayerAction();
+        } else {
+            System.out.println("Without ammo!");
+        }
     }
 
     public void dodge() {
+        playerDodged = true;
         System.out.println("Player Dodges");
         postPlayerAction();
     }
@@ -76,6 +91,10 @@ public class BattleController {
 
     private void monsterTurn() {
         int damage = monster.getAttack() + rng.nextInt(5);
+        if(playerBlocked) {
+            damage /= 2; // Reduz dano pela metade
+            playerBlocked = false;
+        }
         player.takeDamage(damage);
         System.out.println("Monster strikes for " + damage + " Player HP now: " + player.getHp());
         if (player.isDead()) {

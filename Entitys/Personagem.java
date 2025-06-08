@@ -127,6 +127,23 @@ public class Personagem implements Damage {
         return (int) (physical + blood + arcane + bolt);
     }
 
+    public int computeLHandDamage() {
+        double physical = this.LHand.getPhysicalATK()
+                + (this.Strength * this.RHand.getStrengthScaling())
+                + (this.Skill * this.RHand.getSkillScaling());
+
+        double blood = this.LHand.getBloodATK()
+                + (this.Bloodtinge * this.RHand.getBloodTingeScaling());
+
+        double arcane = this.LHand.getArcaneATK()
+                + (this.Arcane * this.LHand.getArcaneScaling());
+
+        double bolt = this.RHand.getBoltATK()
+                + (this.Arcane * this.LHand.getArcaneScaling());
+
+        return (int) (physical + blood + arcane + bolt);
+    }
+
     @Override
     public int getHp() {
         return hp;
