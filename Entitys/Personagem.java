@@ -9,7 +9,7 @@ import Items.Weapon.LHandWeapon;
 import Items.Weapon.RHandWeapon;
 import repository.Repository;
 
-public class Personagem {
+public class Personagem implements Damage {
 
     LevelStatsTable statsTable;
 
@@ -58,6 +58,8 @@ public class Personagem {
     private RHandWeapon RHand;
     private LHandWeapon LHand;
 
+    private int hp;
+
     public Personagem(
         Origin Origin,
         Repository repo
@@ -93,6 +95,41 @@ public class Personagem {
         this.Runa3 = NoRune;
 
         ComputeDerivedStats();
+    }
+
+    @Override
+    public boolean isDead() {
+        return this.hp <= 0;
+    }
+
+    @Override
+    public void takeDamage(int damage) {
+        this.hp -= damage;
+        if (this.hp < 0) {
+            this.hp = 0;
+        }
+    }
+
+    public int computeRHandDamage() {
+        double physical = this.RHand.getPhysicalATK()
+                + (this.Strength * this.RHand.getStrengthScaling())
+                + (this.Skill * this.RHand.getSkillScaling());
+
+        double blood = this.RHand.getBloodATK()
+                + (this.Bloodtinge * this.RHand.getBloodTingeScaling());
+
+        double arcane = this.RHand.getArcaneATK()
+                + (this.Arcane * this.RHand.getArcaneScaling());
+
+        double bolt = this.RHand.getBoltATK()
+                + (this.Arcane * this.RHand.getArcaneScaling());
+
+        return (int) (physical + blood + arcane + bolt);
+    }
+
+    @Override
+    public int getHp() {
+        return hp;
     }
 
     public void UpInsight(){
@@ -177,6 +214,8 @@ public class Personagem {
     private void ComputeDerivedStats(){
         //Vida
         this.Health = (int)(this.statsTable.getHealth(this.Vitality));
+
+        this.hp = this.Health;
 
         if(this.Runa1.getName().contains("Clockwise")){
             this.Health = (int)(this.Health * Runa1.getValor());
@@ -475,4 +514,6 @@ public class Personagem {
     public Rune getRuna1() { return Runa1; }
     public Rune getRuna2() { return Runa2; }
     public Rune getRuna3() { return Runa3; }
+
+
 }

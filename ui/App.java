@@ -2,6 +2,7 @@ package ui;
 
 import Entitys.Origin;
 import Entitys.Personagem;
+import gameLogic.BattleController;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -21,6 +22,8 @@ public class App extends Application {
     private StackPane rootPane;
     private Repository repo;
 
+    private Personagem hunter;
+    private BattleController controller;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -55,8 +58,6 @@ public class App extends Application {
         rootPane.getChildren().setAll(menuPane.getRoot());
     }
 
-
-
     //private void showInvetoryScreen() {
     //    InventoryPane inventoryPane = new InventoryPane(repo);
     //     transitionTo(inventoryPane.getRoot());
@@ -83,20 +84,26 @@ public class App extends Application {
         transitionTo(originPaneHolder[0].getRoot());
     }
 
-    private void showBattlePane(Personagem Hunter) {
-        BattlePane battlePane = new BattlePane(Hunter,
+    private void showBattlePane(Personagem hunter) {
+        controller = new BattleController(
+                hunter,
+                () -> System.out.println("Fase Won"),
                 () -> {
-
+                    System.out.println("Game reset.");
+                    Platform.exit();
                 },
                 () -> {
-
-                },
-                () -> {
-
-                },
-                () -> {
-
+                    System.out.println("Victory");
+                    Platform.exit();
                 }
+        );
+
+        BattlePane battlePane = new BattlePane(
+                hunter,
+                controller::attack,
+                controller::block,
+                controller::shoot,
+                controller::dodge
         );
 
         transitionTo(battlePane.getRoot());
@@ -106,8 +113,8 @@ public class App extends Application {
         final InventoryPane[] inventoryPaneHolder = new InventoryPane[1];
 
         inventoryPaneHolder[0] = new InventoryPane(repo, origin, () -> {
-            Personagem Hunter = inventoryPaneHolder[0].getHunter();
-            this.showBattlePane(Hunter);
+            hunter = inventoryPaneHolder[0].getHunter();
+            this.showBattlePane(hunter);
         });
 
         transitionTo(inventoryPaneHolder[0].getRoot());
