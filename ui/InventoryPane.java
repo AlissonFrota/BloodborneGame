@@ -137,7 +137,9 @@ public class InventoryPane extends TabPane {
         int baseInsight = 0;
 
         leftStats.getChildren().add(createNonActionStatControl("Blood Echoes: ", String.valueOf(hunter.getBloodEchoes())));
+
         leftStats.getChildren().add(createNonActionStatControl("Level: ", String.valueOf(hunter.getLevel())));
+
         leftStats.getChildren().add(createActionStatControl("Insight: ", hunter.getInsight(), baseInsight,
                 hunter::UpInsight, hunter::DownInsight));
         leftStats.getChildren().add(createActionStatControl("Vitality: ", hunter.getVitality(), baseVitality,
@@ -159,6 +161,7 @@ public class InventoryPane extends TabPane {
         row.setAlignment(Pos.CENTER_LEFT);
 
         Text label = new Text(labelText);
+        label.getStyleClass().add("inventory-label");
         Text value = new Text(valueText);
         value.getStyleClass().add("numbers-especial-inventory");
 
@@ -172,6 +175,7 @@ public class InventoryPane extends TabPane {
         row.setAlignment(Pos.CENTER_LEFT);
 
         Text label = new Text(labelText);
+        label.getStyleClass().add("inventory-label");
         Text value = new Text(String.valueOf(currentValue));
         value.getStyleClass().add("numbers-especial-inventory");
 

@@ -1,3 +1,5 @@
+// battle
+
 package ui;
 
 import Entitys.Personagem;
@@ -54,18 +56,18 @@ public class BattlePane {
         boss.setFitHeight(1460);
         boss.setMouseTransparent(true);
         boss.setOpacity(0.75);
-
+        /*
         //camada 4: HUD Vida do Hunter
         ImageView enemy = new ImageView(new Image(getClass().getResourceAsStream("/images/amygdalaTitle.png")));
         enemy.setPreserveRatio(true);
         enemy.setFitHeight(300);
         enemy.setTranslateX(150); // Posicionamento à direita
 
-
+        */
         // 5. Camada de UI (caixa de diálogo com áreas para botões)
         ImageView dialogueBox = new ImageView(new Image(getClass().getResourceAsStream("/images/dialoguebox2.png")));
         dialogueBox.setPreserveRatio(false);
-        dialogueBox.setFitWidth(2040);
+        dialogueBox.setFitWidth(2040);  // molde do HUD
         dialogueBox.setFitHeight(1050);
         dialogueBox.setOpacity(0.65);
 
@@ -74,7 +76,7 @@ public class BattlePane {
         ImageView textBox = new ImageView(new Image(getClass().getResourceAsStream("/images/textbox.png")));
         textBox.setPreserveRatio(true);
         textBox.setFitWidth(620);
-        textBox.setFitHeight(500);
+        textBox.setFitHeight(500);          //caixa de texto
         textBox.setLayoutY(100);
         textBox.setOpacity(0.45);
 
@@ -91,33 +93,33 @@ public class BattlePane {
 
         attackButton = new Button("Attack");
         attackButton.getStyleClass().add("battle-button");
-        attackButton.setFont(customFont);
+        attackButton.setFont(customFont);                   //Botão de ataque
         attackButton.setOnAction(e -> onAttack.run());
         StackPane.setAlignment(attackButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(attackButton, new Insets(0, 200, 100, 0));
 
         blockButton = new Button("Block");
         blockButton.getStyleClass().add("battle-button");
-        blockButton.setFont(customFont);
+        blockButton.setFont(customFont);                    //Botão de Bloqueio
         blockButton.setOnAction(e -> onBlock.run());
         StackPane.setAlignment(blockButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(blockButton, new Insets(0, 0, 100, 0));
 
         shootButton = new Button("Shoot");
         shootButton.getStyleClass().add("battle-button");
-        shootButton.setFont(customFont);
+        shootButton.setFont(customFont);                    //Botão de Tiro
         shootButton.setOnAction(e -> onShoot.run());
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(shootButton, new Insets(0, 0, 100, 200));
 
         dogdeButton = new Button("Dogde");
-        dogdeButton.getStyleClass().add("battle-button");
+        dogdeButton.getStyleClass().add("battle-button");   //Botão de esquiva
         dogdeButton.setFont(customFont);
         dogdeButton.setOnAction(e -> onDogde.run());
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(shootButton, new Insets(0, 0, 40, 200));
 
-        battleTerminal = new TextArea();
+        battleTerminal = new TextArea();        //texto do terminal in-game
         battleTerminal.setEditable(false);
         battleTerminal.setWrapText(true);
         battleTerminal.setPrefRowCount(4);
@@ -143,7 +145,7 @@ public class BattlePane {
 
         root.getChildren().addAll(
                 background,
-                boss,
+                boss,                   //sobreposições da Pane
                 /*
                 enemy,
                 player,
