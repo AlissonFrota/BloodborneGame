@@ -1,10 +1,12 @@
-
 package ui;
 
 import Entitys.Personagem;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -19,6 +21,12 @@ public class BattlePane {
     private Button blockButton;
     private Button shootButton;
     private Button dogdeButton;
+    private TextArea battleLog;
+    private Label playerHPLabel;
+    private Label monsterHPLabel;
+    private Label ammoLabel;
+    private Label phaseLabel;
+    private TextArea battleTerminal;
 
     public BattlePane(Personagem Hunter, Runnable onAttack, Runnable onBlock, Runnable onShoot, Runnable onDogde) {
         root = new StackPane();
@@ -109,6 +117,25 @@ public class BattlePane {
         StackPane.setAlignment(shootButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(shootButton, new Insets(0, 0, 40, 200));
 
+        battleTerminal = new TextArea();
+        battleTerminal.setEditable(false);
+        battleTerminal.setWrapText(true);
+        battleTerminal.setPrefRowCount(4);
+        battleTerminal.setMaxWidth(600);
+        battleTerminal.setMaxHeight(130);
+        battleTerminal.autosize();
+        battleTerminal.setStyle("-fx-control-inner-background: #0a0a0a; " +
+                "-fx-text-fill: #e0e0e0; " +
+                "-fx-font-family: 'Times New Roman'; " +
+                "-fx-font-size: 20px; " +
+                "-fx-opacity: 0.9;");
+        StackPane.setAlignment(battleTerminal, Pos.BOTTOM_CENTER); // Alinhamento base
+        StackPane.setMargin(battleTerminal, new Insets(0, 0, 250, 0));
+
+        StackPane terminalContainer = new StackPane(battleTerminal);
+        terminalContainer.setAlignment(Pos.BOTTOM_CENTER);
+        StackPane.setMargin(terminalContainer, new Insets(0, 0, 55, 0));
+
         VBox buttonBox = new VBox(15, attackButton, blockButton, shootButton, dogdeButton);
         buttonBox.setAlignment(Pos.CENTER);
         buttonBox.setTranslateY(180);
@@ -122,8 +149,10 @@ public class BattlePane {
                 player,
                 */
                 dialogueBox,
+                terminalContainer,
                 textBox,
                 buttonContainer
+
 
         );
 
@@ -139,6 +168,13 @@ public class BattlePane {
         StackPane.setAlignment(textBox, Pos.BOTTOM_CENTER);
         StackPane.setMargin(textBox, new Insets(500, 0, 300, 0));   // dialogueBox
         root.getChildren().add(overlayPane);
+    }
+
+    public void logToTerminal(String message) {
+        Platform.runLater(() -> {
+            battleTerminal.appendText(message + "\n");
+            battleTerminal.setScrollTop(Double.MAX_VALUE);
+        });
     }
 
     public StackPane getRoot() {

@@ -95,6 +95,8 @@ public class App extends Application {
                 controller::shoot,
                 controller::dodge
         );
+        controller.setBattlePane(battlePane);
+        controller.startPhase();
 
         transitionTo(battlePane.getRoot());
 
@@ -103,7 +105,11 @@ public class App extends Application {
     private void showFirstBattlePane(Personagem hunter) {
         controller = new BattleController(
                 hunter,
-                () -> System.out.println("Fase Won"),
+                () -> {
+                    // Fase vencida
+                    System.out.println("Phase completed! Returning to inventory...");
+                    showInventoryPaneHunter(hunter);
+                },
                 () -> {
                     System.out.println("Game reset.");
                     Platform.exit();
@@ -124,6 +130,8 @@ public class App extends Application {
                 controller::shoot,
                 controller::dodge
         );
+        controller.setBattlePane(battlePane);
+        controller.startPhase();
 
         transitionTo(battlePane.getRoot());
     }
