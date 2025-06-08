@@ -60,16 +60,6 @@ public class InventoryPane extends TabPane {
 
         root = new BorderPane();
 
-        Image backgroundImage = new Image(getClass().getResourceAsStream("/images/inventory.png"));
-        BackgroundImage background = new BackgroundImage(
-                backgroundImage,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundRepeat.NO_REPEAT,
-                BackgroundPosition.CENTER,
-                new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true));
-
-        root.setBackground(new Background(background));
-
         new File(IMAGE_CACHE_DIR).mkdirs();
 
         VBox tabBox = new VBox();
@@ -88,13 +78,9 @@ public class InventoryPane extends TabPane {
             tab.setClosable(false);
         }
 
-        ImageView inventorybanner = new ImageView(new Image(getClass().getResourceAsStream("/images/inventory.png")));
-        inventorybanner.setPreserveRatio(true);
-        inventorybanner.fitWidthProperty().bind(rootStack.widthProperty());
-        inventorybanner.setOpacity(0.9);
 
         this.getTabs().addAll(rHandTab, lHandTab, runesTab, headArmorTab, chestArmorTab, legArmorTab, handArmorTab);
-
+        tabBox.getStyleClass().add("tab-box");
         detailImage = new ImageView();
         detailImage.setFitWidth(250);
         detailImage.setFitHeight(250);
@@ -125,10 +111,14 @@ public class InventoryPane extends TabPane {
 
         HBox statsBox = new HBox(20, leftStats, RightStats);
         HBox rightPane = new HBox(5, EquipBox, statsBox);
+        statsBox.getStyleClass().add("detail-stats");
 
         detailPane = new VBox(10, detailImage, detailName, detailStats);
         detailPane.setPadding(new Insets(20));
         detailPane.setPrefWidth(450);
+        detailName.getStyleClass().add("detail-title");
+        detailStats.getStyleClass().add("detail-stats");
+        detailPane.getStyleClass().add("detail-stats");
 
         Button continueButton = new Button("Continue");
         continueButton.setOnAction(e -> {
@@ -138,6 +128,7 @@ public class InventoryPane extends TabPane {
         HBox splitPane = new HBox(tabBox, detailPane, rightPane, continueButton);
         root.setCenter(splitPane);
 
+        root.getStyleClass().add("root-inventory");
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
