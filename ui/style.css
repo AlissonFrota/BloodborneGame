@@ -7,26 +7,26 @@
 
 .button {
     -fx-font-family: "Gothical";
-        -fx-font-size: 50px;
-        -fx-text-fill: white;
-        -fx-background-color: transparent;
-        -fx-border-width: 0;
-        -fx-padding: 0;
+    -fx-font-size: 50px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
 }
 
 .button-title {
     -fx-font-family: "Gothical";
-        -fx-font-size: 100px;
-        -fx-text-fill: white;
-        -fx-background-color: transparent;
-        -fx-border-width: 0;
-        -fx-padding: 0;
+    -fx-font-size: 100px;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
 }
 
 .numbers-especial {
-        -fx-font-family: "GothicPixels";
-        -fx-font-size: 35px;
-        -fx-fill: white;
+    -fx-font-family: "GothicPixels";
+    -fx-font-size: 35px;
+    -fx-fill: white;
 }
 
 
@@ -168,16 +168,16 @@
 
 
 .inventory-label {
-        -fx-font-family: "Gothical";
-        -fx-padding: 0 2px 3px 0;
-        -fx-font-size: 40px;
-        -fx-fill: white;
+    -fx-font-family: "Gothical";
+    -fx-padding: 0 2px 3px 0;
+    -fx-font-size: 40px;
+    -fx-fill: white;
 }
 
 .numbers-especial-inventory {
-        -fx-font-family: "GothicPixels";
-        -fx-font-size: 25px;
-        -fx-fill: white;
+    -fx-font-family: "GothicPixels";
+    -fx-font-size: 25px;
+    -fx-fill: white;
 }
 
 .tab:selected {
@@ -205,23 +205,20 @@
     -fx-spacing: 10px;
 }
 
-// easter-egg
-.easter-egg {
-    -fx-font-family: "Gothical";
-            -fx-background-color: transparent;
-                -fx-border-color: transparent;
-                -fx-text-fill: transparent;
-                -fx-padding: 0;
-                -fx-cursor: hand;
-                -fx-background-radius: 2px;
-                -fx-effect: dropshadow(three-pass-box, transparent, 0, 0, 0, 0);
-                -fx-transition: all 0.2s ease-in-out;
+.small-button {
+    -fx-font-family: "Arial";
+    -fx-font-size: 8px;
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+    -fx-padding: 1px;
 }
-.easter-egg:hover {
-    -fx-background-color: black;
-    -fx-border-color: black;
-    -fx-text-fill: white;
+
+.numbers-especial-inventory {
+    -fx-font-weight: bold;
+    -fx-fill: #ffcc00;
 }
+
+
 
 
 

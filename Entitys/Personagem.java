@@ -14,7 +14,7 @@ public class Personagem implements Damage {
     LevelStatsTable statsTable;
 
     private int Level;
-    
+
     private int Vitality;
     private int Endurence;
     private int Strength;
@@ -61,15 +61,15 @@ public class Personagem implements Damage {
     private int hp;
 
     public Personagem(
-        Origin Origin,
-        Repository repo
-        ){
+            Origin Origin,
+            Repository repo
+    ){
 
         this.statsTable = new LevelStatsTable(repo.getLevelStatsTable());
-        
-        this.Origin = Origin; 
 
-        this.BloodEchoes = 300;
+        this.Origin = Origin;
+
+        this.BloodEchoes = 10;
 
         this.Level = 10;
         this.Insight = 0;
@@ -150,32 +150,109 @@ public class Personagem implements Damage {
     }
 
     public void UpInsight(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Insight++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownInsight(){
+        this.Insight--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
     public void UpVitality(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Vitality++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownVitality(){
+        this.Vitality--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
     public void UpStrength(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Strength++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownStrength(){
+        this.Strength--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
     public void UpSkill(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Skill++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownSkill(){
+        this.Skill--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
     public void UpEndurence(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Endurence++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownEndurence(){
+        this.Endurence--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
     public void UpBloodtinge(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Bloodtinge++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownBloodtinge(){
+        this.Bloodtinge--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
     public void UpArcane(){
+        if(this.BloodEchoes <= 0){
+            return;
+        }
         this.Arcane++;
         this.Level++;
+        this.BloodEchoes--;
+        ComputeDerivedStats();
+    }
+    public void DownArcane(){
+        this.Arcane--;
+        this.Level--;
+        this.BloodEchoes++;
+        ComputeDerivedStats();
     }
 
     public void setRHand(RHandWeapon RHand) {
@@ -270,7 +347,7 @@ public class Personagem implements Damage {
         if(this.Runa3.getName().contains("Eye")){
             this.Discovery += (int)(Runa3.getValor());
         }
-        
+
         //Defence
 
         this.Defense = (int)(this.statsTable.getDefence(this.Level));
@@ -317,9 +394,9 @@ public class Personagem implements Damage {
         if(this.Runa3.getName().contains("Clear Deep")){
             this.SlowPoisonResist += (int)Runa3.getValor();
         }
-        
+
         //RapidPoisonResist
-        
+
         this.RapidPoisonResist = (int)this.statsTable.getRapidPoisonResist(this.Endurence);
         this.RapidPoisonResist += this.Head.getRapidPoisonRES() + this.Chest.getRapidPoisonRES() + this.Legs.getRapidPoisonRES() + this.Hands.getRapidPoisonRES();
 
@@ -391,7 +468,7 @@ public class Personagem implements Damage {
         //Blunt Damage Reduction
 
         this.BluntDmgReduction = this.Head.getVsBluntDefence() + this.Chest.getVsBluntDefence() + this.Legs.getVsBluntDefence() + this.Hands.getVsBluntDefence();
-        
+
         //Thurst Damege Reduction
 
         this.ThrustDmgReduction = this.Head.getVsThrustDefence() + this.Chest.getVsThrustDefence() + this.Legs.getVsThrustDefence() + this.Hands.getVsThrustDefence();

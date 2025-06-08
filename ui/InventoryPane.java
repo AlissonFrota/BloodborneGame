@@ -9,6 +9,7 @@ import Items.Armor.LegArmor;
 import Items.Rune.Rune;
 import Items.Weapon.LHandWeapon;
 import Items.Weapon.RHandWeapon;
+import Items.Weapon.Weapon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -45,6 +46,7 @@ public class InventoryPane extends TabPane {
     private Text detailName;
     private Text detailStats;
     private VBox EquipBox;
+    private VBox leftStats;
 
     private VBox RightStats;
 
@@ -55,8 +57,6 @@ public class InventoryPane extends TabPane {
     public InventoryPane(Repository repo, Origin origin, Runnable Continue) {
 
         hunter = new Personagem(origin, repo);
-
-        StackPane rootStack = new StackPane();
 
         root = new BorderPane();
 
@@ -96,18 +96,9 @@ public class InventoryPane extends TabPane {
 
         RefreshEquipmentBox();
 
-        VBox leftStats = new VBox(5);
+        leftStats = new VBox(5);
         leftStats.setPadding(new Insets(10));
-        leftStats.getChildren().addAll(
-                new Text("Level: " + hunter.getLevel()),
-                new Text("Insight: " + hunter.getInsight()),
-                new Text("Vitality: " + hunter.getVitality()),
-                new Text("Endurance: " + hunter.getEndurence()),
-                new Text("Strength: " + hunter.getStrength()),
-                new Text("Skill: " + hunter.getSkill()),
-                new Text("BloodTinge: " + hunter.getBloodtinge()),
-                new Text("Arcane: " + hunter.getArcane())
-        );
+        refreshStatsDisplay();
 
         HBox statsBox = new HBox(20, leftStats, RightStats);
         HBox rightPane = new HBox(5, EquipBox, statsBox);
@@ -130,6 +121,78 @@ public class InventoryPane extends TabPane {
 
         root.getStyleClass().add("root-inventory");
         root.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+    }
+
+    private void refreshStatsDisplay() {
+        leftStats.getChildren().clear();
+
+        HBox echoesBox = createStatControl("Blood Echoes: ", String.valueOf(hunter.getBloodEchoes()), null, null);
+        leftStats.getChildren().add(echoesBox);
+
+        HBox levelBox = createStatControl("Level: ", String.valueOf(hunter.getLevel()), null, null);
+        leftStats.getChildren().add(levelBox);
+
+        leftStats.getChildren().add(createStatControl("Insight: ", String.valueOf(hunter.getInsight()),
+                () -> hunter.UpInsight(),
+                () -> hunter.DownInsight()));
+
+        leftStats.getChildren().add(createStatControl("Vitality: ", String.valueOf(hunter.getVitality()),
+                () -> hunter.UpVitality(),
+                () -> hunter.DownVitality()));
+
+        leftStats.getChildren().add(createStatControl("Endurance: ", String.valueOf(hunter.getEndurence()),
+                () -> hunter.UpEndurence(),
+                () -> hunter.DownEndurence()));
+
+        leftStats.getChildren().add(createStatControl("Strength: ", String.valueOf(hunter.getStrength()),
+                () -> hunter.UpStrength(),
+                () -> hunter.DownStrength()));
+
+        leftStats.getChildren().add(createStatControl("Skill: ", String.valueOf(hunter.getSkill()),
+                () -> hunter.UpSkill(),
+                () -> hunter.DownSkill()));
+
+        leftStats.getChildren().add(createStatControl("BloodTinge: ", String.valueOf(hunter.getBloodtinge()),
+                () -> hunter.UpBloodtinge(),
+                () -> hunter.DownBloodtinge()));
+
+        leftStats.getChildren().add(createStatControl("Arcane: ", String.valueOf(hunter.getArcane()),
+                () -> hunter.UpArcane(),
+                () -> hunter.DownArcane()));
+    }
+
+    private HBox createStatControl(String labelText, String valueText, Runnable upAction, Runnable downAction) {
+        HBox row = new HBox(5);
+        row.setAlignment(Pos.CENTER_LEFT);
+
+        Text label = new Text(labelText);
+        Text value = new Text(valueText);
+        value.getStyleClass().add("numbers-especial-inventory");
+
+        row.getChildren().addAll(label, value);
+
+        if (upAction != null && downAction != null) {
+            Button upButton = new Button("▲");
+            Button downButton = new Button("▼");
+            upButton.getStyleClass().add("small-button");
+            downButton.getStyleClass().add("small-button");
+
+            upButton.setOnAction(e -> {
+                upAction.run();
+                refreshStatsDisplay();
+                RefreshEquipmentBox();
+            });
+
+            downButton.setOnAction(e -> {
+                downAction.run();
+                refreshStatsDisplay();
+                RefreshEquipmentBox();
+            });
+
+            row.getChildren().addAll(upButton, downButton);
+        }
+
+        return row;
     }
 
     private void RefreshEquipmentBox(){
@@ -299,26 +362,51 @@ public class InventoryPane extends TabPane {
     }
 
     private void handleSelection(Object item) {
-        if(item instanceof RHandWeapon){
-            hunter.setRHand((RHandWeapon) item);
-        } else if (item instanceof LHandWeapon){
-            hunter.setLHand((LHandWeapon) item);
-        } else if (item instanceof HeadArmor){
+        if (item instanceof RHandWeapon) {
+            RHandWeapon weapon = (RHandWeapon) item;
+            if (!meetsWeaponRequirements(weapon)) {
+                System.out.println("Cannot equip " + weapon.getName() + ": Insufficient stats");
+                return;
+            }
+            hunter.setRHand(weapon);
+        } else if (item instanceof LHandWeapon) {
+            LHandWeapon weapon = (LHandWeapon) item;
+            if (!meetsWeaponRequirements(weapon)) {
+                System.out.println("Cannot equip " + weapon.getName() + ": Insufficient stats");
+                return;
+            }
+            hunter.setLHand(weapon);
+        } else if (item instanceof HeadArmor) {
             hunter.setHeadArmor((HeadArmor) item);
-        } else if (item instanceof ChestArmor){
+        } else if (item instanceof ChestArmor) {
             hunter.setChestArmor((ChestArmor) item);
-        } else if (item instanceof LegArmor){
+        } else if (item instanceof LegArmor) {
             hunter.setLegArmor((LegArmor) item);
-        } else if (item instanceof HandArmor){
+        } else if (item instanceof HandArmor) {
             hunter.setHandArmor((HandArmor) item);
         } else if (item instanceof Rune) {
             RuneIndex = (RuneIndex + 1) % 3;
             hunter.setRuna((Rune) item, RuneIndex);
         }
 
-
-
         RefreshEquipmentBox();
+    }
+
+    private boolean meetsWeaponRequirements(Weapon weapon) {
+        try {
+            int str = weapon.getStrengthReq();
+            int skl = weapon.getSkillReq();
+            int blt = weapon.getBoltATK();
+            int arc = weapon.getArcaneReq();
+
+            return hunter.getStrength() >= str &&
+                    hunter.getSkill() >= skl &&
+                    hunter.getBloodtinge() >= blt &&
+                    hunter.getArcane() >= arc;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public Personagem getHunter() { return hunter; }
