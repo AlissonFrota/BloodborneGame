@@ -13,7 +13,11 @@ public class BattleController {
     private final Random rng = new Random();
     private boolean playerBlocked = false;
     private boolean playerDodged = false;
+    private boolean playerShoot = false;
+    private boolean criticalchance;
     private int ammo = 20;
+    private boolean counterAttackReady = false;
+
 
     private Runnable onLevelUp;
     private Runnable onGameReset;
@@ -31,51 +35,84 @@ public class BattleController {
     }
 
     private void startPhase() {
-        int baseHp = 400 + phase * 100;
-        int baseAtk = 10 + phase * 5;
+        int baseHp = 700 + phase * 100;
+        int baseAtk = 50 + phase * 5;
         monster = new Monster("Phase " + phase + " Boss", baseHp, baseAtk);
         System.out.println("--- Phase " + phase + " Monster HP: " + monster.getHp() + ", ATK: " + monster.getAttack() + " ---");
     }
 
     public void attack() {
-        int damage = player.computeRHandDamage() + rng.nextInt(5);
-        if(playerDodged) { // Dano+ caso esquive no turno anterior
-            damage *= 1.5;
-            playerDodged = false;
+        int baseDamage = player.computeRHandDamage();
+        int damage = baseDamage + rng.nextInt(5);
+
+        if (counterAttackReady) {
+            damage = (int)(damage * 1.5);
+            System.out.println("Counter-attack bonus!");
+            counterAttackReady = false;
         }
+
         monster.takeDamage(damage);
-        System.out.println("Player attacks for " + damage + " Monster HP now: " + monster.getHp());
+        System.out.println("Player attacks for " + damage + " damage!");
+        System.out.println("Monster HP: " + monster.getHp());
         postPlayerAction();
     }
 
     public void block() {
         playerBlocked = true;
-        System.out.println("Player prepares to block next attack");
+        System.out.println("Player assumes defensive stance");
         postPlayerAction();
     }
 
     public void shoot() {
         if(ammo > 0) {
-            int damage = player.computeLHandDamage() + rng.nextInt(8);
-            monster.takeDamage(damage);
-            ammo--; // perde 1 bala
-            System.out.println("Player shoots for " + damage + " Monster HP now: " + monster.getHp());
-            System.out.println("Ammo left: " + ammo + "/20");
-            postPlayerAction();
-        } else {
-            System.out.println("Without ammo!");
-        }
-    }
 
-    public void dodge() {
-        playerDodged = true;
-        System.out.println("Player Dodges");
+            int hitChance = 60 + player.getSkill();
+            hitChance = Math.min(hitChance, 95);
+            boolean Hit = (rng.nextInt(100) < hitChance);
+
+            if(Hit) {
+                int baseDamage = player.computeLHandDamage();
+                int randomBonus = rng.nextInt(8);
+                int totalDamage = baseDamage + randomBonus;
+
+                boolean isCritical = (rng.nextInt(100) < player.getSkill());
+                if(isCritical) {
+                    totalDamage *= 2;
+                    System.out.println("Critical hit!");
+                }
+
+                monster.takeDamage(totalDamage);
+                System.out.println("Player shoots and hits for " + totalDamage + " damage!" + " Monster HP now: " + monster.getHp());
+            } else {
+                System.out.println("Player shoots but misses!");
+            }
+
+        ammo--;
+        System.out.println("Ammo left: " + ammo + "/20");
+
+        postPlayerAction();
+    } else {
+        System.out.println("Click! Without ammo!");
         postPlayerAction();
     }
+}
 
+    public void dodge() {
+        int dodgeChance = 30 + (player.getSkill() / 10);
+        dodgeChance = Math.min(dodgeChance, 80);
+        playerDodged = (rng.nextInt(100) < dodgeChance);
+        if (playerDodged) {
+            counterAttackReady = true; // Se esquivou, prepara bônus de ataque
+            System.out.println("Player Dodges");
+        } else {
+            System.out.println("Player attempts to dodge but fails.");
+        }
+            postPlayerAction();
+    }
     private void postPlayerAction() {
         if (monster.isDead()) {
             System.out.println("Monster defeated!");
+            System.out.println("New Phase about to Start!");
             phase++;
             if (phase > MAX_PHASES) {
                 System.out.println("All phases cleared");
@@ -89,18 +126,23 @@ public class BattleController {
         }
     }
 
+
+
     private void monsterTurn() {
         int damage = monster.getAttack() + rng.nextInt(5);
         if(playerBlocked) {
             damage /= 2; // Reduz dano pela metade
             playerBlocked = false;
         }
+        if(playerDodged){
+            damage = 0;
+            playerDodged = false;
+        }
         player.takeDamage(damage);
-        System.out.println("Monster strikes for " + damage + " Player HP now: " + player.getHp());
+        System.out.println("Monster strikes for " + damage + " Damage "+ " Player HP now: " + player.getHp());
         if (player.isDead()) {
             System.out.println("Player Lost");
             onGameReset.run();
         }
     }
-
 }
