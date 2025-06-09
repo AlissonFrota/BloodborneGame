@@ -402,13 +402,13 @@ public class InventoryPane extends TabPane {
                         "Rapid Poison Resist: %d\n" +
                         "Frenzy Resist: %d\n" +
                         "Beast Hood: %d\n" +
-                        "Physical Dmg Reduction: %.1f%%\n" +
-                        "VS. Blunt: %.1f%%\n" +
-                        "VS. Thrust: %.1f%%\n" +
-                        "Blood Dmg Reduction: %.1f%%\n" +
-                        "Arcane Dmg Reduction: %.1f%%\n" +
-                        "Fire Dmg Reduction: %.1f%%\n" +
-                        "Bolt Dmg Reduction: %.1f%%",
+                        "Physical Dmg Reduction: %.1f\n" +
+                        "VS. Blunt: %.1f\n" +
+                        "VS. Thrust: %.1f\n" +
+                        "Blood Dmg Reduction: %.1f\n" +
+                        "Arcane Dmg Reduction: %.1f\n" +
+                        "Fire Dmg Reduction: %.1f\n" +
+                        "Bolt Dmg Reduction: %.1f",
                 slowPoisonResist, rapidPoisonResist,
                 frenzyResist, beasthood, physicalDmgReduction,
                 bluntDmgReduction, thrustDmgReduction, bloodDmgReduction,
