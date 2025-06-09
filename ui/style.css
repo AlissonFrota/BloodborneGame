@@ -220,3 +220,18 @@
 .scroll-pane > .viewport {
     -fx-background-color: #303030;
 }
+
+.easter-egg {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-padding: 0;
+    -fx-scale-x: 1;
+    -fx-scale-y: 1;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+}
+
+.easter-egg:hover {
+    -fx-background-color: black;
+}

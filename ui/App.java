@@ -76,11 +76,6 @@ public class App extends Application {
          showFirstBattlePane(hunter);
     }
 
-    private void showLoadingScreen() {
-        LoadingPane LoadPane = new LoadingPane();
-        transitionTo(LoadPane.getRoot());
-    }
-
     private void showOriginScreen() {
         final OriginPane[] originPaneHolder = new OriginPane[1];
 

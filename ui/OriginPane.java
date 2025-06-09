@@ -106,7 +106,7 @@ public class OriginPane {
 
         levelValue = new Text("10");
         insightValue = new Text("0");
-        bloodEchoesValue = new Text("300");
+        bloodEchoesValue = new Text("10");
         vitalityValue = new Text("-");
         enduranceValue = new Text("-");
         strengthValue = new Text("-");

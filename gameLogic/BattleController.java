@@ -25,7 +25,6 @@ public class BattleController {
     private BattlePane battlePane;
 
     public void setBattlePane(BattlePane battlePane) {
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         this.battlePane = battlePane;
     }
 
