@@ -66,12 +66,12 @@ public class StartMenuPane {
         StackPane.setAlignment(exitButton, Pos.BOTTOM_CENTER);
         StackPane.setMargin(exitButton, new Insets(0, 0, 100, 0));
         StackPane.setAlignment(hiddenButton,Pos.CENTER);
-        StackPane.setMargin(hiddenButton, new Insets(260, 0, 0, 770));
-        ScaleTransition grow = new ScaleTransition(Duration.millis(200), hiddenButton);
+        StackPane.setMargin(hiddenButton, new Insets(310, 0, 0, 770));
+        ScaleTransition grow = new ScaleTransition(Duration.millis(1230), hiddenButton);
         grow.setToX(1.3);
         grow.setToY(1.7);
 
-        ScaleTransition shrink = new ScaleTransition(Duration.millis(150), hiddenButton);
+        ScaleTransition shrink = new ScaleTransition(Duration.millis(1250), hiddenButton);
         shrink.setToX(1);
         shrink.setToY(1);
 
