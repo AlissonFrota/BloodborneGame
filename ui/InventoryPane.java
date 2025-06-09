@@ -2,10 +2,7 @@ package ui;
 
 import Entitys.Origin;
 import Entitys.Personagem;
-import Items.Armor.ChestArmor;
-import Items.Armor.HandArmor;
-import Items.Armor.HeadArmor;
-import Items.Armor.LegArmor;
+import Items.Armor.*;
 import Items.Rune.Rune;
 import Items.Weapon.LHandWeapon;
 import Items.Weapon.RHandWeapon;
@@ -331,27 +328,92 @@ public class InventoryPane extends TabPane {
 
     private void showDetail(Object item, String imagePath) {
         detailImage.setImage(new Image(imagePath));
-        try {
-            Method getName = item.getClass().getMethod("getName");
-            String name = (String) getName.invoke(item);
-            detailName.setText(name);
+        detailName.setText(extractItemName(item));
+        detailStats.setText(buildDetailText(item));
+    }
 
-            StringBuilder statsBuilder = new StringBuilder("Stats:\n");
-            for (Method method : item.getClass().getMethods()) {
-                if ((method.getName().startsWith("get") || method.getName().startsWith("is")) && method.getParameterCount() == 0
-                        && !method.getName().equals("getClass") && !method.getName().equals("getName") && !method.getName().equals("getImageSrc")) {
-                    try {
-                        Object value = method.invoke(item);
-                        statsBuilder.append(method.getName().replaceFirst("get|is", ""))
-                                .append(": ").append(value).append("\n");
-                    } catch (Exception ignored) {}
-                }
-            }
-            detailStats.setText(statsBuilder.toString());
-        } catch (Exception e) {
-            detailName.setText("Unknown Item");
-            detailStats.setText("No stats available.");
-        }
+    private String extractItemName(Object item) {
+        if (item instanceof RHandWeapon) return ((RHandWeapon) item).getName();
+        if (item instanceof LHandWeapon) return ((LHandWeapon) item).getName();
+        if (item instanceof Rune) return ((Rune) item).getName();
+        if (item instanceof HeadArmor) return ((HeadArmor) item).getName();
+        if (item instanceof ChestArmor) return ((ChestArmor) item).getName();
+        if (item instanceof LegArmor) return ((LegArmor) item).getName();
+        if (item instanceof HandArmor) return ((HandArmor) item).getName();
+        return "Unknown Item";
+    }
+
+    private String buildDetailText(Object item) {
+        if (item instanceof RHandWeapon) return getWeaponDetails((RHandWeapon) item);
+        if (item instanceof LHandWeapon) return getWeaponDetails((LHandWeapon) item);
+        if (item instanceof Rune) return getRuneDetails((Rune) item);
+        if (item instanceof HeadArmor) return getArmorDetails((HeadArmor) item);
+        if (item instanceof ChestArmor) return getArmorDetails((ChestArmor) item);
+        if (item instanceof LegArmor) return getArmorDetails((LegArmor) item);
+        if (item instanceof HandArmor) return getArmorDetails((HandArmor) item);
+        return "No stats available";
+    }
+
+    private String getWeaponDetails(Weapon weapon) {
+        return String.format(
+                "Requirements:\n  Strength: %d\n  Skill: %d\n  Bloodtinge: %d\n  Arcane: %d\n\n" +
+                        "Attack Values:\n  Physical: %d\n Blood: %d\n" +
+                        "  Arcane: %d\n Bolt: %d",
+                weapon.getStrengthReq(),
+                weapon.getSkillReq(),
+                weapon.getBloodTingeReq(),
+                weapon.getArcaneReq(),
+                weapon.getPhysicalATK(),
+                weapon.getBloodATK(),
+                weapon.getArcaneATK(),
+                weapon.getBoltATK()
+        );
+    }
+
+    private String getRuneDetails(Rune rune) {
+        return String.format("Effect: %s\nDescription: %s",
+                rune.getTipo(),
+                rune.getSlot());
+    }
+
+    private String getArmorDetails(Armadura armor) {
+        return buildArmorString(
+                armor.getSlowPoisonRES(),
+                armor.getRapidPoisonRES(),
+                armor.getFrenzyRES(),
+                armor.getBeastHood(),
+                armor.getPhysicalDefence(),
+                armor.getVsBluntDefence(),
+                armor.getVsThrustDefence(),
+                armor.getBloodDefence(),
+                armor.getArcaneDefence(),
+                armor.getFireDefence(),
+                armor.getBoltDefence()
+        );
+    }
+
+    private String buildArmorString(int slowPoisonResist, int rapidPoisonResist,
+                                    int frenzyResist, int beasthood, double physicalDmgReduction,
+                                    double bluntDmgReduction, double thrustDmgReduction,
+                                    double bloodDmgReduction, double arcaneDmgReduction,
+                                    double fireDmgReduction, double boltDmgReduction) {
+        return String.format(
+                        "Slow Poison Resist: %d\n" +
+                        "Rapid Poison Resist: %d\n" +
+                        "Frenzy Resist: %d\n" +
+                        "Beast Hood: %d\n" +
+                        "Physical Dmg Reduction: %.1f%%\n" +
+                        "VS. Blunt: %.1f%%\n" +
+                        "VS. Thrust: %.1f%%\n" +
+                        "Blood Dmg Reduction: %.1f%%\n" +
+                        "Arcane Dmg Reduction: %.1f%%\n" +
+                        "Fire Dmg Reduction: %.1f%%\n" +
+                        "Bolt Dmg Reduction: %.1f%%",
+                slowPoisonResist, rapidPoisonResist,
+                frenzyResist, beasthood, physicalDmgReduction,
+                bluntDmgReduction, thrustDmgReduction, bloodDmgReduction,
+                arcaneDmgReduction, fireDmgReduction, boltDmgReduction
+        );
     }
 
     private HBox createStatRow(String labelText, String valueText, String valueStyleClass) {
